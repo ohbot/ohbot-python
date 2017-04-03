@@ -3,6 +3,7 @@ import serial.tools.list_ports
 import time
 from lxml import etree
 import threading
+
 import os
 import sys
 import wave
@@ -406,8 +407,8 @@ def eyeColour(r,g,b):
     ser.write(msg.encode('latin-1'))    
 
 
-def wait(wait):
-    time.sleep(float(wait))
+def wait(seconds):
+    time.sleep(float(seconds))
     return
 
 def close():       
