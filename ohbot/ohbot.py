@@ -51,7 +51,7 @@ ser = serial.Serial(port, 19200)
 
 # xml file for motor definitions
 
-tree = etree.parse("MotorDefinitionsv21.omd")
+tree = etree.parse('MotorDefinitionsv21.omd')
 root = tree.getroot()
 
 # Put motor ranges into lists
