@@ -5,7 +5,7 @@ setup(
     packages = ['ohbot'],
     package_data={'': ['MotorDefinitionsv21.omd']},
     include_package_data=True,
-    version = '1',  
+    version = '0.1',  
     description = 'description',
     author = 'ohbot',
     author_email = 'info@ohbot.co.uk',
