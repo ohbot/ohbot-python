@@ -10,7 +10,7 @@ setup(
     author = 'ohbot',
     author_email = 'info@ohbot.co.uk',
     url = 'https://github.com/ohbot/ohbotpython.git',
-    download_url = 'https://github.com/ohbot/ohbot/archive/v1.tar.gz',
+    download_url = 'https://github.com/ohbot/ohbot/archive/v0.1.tar.gz',
     keywords = ['ohbot', 'robot'],
     classifiers = [],
 )
