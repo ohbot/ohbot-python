@@ -3,7 +3,7 @@ from distutils.core import setup
 setup(
     name = 'ohbot',
     packages = ['ohbot'],
-    version = '1',  
+    version = '2',  
     description = 'description',
     author = 'ohbot',
     author_email = 'info@ohbot.co.uk',
