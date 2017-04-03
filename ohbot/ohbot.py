@@ -121,9 +121,9 @@ def move(m,pos,spd=3):
 
     # Write message to serial port
 
-    if resetting or not pos == motorPos[m]:
-        ser.write(msg.encode('latin-1'))
-        motorPos[m] = pos # Update motor positions list 
+    
+    ser.write(msg.encode('latin-1'))
+    motorPos[m] = pos # Update motor positions list 
     
 
 
