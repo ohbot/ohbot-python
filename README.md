@@ -113,11 +113,11 @@ Plug the middle of USB Y cable into Raspberry Pi and the other large USB plug in
 Writing Programs
 --------
 
-1.Open Python 3 (IDLE)
+1. Open Python 3 (IDLE)
 <br>
-2.Click File → New File
+2. Click File → New File
 <br>
-3.Save your file as a python script (.py) in a new folder called Ohbot somewhere on your Pi.
+3. Save your file as a python script (.py) in a new folder called Ohbot somewhere on your Pi.
 
 Import
 -------
@@ -229,14 +229,12 @@ ohbot.say(text,untilDone = True,lipSync = True)
 </tr>
 </table>
 
-
 For Example:
 ```python
 ohbot.say(“Hello I am Ohbot”)
 
 ohbot.say(“Goodbye”,False,False)
 ```
-
 
 <br>
 
