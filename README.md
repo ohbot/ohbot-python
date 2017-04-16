@@ -11,7 +11,7 @@ Dependencies
 Ohbot requires the following libraries be installed:
 
 
-<table border="1">
+<table>
 <tr>
 <b>
 <td>Library</td>
@@ -61,7 +61,7 @@ Ohbot is tested with Python 3 running on a Raspberry Pi 3 Model B.
 
 Ohbot library files: (these will be installed with the pip3 command above)
 
-<table border="1">
+<table>
 <tr>
 <b>
 <td>ohbot.py</td>
@@ -110,7 +110,7 @@ Functions
 
 <b>ohbot.move(m,pos,speed = 3)</b>
 
-<table border="1">
+<table>
 <tr>
 <td>Name</td>
 <td>Range</td>
@@ -143,10 +143,59 @@ For Example:
 ohbot.move(1,7)
 ohbot.move(2,3,1) 
 
+<table>
+<tr>
+<td>m</td>
+<td>0</td>
+<td>1</td>
+<td>2</td>
+<td>3</td>
+<td>4</td>
+<td>5</td>
+<td>6</td>
+</tr>
+<tr>
+<td>motor</td>
+<td>HeadNod</td>
+<td>HeadTurn</td>
+<td>EyeTurn</td>
+<td>LidBlink</td>
+<td>TopLip</td>
+<td>BottomLip</td>
+<td>EyeTurn</td>
+</tr>
+
+</table>
 
 
-ohbot.say(text,untilDone = True,lipSync = True)
+<b>ohbot.say(text,untilDone = True,lipSync = True)</b>
 
+<table>
+<tr>
+<td>Name</td>
+<td>Range</td>
+<td>Description</td>
+<td>Default</td>
+</tr>
+<tr>
+<td>text</td>
+<td>“A string with no punctuation”</td>
+<td>Words to say</td>
+<td>-</td>
+</tr>
+<tr>
+<td>untilDone</td>
+<td>bool</td>
+<td>Return when finished speaking</td>
+<td>True</td>
+</tr>
+<tr>
+<td>lipSync</td>
+<td>bool</td>
+<td>Move lips in time with speech</td>
+<td>True</td>
+</tr>
+</table>
 
 
 For Example:
@@ -156,17 +205,29 @@ ohbot.say(“Goodbye”,False,False)
 
 
 
-ohbot.wait(seconds)
+<b>ohbot.wait(seconds)</b>
 
 Seconds - float or int required wait time. ohbot.wait(1.5)
 
+<table>
+<tr>
+<td>Name</td>
+<td>Range</td>
+<td>Description</td>
+</tr>
+<tr>
+<td>seconds</td>
+<td>float or int</td>
+<td>Length of wait in seconds</td>
+</tr>
+</table>
 
 For Example:
 
 ohbot.wait(2)
 ohbot.wait(0.5)
 
-Note: It is important to use ohbot.wait() commands between motor sequential commands for the same motor. 
+<i>Note: It is important to use ohbot.wait() commands between motor sequential commands for the same motor. </i>
 
 For Example:
 
@@ -174,21 +235,40 @@ ohbot.move(1,7,2)
 ohbot.wait(2)
 ohbot.move(1,4,2)
 
-ohbot.eyeColour(r,g,b)
+<b>ohbot.eyeColour(r,g,b)</b>
+
+<table>
+<tr>
+<td>Name</td>
+<td>Range</td>
+<td>Description</td>
+</tr>
+<tr>
+<td>r</td>
+<td>0-10(int)</td>
+<td>Red</td>
+</tr>
+<tr>
+<td>g</td>
+<td>0-10(int)</td>
+<td>Green</td>
+</tr>
+<tr>
+<td>b</td>
+<td>0-10(int)</td>
+<td>Blue</td>
+</tr>
 
 
-ohbot.reset()
+<b>ohbot.reset()</b>
 
 Resets Ohbot’s motors back to rest positions and turns off Ohbot’s eyes. 
 
-ohbot.close()
+<b>ohbot.close()</b>
 
 Call at the end of your program to detach Ohbot’s motors.
 
-Press fn + f5 to run your program. 
-
-
-<iframe src="https://docs.google.com/document/d/1fdeQwX18cFidcXlgQg04Bvm2ZvxkuvLu7mM3-8rfrYo/pub?embedded=true"></iframe>
+<b><i>Press fn + f5 to run your program. </b></i>
 
 
 
