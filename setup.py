@@ -9,8 +9,8 @@ setup(
     description = 'description',
     author = 'ohbot',
     author_email = 'info@ohbot.co.uk',
-    url = 'https://github.com/ohbot/ohbotpython.git',
-    download_url = 'https://github.com/ohbot/ohbot/archive/v0.21.tar.gz',
+    url = 'https://github.com/ohbot/ohbot.git',
+    download_url = 'https://github.com/ohbot/ohbot/archive/0.3.tar.gz',
     keywords = ['ohbot', 'robot'],
     classifiers = [],
 )
