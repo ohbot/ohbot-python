@@ -106,7 +106,6 @@ From ohbot import ohbot
 
 <br>
 <br>
-<br>
 
 Functions
 -------
@@ -175,7 +174,6 @@ Motor index reference:
 
 <br>
 <br>
-<br>
 
 
 ohbot.say(text,untilDone = True,lipSync = True)
@@ -219,7 +217,6 @@ ohbot.say(“Goodbye”,False,False)
 
 <br>
 <br>
-<br>
 
 ohbot.wait(seconds)
 ----------
@@ -257,7 +254,6 @@ ohbot.move(1,4,2)
 
 <br>
 <br>
-<br>
 
 
 ohbot.eyeColour(r,g,b)
@@ -291,14 +287,12 @@ Set the colour of Ohbot’s eyes.
 
 <br>
 <br>
-<br>
 
 ohbot.reset()
 ----------
 
 Resets Ohbot’s motors back to rest positions and turns off Ohbot’s eyes.
 
-<br>
 <br>
 <br>
 
