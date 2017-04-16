@@ -26,7 +26,7 @@ Ohbot requires the following libraries be installed:
 <td>ohbot</td>
 <td>Interface with Ohbot</td>
 <td>sudo pip3 install ohbot</td>
-<td><td>https://github.com/ohbot/ohbot/</td></td>
+<td>https://github.com/ohbot/ohbot/</td>
 </tr>
 <tr>
 <td>serial</td>
