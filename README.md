@@ -25,7 +25,7 @@ Ohbot requires the following libraries be installed:
 <tr>
 <td>ohbot</td>
 <td>Interface with Ohbot</td>
-<td>`sudo pip3 install ohbot`</td>
+<td>sudo pip3 install ohbot</td>
 <td>https://github.com/ohbot/ohbot/</td>
 </tr>
 <tr>
