@@ -105,9 +105,9 @@ Speakers/headphones with 3.5mm headphone jack
 
 <u>Setup:</u>
 
-<br>
 
-Plug the middle of USB Y cable into Raspberry Pi and the other large USB plug into the power adaptor. Then plug the mini usb into Ohbot. Finally plug your speakers into your Raspberry Pi. 
+
+Plug the middle of USB Y cable into Raspberry Pi and the other large USB plug into the power adaptor. Then plug the mini USB into Ohbot. Finally plug your speakers into your Raspberry Pi. 
 
 
 Writing Programs
