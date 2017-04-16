@@ -194,10 +194,8 @@ Motor index reference:
 
 <br>
 
-```python
-ohbot.say(text,untilDone = True,lipSync = True)
-```
 
+ohbot.say(text,untilDone = True,lipSync = True)
 ----------
 
 <table>
