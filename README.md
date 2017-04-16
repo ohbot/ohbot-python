@@ -227,9 +227,9 @@ ohbot.say(text,untilDone = True,lipSync = True)
 
 For Example:
 ```python
-ohbot.say(“Hello I am Ohbot”)
+ohbot.say('Hello I am Ohbot')
 
-ohbot.say(“Goodbye”,False,False)
+ohbot.say('Goodbye',False,False)
 ```
 
 <br>
