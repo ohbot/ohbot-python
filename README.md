@@ -25,7 +25,7 @@ Ohbot requires the following libraries be installed:
 <tr>
 <td>ohbot</td>
 <td>Interface with Ohbot</td>
-<td>sudo pip3 install ohbot</td>
+<td>`sudo pip3 install ohbot`</td>
 <td>https://github.com/ohbot/ohbot/</td>
 </tr>
 <tr>
@@ -113,11 +113,11 @@ Plug the middle of USB Y cable into Raspberry Pi and the other large USB plug in
 Writing Programs
 --------
 
-1. Open Python 3 (IDLE)
+1.Open Python 3 (IDLE)
 <br>
-2. Click File → New File
+2.Click File → New File
 <br>
-3. Save your file as a python script (.py) in a new folder called Ohbot somewhere on your Pi.
+3.Save your file as a python script (.py) in a new folder called Ohbot somewhere on your Pi.
 
 Import
 -------
