@@ -88,15 +88,19 @@ Ohbot library files: (these will be installed with the pip3 command above)
 
 Hardware
 -----
-
+<br>
 Raspberry Pi
+<br>
 Ohbot
+<br>
 USB Y Cable
+<br>
 USB Power Socket Adaptor
+<br>
 Speakers/headphones with 3.5mm headphone jack
-
+<br>
 Plug middle of USB Y cable into Raspberry Pi and the other large plug into the power adaptor. Then plug the mini usb into Ohbot.
-
+<br>
 Plug in speakers. 
 
 
