@@ -111,7 +111,7 @@ From ohbot import ohbot
 Functions
 -------
 
-<b>ohbot.move(m,pos,speed = 3)</b>
+ohbot.move(m,pos,speed = 3)
 ----------
 
 <table>
@@ -177,7 +177,7 @@ Motor index reference:
 <br>
 
 
-<b>ohbot.say(text,untilDone = True,lipSync = True)</b>
+ohbot.say(text,untilDone = True,lipSync = True)
 ----------
 
 <table>
@@ -219,8 +219,7 @@ ohbot.say(“Goodbye”,False,False)
 <br>
 <br>
 
-
-<b>ohbot.wait(seconds)</b>
+ohbot.wait(seconds)
 ----------
 
 Seconds - float or int required wait time. ohbot.wait(1.5)
@@ -256,7 +255,7 @@ ohbot.move(1,4,2)
 <br>
 
 
-<b>ohbot.eyeColour(r,g,b)</b>
+ohbot.eyeColour(r,g,b)
 ----------
 
 Set the colour of Ohbot’s eyes. 
@@ -289,7 +288,7 @@ Set the colour of Ohbot’s eyes.
 <br>
 <br>
 
-<b>ohbot.reset()</b>
+ohbot.reset()
 ----------
 
 Resets Ohbot’s motors back to rest positions and turns off Ohbot’s eyes.
@@ -298,8 +297,7 @@ Resets Ohbot’s motors back to rest positions and turns off Ohbot’s eyes.
 <br>
 <br>
 
-
-<b>ohbot.close()</b>
+ohbot.close()
 ----------
 
 Call at the end of your program to detach Ohbot’s motors.
