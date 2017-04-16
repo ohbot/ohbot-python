@@ -104,6 +104,9 @@ Make sure you import ohbot at the start of your program.
 
 From ohbot import ohbot
 
+<br>
+<br>
+<br>
 
 Functions
 -------
@@ -144,6 +147,7 @@ For Example:
 ohbot.move(1,7)
 ohbot.move(2,3,1) 
 
+Motor index reference:
 <table>
 <tr>
 <td>m</td>
@@ -168,8 +172,9 @@ ohbot.move(2,3,1)
 
 </table>
 
-
-
+<br>
+<br>
+<br>
 
 
 <b>ohbot.say(text,untilDone = True,lipSync = True)</b>
@@ -210,6 +215,9 @@ ohbot.say(“Goodbye”,False,False)
 
 
 
+<br>
+<br>
+<br>
 
 
 <b>ohbot.wait(seconds)</b>
@@ -243,7 +251,9 @@ ohbot.move(1,7,2)
 ohbot.wait(2)
 ohbot.move(1,4,2)
 
-
+<br>
+<br>
+<br>
 
 
 <b>ohbot.eyeColour(r,g,b)</b>
@@ -275,14 +285,18 @@ Set the colour of Ohbot’s eyes.
 </table>
 
 
-
+<br>
+<br>
+<br>
 
 <b>ohbot.reset()</b>
 ----------
 
 Resets Ohbot’s motors back to rest positions and turns off Ohbot’s eyes.
 
-
+<br>
+<br>
+<br>
 
 
 <b>ohbot.close()</b>
