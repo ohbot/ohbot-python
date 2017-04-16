@@ -113,8 +113,9 @@ Import
 -------
 
 Make sure you import ohbot at the start of your program. 
-
+```python
 From ohbot import ohbot
+```
 
 <br>
 <br>
@@ -223,7 +224,7 @@ ohbot.say(text,untilDone = True,lipSync = True)
 
 For Example:
 ```python
-ohbot.say(“Hello my name is Ohbot”)
+ohbot.say(“Hello I am Ohbot”)
 
 ohbot.say(“Goodbye”,False,False)
 ```
