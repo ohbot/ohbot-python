@@ -42,11 +42,11 @@ Hardware
 Required:
 
 
-*Raspberry Pi
-*Ohbot
-*USB Y Cable
-*USB Power Socket Adaptor
-*Speakers/headphones with 3.5mm headphone jack
+* Raspberry Pi
+* Ohbot
+* USB Y Cable
+* USB Power Socket Adaptor
+* Speakers/headphones with 3.5mm headphone jack
 
 
 Setup:
