@@ -109,6 +109,7 @@ Functions
 -------
 
 <b>ohbot.move(m,pos,speed = 3)</b>
+----------
 
 <table>
 <tr>
@@ -169,6 +170,7 @@ ohbot.move(2,3,1)
 
 
 <b>ohbot.say(text,untilDone = True,lipSync = True)</b>
+----------
 
 <table>
 <tr>
@@ -206,6 +208,7 @@ ohbot.say(“Goodbye”,False,False)
 
 
 <b>ohbot.wait(seconds)</b>
+----------
 
 Seconds - float or int required wait time. ohbot.wait(1.5)
 
@@ -236,6 +239,7 @@ ohbot.wait(2)
 ohbot.move(1,4,2)
 
 <b>ohbot.eyeColour(r,g,b)</b>
+----------
 
 Set the colour of Ohbot’s eyes. 
 
@@ -263,10 +267,12 @@ Set the colour of Ohbot’s eyes.
 </table>
 
 <b>ohbot.reset()</b>
+----------
 
 Resets Ohbot’s motors back to rest positions and turns off Ohbot’s eyes. 
 
 <b>ohbot.close()</b>
+----------
 
 Call at the end of your program to detach Ohbot’s motors.
 
