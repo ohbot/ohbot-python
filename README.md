@@ -28,6 +28,12 @@ Ohbot is tested with Python 3 running on a Raspberry Pi 3 Model B.
 
 
 Ohbot library files (these will be installed with the pip3 command above):
+
+| File    | Use         |
+| ---------- |------------|
+| ohbot.py   | Ohbot package |
+| MotorDefinionsv21.omd    | Motor settings file |
+
 |File|Use|
 |---|---|
 |ohbot.py|Ohbot package|
