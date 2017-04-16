@@ -1,8 +1,7 @@
 # ohbot for python
 
-ohbot
-========================
-<a href="http://s1380.photobucket.com/user/ohbot/media/ohbotsmall_zpslnmw8761.png.html" target="_blank"><img src="http://i1380.photobucket.com/albums/ah188/ohbot/ohbotsmall_zpslnmw8761.png" border="0" alt=" photo ohbotsmall_zpslnmw8761.png"/></a>
+<a href="http://s1380.photobucket.com/user/ohbot/media/eyesgif_zpslphplowu.gif.html" target="_blank"><img src="http://i1380.photobucket.com/albums/ah188/ohbot/eyesgif_zpslphplowu.gif" border="0" alt=" photo eyesgif_zpslphplowu.gif" width = "30%"/></a>
+
 
 This package is a starting point for people wanting to use Python 3 to control Ohbot. 
 
