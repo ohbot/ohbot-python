@@ -104,7 +104,9 @@ Writing Programs
 --------
 
 1.Open Python 3 (IDLE)
+<br>
 2.Click File → New File
+<br>
 3.Save your file as a python script (.py) in the Ohbot folder you created earlier
 
 Import
@@ -152,11 +154,11 @@ ohbot.move(m,pos,speed = 3)
 
 
 For Example:
-
+```python
 ohbot.move(1,7)
 <br>
 ohbot.move(2,3,1) 
-
+```
 Motor index reference:
 <table>
 <tr>
