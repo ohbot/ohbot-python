@@ -23,11 +23,40 @@ Ohbot library files: (these will be installed with the pip3 command above)
 
 <table border="1">
 <tr>
-<td>Row 1, Column 1</td>
-<td>Row 1, Column 2</td>
+<b>
+<td>Library</td>
+<td>Use</td>
+<td>Terminal command to install</td>
+</b>
+</tr>
+<tr>
+<td>ohbot</td>
+<td>serial</td>
+<td>fesit</td>
 </tr>
 <tr>
 <td>Row 2, Column 1</td>
+<td>Row 2, Column 2</td>
+<td>Row 2, Column 2</td>
+</tr>
+<tr>
+<td>Row 2, Column 1</td>
+<td>Row 2, Column 2</td>
+<td>Row 2, Column 2</td>
+</tr>
+<tr>
+<td>Row 2, Column 1</td>
+<td>Row 2, Column 2</td>
+<td>Row 2, Column 2</td>
+</tr>
+<tr>
+<td>Row 2, Column 1</td>
+<td>Row 2, Column 2</td>
+<td>Row 2, Column 2</td>
+</tr>
+<tr>
+<td>Row 2, Column 1</td>
+<td>Row 2, Column 2</td>
 <td>Row 2, Column 2</td>
 </tr>
 </table>
@@ -118,6 +147,8 @@ Call at the end of your program to detach Ohbot’s motors.
 
 Press fn + f5 to run your program. 
 
+
+<iframe src="https://docs.google.com/document/d/1fdeQwX18cFidcXlgQg04Bvm2ZvxkuvLu7mM3-8rfrYo/pub?embedded=true"></iframe>
 
 
 
