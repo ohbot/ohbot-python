@@ -311,7 +311,7 @@ ohbot.close()
 
 Call at the end of your program to detach Ohbot’s motors.
 
-<b><i>Press fn + f5 to run your program. </b></i>
+<b><i>Press fn + f5 to run your program.
 
 
 
