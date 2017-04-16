@@ -13,6 +13,19 @@ Dependencies
 Ohbot requires the following libraries be installed:
 
 
+| Library    | Use         | Terminal command to install  |Link |
+| ---------- |-------------| -----------------------------|-----|
+| ohbot   | Interface with Ohbot          | sudo pip3 install ohbot  |[Link](https://github.com/ohbot/ohbot/) |
+| serial    | Communicate with serial port| sudo pip3 install pyserial  |[Link](https://github.com/pyserial/pyserial/) |
+| fesitival    | Generate text to speech  | sudo apt-get install festival  |- |
+| lxml    | Import settings file          | sudo apt-get install python3-lxml  |[Link](https://github.com/lxml/lxml) |
+| threading    | Run multiple threads     | core  |- |
+| os    | Send commands to festival       | core  |- |
+| time    | Run timers                    | core  |- |
+
+
+
+
 <table>
 <tr>
 <b>
