@@ -34,24 +34,6 @@ Ohbot library files (these will be installed with the pip3 command above):
 | ohbot.py   | Ohbot package |
 | MotorDefinionsv21.omd    | Motor settings file |
 
-
-|---|---|
-|ohbot.py|Ohbot package|
-|MotorDefinionsv21.omd|Motor settings file|
-
-<table>
-<tr>
-<b>
-<td>ohbot.py</td>
-<td>Ohbot package</td>
-</b>
-</tr>
-<tr>
-<td>MotorDefinionsv21.omd</td>
-<td>Motor settings file.</td>
-</tr>
-</table>
-
 _Note: The text to speech module Festival will generate an audio file, ‘ohbotspeech.wav’ and a text file ‘phonemes.txt’ inside your working folder._
 
 Hardware
@@ -61,15 +43,15 @@ Required:
 
 
 Raspberry Pi
-<br>
+
 Ohbot
-<br>
+
 USB Y Cable
-<br>
+
 USB Power Socket Adaptor
-<br>
+
 Speakers/headphones with 3.5mm headphone jack
-<br>
+
 
 Setup:
 
