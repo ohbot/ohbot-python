@@ -145,6 +145,7 @@ ohbot.move(m,pos,speed = 3)
 For Example:
 
 ohbot.move(1,7)
+<br>
 ohbot.move(2,3,1) 
 
 Motor index reference:
@@ -211,6 +212,7 @@ ohbot.say(text,untilDone = True,lipSync = True)
 For Example:
 
 ohbot.say(“Hello my name is Ohbot”)
+<br>
 ohbot.say(“Goodbye”,False,False)
 
 
@@ -240,6 +242,7 @@ Seconds - float or int required wait time. ohbot.wait(1.5)
 For Example:
 
 ohbot.wait(2)
+<br>
 ohbot.wait(0.5)
 
 <i>Note: It is important to use ohbot.wait() commands between motor sequential commands for the same motor. </i>
@@ -247,7 +250,9 @@ ohbot.wait(0.5)
 For Example:
 
 ohbot.move(1,7,2)
+<br>
 ohbot.wait(2)
+<br>
 ohbot.move(1,4,2)
 
 <br>
