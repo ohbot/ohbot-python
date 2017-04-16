@@ -1,3 +1,6 @@
+#This is a script to help control an Ohbot Robot. www.ohbot.co.uk
+
+
 import serial
 import serial.tools.list_ports
 import time
@@ -101,7 +104,9 @@ def move(m,pos,spd=3):
     # Attach motor
         
     attach(m)
-
+    
+    # Ensure the lips do not crash into each other. 
+    
     if m == 4 and pos + motorPos[5] > 10:
         pos = 10 - motorPos[5]
 
