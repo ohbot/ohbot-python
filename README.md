@@ -1,4 +1,4 @@
-# ohbotpython
+# ohbot for python
 
 ohbot
 ========================
