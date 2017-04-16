@@ -237,6 +237,8 @@ ohbot.move(1,4,2)
 
 <b>ohbot.eyeColour(r,g,b)</b>
 
+Set the colour of Ohbot’s eyes. 
+
 <table>
 <tr>
 <td>Name</td>
@@ -258,7 +260,7 @@ ohbot.move(1,4,2)
 <td>0-10(int)</td>
 <td>Blue</td>
 </tr>
-
+</table>
 
 <b>ohbot.reset()</b>
 
