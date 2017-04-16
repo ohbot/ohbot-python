@@ -5,6 +5,8 @@ ohbot
 
 This package is a starting point for people wanting to use Python 3 to control Ohbot. 
 
+More information about Ohbot can be found on: ohbot.co.uk
+
 Dependencies
 ----------
 
@@ -17,42 +19,50 @@ Ohbot requires the following libraries be installed:
 <td>Library</td>
 <td>Use</td>
 <td>Terminal command to install</td>
+<td>Link</td>
 </b>
 </tr>
 <tr>
 <td>ohbot</td>
 <td>Interface with Ohbot</td>
 <td>sudo pip3 install ohbot</td>
+<td><td>https://github.com/ohbot/ohbot/</td></td>
 </tr>
 <tr>
 <td>serial</td>
 <td>Communicate with serial port</td>
 <td>sudo pip3 install pyserial</td>
+<td>https://github.com/pyserial/pyserial/</td>
 </tr>
 <tr>
 <td>fesitival</td>
 <td>Generate text to speech</td>
 <td>sudo apt-get install festival</td>
+<td>-</td>
 </tr>
 <tr>
 <td>lxml</td>
 <td>Import settings file</td>
 <td>sudo apt-get install python3-lxml</td>
+<td>https://github.com/lxml/lxml</td>
 </tr>
 <tr>
 <td>threading</td>
 <td>Run multiple threads</td>
 <td>core</td>
+<td>-</td>
 </tr>
 <tr>
 <td>os</td>
 <td>Send commands to festival</td>
 <td>core</td>
+<td>-</td>
 </tr>
 <tr>
 <td>time</td>
 <td>Run timers</td>
 <td>core</td>
+<td>-</td>
 </tr>
 </table>
 
@@ -303,7 +313,5 @@ Call at the end of your program to detach Ohbot’s motors.
 
 <b><i>Press fn + f5 to run your program. </b></i>
 
-
-x
 
 
