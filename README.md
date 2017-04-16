@@ -19,7 +19,18 @@ Ohbot is tested with Python 3 running on a Raspberry Pi 3 Model B.
 
 Ohbot library files: (these will be installed with the pip3 command above)
 
-<img src="http://i1380.photobucket.com/albums/ah188/ohbot/table1_zpsdh5r28rl.png" width="70%">
+<img src="http://i1380.photobucket.com/albums/ah188/ohbot/table2_zpskejkvuhc.png" width="70%">
+
+<table border="1">
+<tr>
+<td>Row 1, Column 1</td>
+<td>Row 1, Column 2</td>
+</tr>
+<tr>
+<td>Row 2, Column 1</td>
+<td>Row 2, Column 2</td>
+</tr>
+</table>
 
 <i> Note: The text to speech module Festival will generate an audio file, ‘ohbotspeech.wav’ and a text file ‘phonemes.txt’ inside your working folder. </i>
 
@@ -53,6 +64,7 @@ From ohbot import ohbot
 
 
 Functions
+-------
 
 ohbot.move(m,pos,speed = 3)
 
