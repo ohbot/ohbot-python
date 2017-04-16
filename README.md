@@ -156,7 +156,7 @@ ohbot.move(m,pos,speed = 3)
 For Example:
 ```python
 ohbot.move(1,7)
-<br>
+
 ohbot.move(2,3,1) 
 ```
 Motor index reference:
@@ -187,8 +187,10 @@ Motor index reference:
 <br>
 <br>
 
-
+```python
 ohbot.say(text,untilDone = True,lipSync = True)
+```
+
 ----------
 
 <table>
@@ -220,11 +222,11 @@ ohbot.say(text,untilDone = True,lipSync = True)
 
 
 For Example:
-
+```python
 ohbot.say(“Hello my name is Ohbot”)
-<br>
-ohbot.say(“Goodbye”,False,False)
 
+ohbot.say(“Goodbye”,False,False)
+```
 
 
 <br>
@@ -249,20 +251,22 @@ Seconds - float or int required wait time. ohbot.wait(1.5)
 </table>
 
 For Example:
-
+```python
 ohbot.wait(2)
-<br>
+
 ohbot.wait(0.5)
+```
 
 <i>Note: It is important to use ohbot.wait() commands between motor sequential commands for the same motor. </i>
 
 For Example:
-
+```python
 ohbot.move(1,7,2)
-<br>
+
 ohbot.wait(2)
-<br>
+
 ohbot.move(1,4,2)
+```
 
 <br>
 <br>
@@ -296,6 +300,10 @@ Set the colour of Ohbot’s eyes.
 </tr>
 </table>
 
+For Example:
+```python
+ohbot.eyeColour(2,3,8)
+```
 
 <br>
 <br>
@@ -303,7 +311,16 @@ Set the colour of Ohbot’s eyes.
 ohbot.reset()
 ----------
 
-Resets Ohbot’s motors back to rest positions and turns off Ohbot’s eyes.
+Resets Ohbot’s motors back to rest positions and turns off Ohbot’s eyes. Useful to start programs with this. 
+
+For Example:
+```python
+ohbot.reset()
+ohbot.move(1,7,2)
+ohbot.wait(1)
+ohbot.move(1,1)
+...
+```
 
 <br>
 <br>
@@ -312,6 +329,15 @@ ohbot.close()
 ----------
 
 Call at the end of your program to detach Ohbot’s motors.
+
+For Example:
+```python
+ohbot.move(1,7,2)
+ohbot.wait(1)
+ohbot.move(1,1)
+
+ohbot.close()
+```
 
 <b><i>Press fn + f5 to run your program.
 
