@@ -84,7 +84,7 @@ Ohbot library files: (these will be installed with the pip3 command above)
 </tr>
 </table>
 
-<i> Note: The text to speech module Festival will generate an audio file, ‘ohbotspeech.wav’ and a text file ‘phonemes.txt’ inside your working folder. </i>
+_Note: The text to speech module Festival will generate an audio file, ‘ohbotspeech.wav’ and a text file ‘phonemes.txt’ inside your working folder._
 
 Hardware
 -----
@@ -113,11 +113,9 @@ Plug the middle of USB Y cable into Raspberry Pi and the other large USB plug in
 Writing Programs
 --------
 
-1.Open Python 3 (IDLE)
-<br>
-2.Click File → New File
-<br>
-3.Save your file as a python script (.py) in a new folder called Ohbot somewhere on your Pi.
+1. Open Python 3 (IDLE)
+2. Click File → New File
+3. Save your file as a python script (.py) in a new folder called Ohbot somewhere on your Pi.
 
 Import
 -------
