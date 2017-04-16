@@ -11,16 +11,6 @@ Dependencies
 Ohbot requires the following libraries be installed:
 
 
-<img src="http://i1380.photobucket.com/albums/ah188/ohbot/table1_zpsdh5r28rl.png" width="70%">
-
-
-Ohbot is tested with Python 3 running on a Raspberry Pi 3 Model B. 
-
-
-Ohbot library files: (these will be installed with the pip3 command above)
-
-<img src="http://i1380.photobucket.com/albums/ah188/ohbot/table2_zpskejkvuhc.png" width="70%">
-
 <table border="1">
 <tr>
 <b>
@@ -31,33 +21,56 @@ Ohbot library files: (these will be installed with the pip3 command above)
 </tr>
 <tr>
 <td>ohbot</td>
+<td>Interface with Ohbot</td>
+<td>sudo pip3 install ohbot</td>
+</tr>
+<tr>
 <td>serial</td>
-<td>fesit</td>
+<td>Communicate with serial port</td>
+<td>sudo pip3 install pyserial</td>
 </tr>
 <tr>
-<td>Row 2, Column 1</td>
-<td>Row 2, Column 2</td>
-<td>Row 2, Column 2</td>
+<td>fesitival</td>
+<td>Generate text to speech</td>
+<td>sudo apt-get install festival</td>
 </tr>
 <tr>
-<td>Row 2, Column 1</td>
-<td>Row 2, Column 2</td>
-<td>Row 2, Column 2</td>
+<td>lxml</td>
+<td>Import settings file</td>
+<td>sudo apt-get install python3-lxml</td>
 </tr>
 <tr>
-<td>Row 2, Column 1</td>
-<td>Row 2, Column 2</td>
-<td>Row 2, Column 2</td>
+<td>threading</td>
+<td>Run multiple threads</td>
+<td>core</td>
 </tr>
 <tr>
-<td>Row 2, Column 1</td>
-<td>Row 2, Column 2</td>
-<td>Row 2, Column 2</td>
+<td>os</td>
+<td>Send commands to festival</td>
+<td>core</td>
 </tr>
 <tr>
-<td>Row 2, Column 1</td>
-<td>Row 2, Column 2</td>
-<td>Row 2, Column 2</td>
+<td>time</td>
+<td>Run timers</td>
+<td>core</td>
+</tr>
+</table>
+
+Ohbot is tested with Python 3 running on a Raspberry Pi 3 Model B. 
+
+
+Ohbot library files: (these will be installed with the pip3 command above)
+
+<table border="1">
+<tr>
+<b>
+<td>ohbot.py</td>
+<td>Ohbot package</td>
+</b>
+</tr>
+<tr>
+<td>MotorDefinionsv21.omd</td>
+<td>Motor settings file.</td>
 </tr>
 </table>
 
@@ -95,7 +108,34 @@ From ohbot import ohbot
 Functions
 -------
 
-ohbot.move(m,pos,speed = 3)
+<b>ohbot.move(m,pos,speed = 3)</b>
+
+<table border="1">
+<tr>
+<td>Name</td>
+<td>Range</td>
+<td>Description</td>
+<td>-</td>
+</tr>
+<tr>
+<td>m</td>
+<td>0-6(int)</td>
+<td>Motor Number</td>
+<td>-</td>
+</tr>
+<tr>
+<td>pos</td>
+<td>0-10(int)</td>
+<td>Desired Position</td>
+<td>-</td>
+</tr>
+<tr>
+<td>speed</td>
+<td>0-10(int)</td>
+<td>Motor Speed</td>
+<td>3</td>
+</tr>
+</table>
 
 
 For Example:
