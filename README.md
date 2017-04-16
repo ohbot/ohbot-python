@@ -169,6 +169,9 @@ ohbot.move(2,3,1)
 </table>
 
 
+
+
+
 <b>ohbot.say(text,untilDone = True,lipSync = True)</b>
 ----------
 
@@ -207,6 +210,8 @@ ohbot.say(“Goodbye”,False,False)
 
 
 
+
+
 <b>ohbot.wait(seconds)</b>
 ----------
 
@@ -238,6 +243,9 @@ ohbot.move(1,7,2)
 ohbot.wait(2)
 ohbot.move(1,4,2)
 
+
+
+
 <b>ohbot.eyeColour(r,g,b)</b>
 ----------
 
@@ -266,10 +274,16 @@ Set the colour of Ohbot’s eyes.
 </tr>
 </table>
 
+
+
+
 <b>ohbot.reset()</b>
 ----------
 
-Resets Ohbot’s motors back to rest positions and turns off Ohbot’s eyes. 
+Resets Ohbot’s motors back to rest positions and turns off Ohbot’s eyes.
+
+
+
 
 <b>ohbot.close()</b>
 ----------
