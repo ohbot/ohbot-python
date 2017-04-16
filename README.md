@@ -15,74 +15,23 @@ Ohbot requires the following libraries be installed:
 
 | Library    | Use         | Terminal command to install  |Link |
 | ---------- |-------------| -----------------------------|-----|
-| ohbot   | Interface with Ohbot          | sudo pip3 install ohbot  |[Link](https://github.com/ohbot/ohbot/) |
-| serial    | Communicate with serial port| sudo pip3 install pyserial  |[Link](https://github.com/pyserial/pyserial/) |
-| fesitival    | Generate text to speech  | sudo apt-get install festival  |- |
-| lxml    | Import settings file          | sudo apt-get install python3-lxml  |[Link](https://github.com/lxml/lxml) |
+| ohbot   | Interface with Ohbot          | ```sudo pip3 install ohbot```  |[ohbot](https://github.com/ohbot/ohbot/) |
+| serial    | Communicate with serial port| ```sudo pip3 install pyserial```  |[pyserial](https://github.com/pyserial/pyserial/) |
+| fesitival    | Generate text to speech  | ```sudo apt-get install festival```  |- |
+| lxml    | Import settings file          | ```sudo apt-get install python3-lxml```  |[lxml](https://github.com/lxml/lxml) |
 | threading    | Run multiple threads     | core  |- |
 | os    | Send commands to festival       | core  |- |
 | time    | Run timers                    | core  |- |
 
 
-
-
-<table>
-<tr>
-<b>
-<td>Library</td>
-<td>Use</td>
-<td>Terminal command to install</td>
-<td>Link</td>
-</b>
-</tr>
-<tr>
-<td>ohbot</td>
-<td>Interface with Ohbot</td>
-<td>sudo pip3 install ohbot</td>
-<td>https://github.com/ohbot/ohbot/</td>
-</tr>
-<tr>
-<td>serial</td>
-<td>Communicate with serial port</td>
-<td>sudo pip3 install pyserial</td>
-<td>https://github.com/pyserial/pyserial/</td>
-</tr>
-<tr>
-<td>fesitival</td>
-<td>Generate text to speech</td>
-<td>sudo apt-get install festival</td>
-<td>-</td>
-</tr>
-<tr>
-<td>lxml</td>
-<td>Import settings file</td>
-<td>sudo apt-get install python3-lxml</td>
-<td>https://github.com/lxml/lxml</td>
-</tr>
-<tr>
-<td>threading</td>
-<td>Run multiple threads</td>
-<td>core</td>
-<td>-</td>
-</tr>
-<tr>
-<td>os</td>
-<td>Send commands to festival</td>
-<td>core</td>
-<td>-</td>
-</tr>
-<tr>
-<td>time</td>
-<td>Run timers</td>
-<td>core</td>
-<td>-</td>
-</tr>
-</table>
-
 Ohbot is tested with Python 3 running on a Raspberry Pi 3 Model B. 
 
 
 Ohbot library files (these will be installed with the pip3 command above):
+
+
+|ohbot.py|Ohbot package|
+|MotorDefinionsv21.omd|Motor settings file|
 
 <table>
 <tr>
