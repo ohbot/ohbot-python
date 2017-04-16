@@ -117,7 +117,7 @@ Writing Programs
 <br>
 2.Click File → New File
 <br>
-3.Save your file as a python script (.py) in the Ohbot folder you created earlier
+3.Save your file as a python script (.py) in a new folder called Ohbot somewhere on your Pi.
 
 Import
 -------
