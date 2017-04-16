@@ -89,7 +89,7 @@ Ohbot library files: (these will be installed with the pip3 command above)
 Hardware
 -----
 
-<u>Required:</u>
+Required:
 
 
 Raspberry Pi
@@ -103,7 +103,7 @@ USB Power Socket Adaptor
 Speakers/headphones with 3.5mm headphone jack
 <br>
 
-<u>Setup:</u>
+Setup:
 
 
 
@@ -342,7 +342,7 @@ ohbot.move(1,1)
 ohbot.close()
 ```
 
-<b><i>Press fn + f5 to run your program.
+**_Press fn + f5 to run your program_**
 
 
 
