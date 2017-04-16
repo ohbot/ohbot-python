@@ -34,7 +34,7 @@ Ohbot library files (these will be installed with the pip3 command above):
 | ohbot.py   | Ohbot package |
 | MotorDefinionsv21.omd    | Motor settings file |
 
-|File|Use|
+
 |---|---|
 |ohbot.py|Ohbot package|
 |MotorDefinionsv21.omd|Motor settings file|
