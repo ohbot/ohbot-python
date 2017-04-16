@@ -2,6 +2,7 @@
 
 ohbot
 ========================
+<a href="http://s1380.photobucket.com/user/ohbot/media/ohbotsmall_zpslnmw8761.png.html" target="_blank"><img src="http://i1380.photobucket.com/albums/ah188/ohbot/ohbotsmall_zpslnmw8761.png" border="0" alt=" photo ohbotsmall_zpslnmw8761.png"/></a>
 
 This package is a starting point for people wanting to use Python 3 to control Ohbot. 
 
