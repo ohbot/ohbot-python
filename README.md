@@ -69,7 +69,7 @@ Ohbot requires the following libraries be installed:
 Ohbot is tested with Python 3 running on a Raspberry Pi 3 Model B. 
 
 
-Ohbot library files: (these will be installed with the pip3 command above)
+Ohbot library files (these will be installed with the pip3 command above):
 
 <table>
 <tr>
