@@ -85,9 +85,9 @@ ohbot.move(m,pos,speed = 3)
 
 | Name| Range| Description | Defualt |
 | --- |------|-------------|---------|
-| m   | 0-6(int)  | Motor Number| - |
-| pos | 0-10(int)  | Desired Postition| - |
-| speed | 0-10(int) | Motor Speed| 3 |
+| m   | 0-6 (int)  | Motor Number| - |
+| pos | 0-10 (int)  | Desired Postition| - |
+| speed | 0-10 (int) | Motor Speed| 3 |
 
 
 For Example:
