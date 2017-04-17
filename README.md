@@ -36,6 +36,8 @@ Ohbot library files (these will be installed with the pip3 command above):
 
 _Note: The text to speech module Festival will generate an audio file, ‘ohbotspeech.wav’ and a text file ‘phonemes.txt’ inside your working folder._
 
+---
+
 Hardware
 -----
 
@@ -55,6 +57,7 @@ Setup:
 
 Plug the middle of USB Y cable into Raspberry Pi and the other large USB plug into the power adaptor. Then plug the mini USB into Ohbot. Finally plug your speakers into your Raspberry Pi. 
 
+---
 
 Writing Programs
 --------
@@ -71,7 +74,7 @@ Make sure you import ohbot at the start of your program.
 From ohbot import ohbot
 ```
 
-<br>
+---
 
 Functions
 -------
@@ -98,63 +101,17 @@ Motor index reference:
 | m | 0 | 1 | 2 | 3 | 4 | 5 | 6 |
 | ----| --- | --- |  --- |  --- |  --- |  --- |  --- |
 | motor | HeadNod | HeadTurn | EyeTurn | LidBlink | TopLip | Bottom Lip| EyeTurn | 
-
-<table>
-<tr>
-<td>m</td>
-<td>0</td>
-<td>1</td>
-<td>2</td>
-<td>3</td>
-<td>4</td>
-<td>5</td>
-<td>6</td>
-</tr>
-<tr>
-<td>motor</td>
-<td>HeadNod</td>
-<td>HeadTurn</td>
-<td>EyeTurn</td>
-<td>LidBlink</td>
-<td>TopLip</td>
-<td>BottomLip</td>
-<td>EyeTurn</td>
-</tr>
-
-</table>
-
-<br>
-
+  
 
 ohbot.say(text,untilDone = True,lipSync = True)
 ----------
 
-<table>
-<tr>
-<td>Name</td>
-<td>Range</td>
-<td>Description</td>
-<td>Default</td>
-</tr>
-<tr>
-<td>text</td>
-<td>“A string with no punctuation”</td>
-<td>Words to say</td>
-<td>-</td>
-</tr>
-<tr>
-<td>untilDone</td>
-<td>bool</td>
-<td>Return when finished speaking</td>
-<td>True</td>
-</tr>
-<tr>
-<td>lipSync</td>
-<td>bool</td>
-<td>Move lips in time with speech</td>
-<td>True</td>
-</tr>
-</table>
+| Name| Range| Description | Defualt |
+| --- |------|-------------|---------|
+| text   | 'A string with no punctuation'  | Words to say| - |
+| untilDone | bool  | Return when finished speaking| True |
+| lipSync | bool | Move lips in time with speech| True |
+
 
 For Example:
 ```python
@@ -162,26 +119,18 @@ ohbot.say('Hello I am Ohbot')
 
 ohbot.say('Goodbye',False,False)
 ```
-
-<br>
+---
 
 ohbot.wait(seconds)
 ----------
 
 Seconds - float or int required wait time. ohbot.wait(1.5)
 
-<table>
-<tr>
-<td>Name</td>
-<td>Range</td>
-<td>Description</td>
-</tr>
-<tr>
-<td>seconds</td>
-<td>float or int</td>
-<td>Length of wait in seconds</td>
-</tr>
-</table>
+| Name| Range| Description  |
+| --- |------|-------------|
+| seconds   | float or int  | Length of wait in seconds|
+
+
 
 For Example:
 ```python
@@ -190,7 +139,7 @@ ohbot.wait(2)
 ohbot.wait(0.5)
 ```
 
-<i>Note: It is important to use ohbot.wait() commands between motor sequential commands for the same motor. </i>
+*Note: It is important to use ohbot.wait() commands between motor sequential commands for the same motor.*
 
 For Example:
 ```python
@@ -200,44 +149,25 @@ ohbot.wait(2)
 
 ohbot.move(1,4,2)
 ```
-
-<br>
-
+---
 
 ohbot.eyeColour(r,g,b)
 ----------
 
 Set the colour of Ohbot’s eyes. 
 
-<table>
-<tr>
-<td>Name</td>
-<td>Range</td>
-<td>Description</td>
-</tr>
-<tr>
-<td>r</td>
-<td>0-10(int)</td>
-<td>Red</td>
-</tr>
-<tr>
-<td>g</td>
-<td>0-10(int)</td>
-<td>Green</td>
-</tr>
-<tr>
-<td>b</td>
-<td>0-10(int)</td>
-<td>Blue</td>
-</tr>
-</table>
+| Name| Range| Description  |
+| --- |------|-------------|
+| r   | 0-10 (int)  | Red|
+| g   | 0-10 (int)  | Green|
+| b   | 0-10 (int)  | Blue|
+
 
 For Example:
 ```python
 ohbot.eyeColour(2,3,8)
 ```
-
-<br>
+---
 
 ohbot.reset()
 ----------
@@ -252,8 +182,7 @@ ohbot.wait(1)
 ohbot.move(1,1)
 ...
 ```
-
-<br>
+---
 
 ohbot.close()
 ----------
