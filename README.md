@@ -19,9 +19,9 @@ Ohbot requires the following libraries be installed:
 | serial    | Communicate with serial port| ```sudo pip3 install pyserial```  |[pyserial](https://github.com/pyserial/pyserial/) |
 | fesitival    | Generate text to speech  | ```sudo apt-get install festival```  |- |
 | lxml    | Import settings file          | ```sudo apt-get install python3-lxml```  |[lxml](https://github.com/lxml/lxml) |
-| threading    | Run multiple threads     | core  |- |
-| os    | Send commands to festival       | core  |- |
-| time    | Run timers                    | core  |- |
+| threading    | Run multiple threads     | Included in Python 3  |- |
+| os    | Send commands to festival       | Included in Python 3  |- |
+| time    | Run timers                    | Included in Python 3  |- |
 
 
 Ohbot is tested with Python 3 running on a Raspberry Pi 3 Model B. 
