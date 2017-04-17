@@ -1,6 +1,8 @@
 # ohbot for python
 
-<a href="http://s1380.photobucket.com/user/ohbot/media/eyesgif_zpslphplowu.gif.html" target="_blank"><img src="http://i1380.photobucket.com/albums/ah188/ohbot/eyesgif_zpslphplowu.gif" border="0" alt=" photo eyesgif_zpslphplowu.gif" width = "30%"/></a>
+![alt text](http://i1380.photobucket.com/albums/ah188/ohbot/eyesgif_zpslphplowu.gif "OhbotLogo")
+
+
 
 
 This package is a starting point for people wanting to use Python 3 to control Ohbot. 
@@ -102,6 +104,7 @@ Motor index reference:
 | ----| --- | --- |  --- |  --- |  --- |  --- |  --- |
 | motor | HeadNod | HeadTurn | EyeTurn | LidBlink | TopLip | Bottom Lip| EyeTurn | 
   
+---
 
 ohbot.say(text,untilDone = True,lipSync = True)
 ----------
