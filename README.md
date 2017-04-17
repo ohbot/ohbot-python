@@ -5,7 +5,7 @@
 
 This package is a starting point for people wanting to use Python 3 to control Ohbot. 
 
-More information about Ohbot can be found on [ohbot.co.uk](http://www.ohbot.co.uk.)
+More information about Ohbot can be found on [ohbot.co.uk](http://www.ohbot.co.uk)
 
 Dependencies
 ----------
