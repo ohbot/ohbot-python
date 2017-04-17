@@ -87,35 +87,6 @@ ohbot.move(m,pos,speed = 3)
 | speed | 0-10(int) | Motor Speed| 3 |
 
 
-
-<table>
-<tr>
-<td>Name</td>
-<td>Range</td>
-<td>Description</td>
-<td>-</td>
-</tr>
-<tr>
-<td>m</td>
-<td>0-6(int)</td>
-<td>Motor Number</td>
-<td>-</td>
-</tr>
-<tr>
-<td>pos</td>
-<td>0-10(int)</td>
-<td>Desired Position</td>
-<td>-</td>
-</tr>
-<tr>
-<td>speed</td>
-<td>0-10(int)</td>
-<td>Motor Speed</td>
-<td>3</td>
-</tr>
-</table>
-
-
 For Example:
 ```python
 ohbot.move(1,7)
@@ -123,6 +94,11 @@ ohbot.move(1,7)
 ohbot.move(2,3,1) 
 ```
 Motor index reference:
+
+| m | 0 | 1 | 2 | 3 | 4 | 5 | 6 |
+| ----| --- | --- |  --- |  --- |  --- |  --- |  --- |
+| motor | HeadNod | HeadTurn | EyeTurn | LidBlink | TopLip | Bottom Lip| EyeTurn | 
+
 <table>
 <tr>
 <td>m</td>
