@@ -10,8 +10,15 @@ More information about Ohbot can be found on [ohbot.co.uk](http://www.ohbot.co.u
 Dependencies
 ----------
 
+If you don't have pip3 (the python 3 package manager) installed, open terminal and execute the following:
+
+```
+sudo apt-get install python3-pip
+```
+
 Ohbot requires the following libraries be installed:
 
+To install libraries execute the corresponding terminal commands in your Raspberry Pi terminal:
 
 | Library    | Use         | Terminal command to install  |Link |
 | ---------- |-------------| -----------------------------|-----|
@@ -27,7 +34,7 @@ Ohbot requires the following libraries be installed:
 Ohbot is tested with Python 3 running on a Raspberry Pi 3 Model B. 
 
 
-Ohbot library files (these will be installed with the pip3 command above):
+Ohbot library files (these will be installed with the `pip3 install ohbot` command above):
 
 | File    | Use         |
 | ---------- |------------|
