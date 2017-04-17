@@ -93,7 +93,9 @@ ohbot.move(m,pos,speed = 3)
 For Example:
 ```python
 ohbot.move(1,7)
-
+```
+or
+```python
 ohbot.move(2,3,1) 
 ```
 Motor index reference:
