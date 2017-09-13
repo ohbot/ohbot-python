@@ -1,6 +1,6 @@
 # ohbot for python
 
-<a href="http://s1380.photobucket.com/user/ohbot/media/eyesgif_zpslphplowu.gif.html" target="_blank"><img src="http://i1380.photobucket.com/albums/ah188/ohbot/eyesgif_zpslphplowu.gif" border="0" alt=" photo eyesgif_zpslphplowu.gif" width = "30%"/></a>
+<a href="http://whoosh.co.uk/ohbothelp/images/eyes.gif" target="_blank"><img src="http://whoosh.co.uk/ohbothelp/images/eyes.gif" border="0" width = "30%"/></a>
 
 
 This package is a starting point for people wanting to use Python 3 to control Ohbot. 
