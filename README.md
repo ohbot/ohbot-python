@@ -105,11 +105,15 @@ or
 ```python
 ohbot.move(2,3,1) 
 ```
+or you can use a constant from the library to specify the motor:
+```python
+ohbot.move(ohbot.EYETURN,3,1) 
+```
 Motor index reference:
 
 | m | 0 | 1 | 2 | 3 | 4 | 5 | 6 |
 | ----| --- | --- |  --- |  --- |  --- |  --- |  --- |
-| motor | HeadNod | HeadTurn | EyeTurn | LidBlink | TopLip | Bottom Lip| EyeTurn | 
+| constant | HEADNOD | HEADTURN | EYETURN | LIDBLINK | TOPLIP | BOTTOMLIP | EYETILT | 
   
 
 ohbot.say(text,untilDone = True,lipSync = True)
