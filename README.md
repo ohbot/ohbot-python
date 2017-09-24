@@ -130,7 +130,7 @@ ohbot.say(text,untilDone = True,lipSync = True)
 | untilDone | bool  | Return when finished speaking| True |
 | lipSync | bool | Move lips in time with speech| True |
 | hmdiAudio | bool | Fixes missing start of phrase when HDMI audio output is being used| False |
-| soundDelay | float | Set to positive if movement is lagging behind sound and negative if sound is lagging behind movement| 0 |
+| soundDelay | float | Set to positive if lip movement is lagging behind sound and negative if sound is lagging behind lip movement| 0 |
 
 
 
@@ -141,6 +141,8 @@ ohbot.say('Hello I am Ohbot')
 ohbot.say('Goodbye',False,False)
 
 ohbot.say('Goodbye',False,False,True)
+
+ohbot.say('Goodbye',soundDelay = 0.3)
 ```
 ---
 
