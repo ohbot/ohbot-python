@@ -1,6 +1,6 @@
 # import the ohbot module
 
-From ohbot import ohbot
+from ohbot import ohbot
 
 # Reset Ohbot
 
