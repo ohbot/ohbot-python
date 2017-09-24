@@ -3,9 +3,9 @@ from distutils.core import setup
 setup(
     name = 'ohbot',
     packages = ['ohbot'],
-    package_data={'': ['MotorDefinitionsv21.omd']},
+    package_data={'': ['MotorDefinitionsv21.omd','Silence1.wav']},
     include_package_data=True,
-    version = '0.4',  
+    version = '1.1',  
     description = 'description',
     author = 'ohbot',
     author_email = 'info@ohbot.co.uk',
