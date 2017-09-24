@@ -214,7 +214,7 @@ ohbot.move(1,1)
 ohbot.close()
 ----------
 
-Call at the end of your program to detach Ohbot’s motors.
+Call to detach all Ohbot’s motors which stops them using power, you can call ohbot.attach(m) or ohbot.detach(m) for individual motors.
 
 For Example:
 ```python
