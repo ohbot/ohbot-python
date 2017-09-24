@@ -124,6 +124,7 @@ ohbot.say(text,untilDone = True,lipSync = True)
 | text   | 'A string with no punctuation'  | Words to say| - |
 | untilDone | bool  | Return when finished speaking| True |
 | lipSync | bool | Move lips in time with speech| True |
+| hmdiAudio | bool | Fixes missing words when HDMI audio output is being used| False |
 
 
 For Example:
@@ -131,6 +132,8 @@ For Example:
 ohbot.say('Hello I am Ohbot')
 
 ohbot.say('Goodbye',False,False)
+
+ohbot.say('Goodbye',False,False,True)
 ```
 ---
 
