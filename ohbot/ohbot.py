@@ -157,6 +157,7 @@ def getPos(m, pos):
 
 # Function to make Ohbot Speak. Arguments | text String "Hello World" **eg say("Hello my name is Ohbot") or
 # untilDone - wait in function until speech is complete, lipSync - move lips in time with speech, hdmiAudio - adds a delay to give hdmi channel time to activate.
+# soundDelay - positive if lip movement is lagging behind sound, negative if sound is lagging behind lip movement.
 def say(text, untilDone = True, lipSync=True, hdmiAudio = False, soundDelay = 0):
 
     if hdmiAudio:
