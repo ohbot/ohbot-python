@@ -121,7 +121,7 @@ Motor index reference:
 | constant | HEADNOD | HEADTURN | EYETURN | LIDBLINK | TOPLIP | BOTTOMLIP | EYETILT | 
   
 
-ohbot.say(text,untilDone = True,lipSync = True)
+ohbot.say(text,untilDone = True,lipSync = True,soundDelay = 0)
 ----------
 
 | Name| Range| Description | Defualt |
