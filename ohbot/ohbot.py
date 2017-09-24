@@ -22,7 +22,7 @@ EYETILT = 6
 #define a module level variable for the serial port
 port=""
 #define library version
-version ="1.1"
+version ="2.1"
 
 ser = None
 
