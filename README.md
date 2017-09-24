@@ -129,7 +129,9 @@ ohbot.say(text,untilDone = True,lipSync = True)
 | text   | 'A string with no punctuation'  | Words to say| - |
 | untilDone | bool  | Return when finished speaking| True |
 | lipSync | bool | Move lips in time with speech| True |
-| hmdiAudio | bool | Fixes missing words when HDMI audio output is being used| False |
+| hmdiAudio | bool | Fixes missing start of phrase when HDMI audio output is being used| False |
+| soundDelay | float | Set to positive if movement is lagging behind sound and negative if sound is lagging behind movement| 0 |
+
 
 
 For Example:
@@ -199,7 +201,7 @@ ohbot.eyeColour(2,3,8,True)
 ohbot.reset()
 ----------
 
-Resets Ohbot’s motors back to rest positions and turns off Ohbot’s eyes. Useful to start programs with this. 
+Resets Ohbot’s motors back to rest positions and turns off Ohbot’s eyes. Useful to start programs with this. You may need an ohbot.wait() after this to give time for the motors to move. 
 
 For Example:
 ```python
