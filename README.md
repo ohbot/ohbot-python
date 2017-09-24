@@ -121,7 +121,7 @@ Motor index reference:
 | constant | HEADNOD | HEADTURN | EYETURN | LIDBLINK | TOPLIP | BOTTOMLIP | EYETILT | 
   
 
-ohbot.say(text,untilDone = True,lipSync = True,soundDelay = 0)
+ohbot.say(text,untilDone = True,lipSync = True,hdmiAudio = False,soundDelay = 0)
 ----------
 
 | Name| Range| Description | Defualt |
@@ -129,7 +129,7 @@ ohbot.say(text,untilDone = True,lipSync = True,soundDelay = 0)
 | text   | 'A string with no punctuation'  | Words to say| - |
 | untilDone | bool  | Return when finished speaking| True |
 | lipSync | bool | Move lips in time with speech| True |
-| hmdiAudio | bool | Fixes missing start of phrase when HDMI audio output is being used| False |
+| hdmiAudio | bool | Fixes missing start of phrase when HDMI audio output is being used| False |
 | soundDelay | float | Set to positive if lip movement is lagging behind sound and negative if sound is lagging behind lip movement| 0 |
 
 
