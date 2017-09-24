@@ -24,7 +24,7 @@ To install libraries execute the corresponding terminal commands in your Raspber
 | ---------- |-------------| -----------------------------|-----|
 | ohbot   | Interface with Ohbot          | ```sudo pip3 install ohbot```  |[ohbot](https://github.com/ohbot/ohbot/) |
 | serial    | Communicate with serial port| ```sudo pip3 install pyserial```  |[pyserial](https://github.com/pyserial/pyserial/) |
-| fesitival    | Generate text to speech  | ```sudo apt-get install festival```  |- |
+| festival    | Generate text to speech  | ```sudo apt-get install festival```  |- |
 | lxml    | Import settings file          | ```sudo apt-get install python3-lxml```  |[lxml](https://github.com/lxml/lxml) |
 | threading    | Run multiple threads     | Included in Python 3  |- |
 | os    | Send commands to festival       | Included in Python 3  |- |
