@@ -1,5 +1,6 @@
 #OhClock - a sample program for using ohbot python library.  More information at ohbot.co.uk
-import ohbot
+
+from ohbot import ohbot
 import threading
 from time import time, sleep, localtime, strftime
 from random import randint
