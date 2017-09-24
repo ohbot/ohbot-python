@@ -181,6 +181,11 @@ For Example:
 ```python
 ohbot.eyeColour(2,3,8)
 ```
+or 
+```python
+ohbot.eyeColour(3,2,8,True)
+```
+
 ---
 
 ohbot.reset()
