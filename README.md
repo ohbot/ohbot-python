@@ -86,6 +86,11 @@ From ohbot import ohbot
 Functions
 -------
 
+ohbot.init(portName)
+----------
+
+Called internally using portName = "ttyACM" but if your port is different you can call it and override this port name. It returns True if the port is found and opened successfully, otherwise it returns false. 
+
 ohbot.move(m,pos,speed = 3)
 ----------
 
