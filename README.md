@@ -164,16 +164,17 @@ ohbot.move(1,4,2)
 ```
 ---
 
-ohbot.eyeColour(r,g,b)
+ohbot.eyeColour(r,g,b, swapRandG = False)
 ----------
 
 Set the colour of Ohbot’s eyes. 
 
-| Name| Range| Description  |
-| --- |------|-------------|
-| r   | 0-10 (int)  | Red|
-| g   | 0-10 (int)  | Green|
-| b   | 0-10 (int)  | Blue|
+| Name| Range| Description  | Default |
+| ---      |------|-------------| ------- |
+| r        | 0-10 (int)  | Red| - |
+| g        | 0-10 (int)  | Green| - |
+| b        | 0-10 (int)  | Blue| - |
+| swapRandG| bool | swap r and g value for some older Ohbots | False |
 
 
 For Example:
