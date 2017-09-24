@@ -91,7 +91,7 @@ ohbot.init(portName)
 
 Called internally using portName = "ttyACM" but if your port is different you can call it and override this port name. It returns True if the port is found and opened successfully, otherwise it returns false. 
 
-ohbot.move(m,pos,speed = 3)
+ohbot.move(m,pos,speed=3)
 ----------
 
 
@@ -121,7 +121,7 @@ Motor index reference:
 | constant | HEADNOD | HEADTURN | EYETURN | LIDBLINK | TOPLIP | BOTTOMLIP | EYETILT | 
   
 
-ohbot.say(text,untilDone = True,lipSync = True,hdmiAudio = False,soundDelay = 0)
+ohbot.say(text, untilDone=True, lipSync=True, hdmiAudio=False, soundDelay=0)
 ----------
 
 | Name| Range| Description | Defualt |
@@ -176,7 +176,7 @@ ohbot.move(1,4,2)
 ```
 ---
 
-ohbot.eyeColour(r,g,b, swapRandG = False)
+ohbot.eyeColour(r, g, b, swapRandG=False)
 ----------
 
 Set the colour of Ohbot’s eyes. 
