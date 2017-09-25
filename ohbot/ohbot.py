@@ -22,7 +22,7 @@ EYETILT = 6
 #define a module level variable for the serial port
 port=""
 #define library version
-version ="2.1"
+version ="2.2"
 
 ser = None
 
@@ -230,7 +230,10 @@ def limit(val):
 # Function to play back the speech wav file, if hmdi audio is being used play silence before speech sound
 def saySpeech(addSilence):
     if addSilence:
-        os.system('aplay Silence1.wav\naplay ohbotspeech.wav')
+        #play the silence from the library
+        dir = os.path.dirname(os.path.abspath(__file__))
+        file = os.path.join(dir, 'Silence1.wav')
+        os.system('aplay ' + file + '\naplay ohbotspeech.wav')
     else:
         os.system('aplay ohbotspeech.wav')
    
