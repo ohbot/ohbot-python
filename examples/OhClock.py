@@ -16,9 +16,8 @@ def blinkLids():
         ohbot.move (ohbot.LIDBLINK, 0)
         sleep (0.2)
         ohbot.move (ohbot.LIDBLINK, 10)
-    #wait for a random amount of time for realistic blinking
+        #wait for a random amount of time for realistic blinking
         sleep (randint(0,4))
-
 
 #start up sequence resets to mid position, sets the eyes to blue then goes to sleep
 ohbot.reset()
@@ -48,56 +47,64 @@ while (True):
             say = say + "half past "
         if (m == "45"):
             say = say + "a quarter to "
+            hi = hi + 1
             
-        if (hi) > 12:
-            say = say + str(hi-12) + " pm"
+        if hi == 0:
+            say = say + "midnight"
+        elif hi == 12:
+            say = "mid day"
+        elif (hi) > 12:
+            say = say + str(hi-12) + " pea em"
         else:
-            say = say + h + " am"
+            say = say + str(hi) + " a em"
             
         #for testing   
         if (m != "15" and m != "00" and m != "30" and m != "45"):
             say = say + " and " + m + " minutes"
             
-            #set the eyes to blue, open eyes, lift head
-            ohbot.eyeColour (2, 10, 2)
-            ohbot.move (ohbot.LIDBLINK, 10)
-            ohbot.move (ohbot.HEADNOD, 5)
+        #set the eyes to pink, open eyes, lift head
+        ohbot.eyeColour (10, 2, 2)
+        ohbot.move (ohbot.LIDBLINK, 10)
+        ohbot.move (ohbot.HEADNOD, 5)
+        
+        #now that eyes are open start blinking on a different thread
+        blinking = True
+        t = threading.Thread(target=blinkLids, args=())
+        t.start()
+        
+        #turn the head to each side then back to centre
+        sleep(0.5)
+        ohbot.move (ohbot.HEADTURN, 10)
+        sleep(0.5)
+        ohbot.move (ohbot.HEADTURN, 0)
+        sleep(0.5)
+        ohbot.move (ohbot.HEADTURN, 5)
 
-            #now that eyes are open start blinking on a different thread
-            blinking = True
-            t = threading.Thread(target=blinkLids, args=())
-            t.start()
-            
-            #turn the head to each side then back to centre
-            sleep(0.5)
-            ohbot.move (ohbot.HEADTURN, 10)
-            sleep(0.5)
-            ohbot.move (ohbot.HEADTURN, 0)
-            sleep(0.5)
-            ohbot.move (ohbot.HEADTURN, 5)
-            ohbot.say(say, False, True)
+        #set hdmiAudio to True here if you are using hdmiAudio and speech is missing at beginning of each phrase
+        ohbot.say(say, untilDone=False, lipSync=True, hdmiAudio=False)
 
-            #swivel eyes side to side 5 times
-            for i in range (0, 5):
-                ohbot.move (ohbot.EYETURN, 10, 10)
-                sleep(0.1)
-                ohbot.move (ohbot.EYETURN, 0, 10)
-                sleep(0.1)
+        #swivel eyes side to side 5 times
+        for i in range (0, 5):
+            ohbot.move (ohbot.EYETURN, 10, 10)
+            sleep(0.1)
+            ohbot.move (ohbot.EYETURN, 0, 10)
+            sleep(0.1)
                 
-            #eye swivel back to centre
-            ohbot.move (ohbot.EYETURN, 5, 10)
+        #eye swivel back to centre
+        ohbot.move (ohbot.EYETURN, 5, 10)
 
-            #go to sleep position and turn eyes off
-            sleep (3)
-            blinking = False
-            #wait a second for the thread to stop
-            sleep (1)
-            ohbot.move (ohbot.LIDBLINK, 0)
-            ohbot.eyeColour (0, 0, 0)
-            sleep(1)
-            ohbot.move (ohbot.HEADNOD, 0)
-            sleep(1)
-            #turn motors off
-            ohbot.close()
-
-
+        #go to sleep position and turn eyes off
+        sleep (3)
+        blinking = False
+        #wait a second for the thread to stop
+        sleep (1)
+        ohbot.move (ohbot.LIDBLINK, 0)
+        ohbot.eyeColour (0, 0, 0)
+        sleep(1)
+        ohbot.move (ohbot.HEADNOD, 0)
+        sleep(1)
+        #turn motors off
+        ohbot.close()
+        
+        #sleep to stop it maxing out the CPU
+        sleep(20)
