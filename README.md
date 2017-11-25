@@ -78,7 +78,7 @@ Import
 
 Make sure you import ohbot at the start of your program. 
 ```python
-From ohbot import ohbot
+from ohbot import ohbot
 ```
 
 ---
