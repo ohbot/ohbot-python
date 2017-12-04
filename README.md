@@ -33,6 +33,10 @@ To install libraries execute the corresponding terminal commands in your Raspber
 
 Ohbot is tested with Python 3 running on a Raspberry Pi 3 Model B. 
 
+To upgrade to the latest version of the library run the following in the console:
+```sudo pip3 install ohbot -- upgrade```
+
+
 
 Ohbot library files (these will be installed with the `pip3 install ohbot` command above):
 
