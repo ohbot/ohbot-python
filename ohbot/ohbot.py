@@ -8,7 +8,7 @@ import os
 import sys
 import wave
 import subprocess
-from lxml import etree  
+from lxml import etree
 
 #define constants for motors
 HEADNOD = 0
@@ -19,10 +19,14 @@ TOPLIP = 4
 BOTTOMLIP = 5
 EYETILT = 6
 
+
+# array to hold 
+sensors = [0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0]
+
 #define a module level variable for the serial port
 port=""
 #define library version
-version ="2.2"
+version ="2.1"
 
 ser = None
 
@@ -48,6 +52,10 @@ def init(portName):
     #Open the serial port
     ser = serial.Serial(port, 19200)
 
+    ser.timeout = 1
+
+    ##    ser.timeout = None
+
     # Make an initial call to Festival without playing the sound to check it's all okay
     text = "Hi"
         
@@ -57,6 +65,7 @@ def init(portName):
     # Execute bash command.
     subprocess.call(bashcommand,shell=True)
 
+    time.sleep(5)
     return True
 
 # xml file for motor definitions
@@ -95,6 +104,9 @@ init("ttyACM")
 # Function to move Ohbot's motors. Arguments | m (motor) → int (0-6) | pos (position) → int (0-10) | spd (speed) → int (0-10) **eg move(4,3,9) or move(0,9,3)**
 def move(m, pos, spd=3):
 
+
+ 
+    
     # Limit values to keep then within range
     pos = limit(pos)
     spd = limit(spd)
@@ -127,7 +139,7 @@ def move(m, pos, spd=3):
 
     # Update motor positions list
     motorPos[m] = pos  
-    
+ 
 
 
 # Function to attach Ohbot's motors. Argument | m (motor) int (0-6)
@@ -230,10 +242,7 @@ def limit(val):
 # Function to play back the speech wav file, if hmdi audio is being used play silence before speech sound
 def saySpeech(addSilence):
     if addSilence:
-        #play the silence from the library
-        dir = os.path.dirname(os.path.abspath(__file__))
-        file = os.path.join(dir, 'Silence1.wav')
-        os.system('aplay ' + file + '\naplay ohbotspeech.wav')
+        os.system('aplay Silence1.wav\naplay ohbotspeech.wav')
     else:
         os.system('aplay ohbotspeech.wav')
    
@@ -388,5 +397,31 @@ def reset():
     eyeColour(0,0,0)
     for x in range(0,len(restPos)-1):
         move(x,restPos[x])
+
+# Return the sensor value between 0-10 for a given sensor number. Values stored in sensors[] array.
+def readSensor(index):
+    ser.flushInput()
+    
+    msg = "i0"+str(index)+"\n"
+    ser.write(msg.encode('latin-1'))
+
+    line = ser.readline()
+    lineStr = line.decode("utf-8")
+    lines = lineStr.split(",")
+
+    if len(lines) > 1:
+
+        indexIn = lines[0]
+        indexIn = indexIn[1]
+
+        intdex = int(indexIn)
+        
+        newVal = int(lines[1])/1024
+        newVal = newVal *10
+        sensors[intdex] = limit(newVal)
+
+    return sensors[index]
+ 
+ 
 
 
