@@ -65,7 +65,6 @@ def init(portName):
     # Execute bash command.
     subprocess.call(bashcommand,shell=True)
 
-    time.sleep(5)
     return True
 
 # xml file for motor definitions
