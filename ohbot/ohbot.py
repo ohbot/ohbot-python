@@ -19,7 +19,6 @@ TOPLIP = 4
 BOTTOMLIP = 5
 EYETILT = 6
 
-
 # array to hold 
 sensors = [0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0]
 
