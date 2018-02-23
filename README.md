@@ -99,10 +99,10 @@ ohbot.move(m, pos, speed=3)
 ----------
 
 
-| Name| Range| Description | Defualt |
+| Name| Range| Description | Default |
 | --- |------|-------------|---------|
 | m   | 0-6 (int)  | Motor Number| - |
-| pos | 0-10 (int)  | Desired Postition| - |
+| pos | 0-10 (int)  | Desired Position| - |
 | speed | 0-10 (int) | Motor Speed| 3 |
 
 
