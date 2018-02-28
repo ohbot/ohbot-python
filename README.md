@@ -16,20 +16,21 @@ If you don't have pip3 (the python 3 package manager) installed, open terminal a
 sudo apt-get install python3-pip
 ```
 
-Ohbot requires the following libraries be installed:
+Ohbot requires the some libraries to be installed. 
 
 To install libraries execute the corresponding terminal commands in your Raspberry Pi terminal:
 
 | Library    | Use         | Terminal command to install  |Link |
 | ---------- |-------------| -----------------------------|-----|
-| ohbot   | Interface with Ohbot          | ```sudo pip3 install ohbot```  |[ohbot](https://github.com/ohbot/ohbot/) |
-| serial    | Communicate with serial port| ```sudo pip3 install pyserial```  |[pyserial](https://github.com/pyserial/pyserial/) |
+| ohbot   | Interface with Ohbot          | ```sudo pip3 install ohbot``` |[ohbot](https://github.com/ohbot/ohbot/) |
 | festival    | Generate text to speech  | ```sudo apt-get install festival```  |- |
-| lxml    | Import settings file          | ```sudo apt-get install python3-lxml```  |[lxml](https://github.com/lxml/lxml) |
+| serial    | Communicate with serial port | Included with Ohbot |[pyserial](https://github.com/pyserial/pyserial/) |
+| lxml    | Import settings file          | Included with Ohbot  |[lxml](https://github.com/lxml/lxml) |
 | threading    | Run multiple threads     | Included in Python 3  |- |
 | os    | Send commands to festival       | Included in Python 3  |- |
 | time    | Run timers                    | Included in Python 3  |- |
 
+You only need to install ohbot and festival, the other libraries should be installed automatically. 
 
 Ohbot is tested with Python 3 running on a Raspberry Pi 3 Model B. 
 
