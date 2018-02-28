@@ -25,7 +25,7 @@ sensors = [0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0]
 #define a module level variable for the serial port
 port=""
 #define library version
-version ="2.3"
+version ="2.4"
 
 ser = None
 
