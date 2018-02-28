@@ -6,7 +6,7 @@ setup(
     package_data={'': ['MotorDefinitionsv21.omd','Silence1.wav']},
     include_package_data=True,
     version = '2.4',  
-    description = 'description',
+    description = 'Python library for controlling Ohbot on a Pi',
     author = 'ohbot',
     author_email = 'info@ohbot.co.uk',
     url = 'https://github.com/ohbot/ohbot.git',
