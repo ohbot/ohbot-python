@@ -239,8 +239,13 @@ def limit(val):
 
 # Function to play back the speech wav file, if hmdi audio is being used play silence before speech sound
 def saySpeech(addSilence):
+    
     if addSilence:
-        os.system('aplay Silence1.wav\naplay ohbotspeech.wav')
+        
+        dir = os.path.dirname(os.path.abspath(__file__))
+        silenceFile = os.path.join(dir, 'Silence1.wav')
+        commandString = 'aplay ' + silenceFile + '\naplay ohbotspeech.wav'
+        os.system(commandString)
     else:
         os.system('aplay ohbotspeech.wav')
    
