@@ -13,4 +13,7 @@ setup(
     download_url = 'https://github.com/ohbot/ohbot-python/archive/2.3.tar.gz',
     keywords = ['ohbot', 'robot'],
     classifiers = [],
+    install_requires=[
+          'pyserial','lxml',
+      ],
 )
