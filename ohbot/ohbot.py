@@ -25,7 +25,7 @@ sensors = [0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0]
 #define a module level variable for the serial port
 port=""
 #define library version
-version ="2.1"
+version ="2.3"
 
 ser = None
 
@@ -173,8 +173,10 @@ def say(text, untilDone = True, lipSync=True, hdmiAudio = False, soundDelay = 0)
     if hdmiAudio:
         soundDelay = soundDelay - 1
     
+    safetext = re.sub(r'[^ .a-zA-Z0-9?\']+', '', text)
+    
     # Create a bash command with the desired text. The command writes two files, a .wav with the speech audio and a .txt file containing the phonemes and the times. 
-    bashcommand = "festival -b '(set! mytext (Utterance Text " + '"' + text + '"))' + "' '(utt.synth mytext)' '(utt.save.wave mytext " + '"ohbotspeech.wav")' + "' '(utt.save.segs mytext " + '"phonemes"' + ")'"
+    bashcommand = "festival -b '(set! mytext (Utterance Text " + '"' + safetext + '"))' + "' '(utt.synth mytext)' '(utt.save.wave mytext " + '"ohbotspeech.wav")' + "' '(utt.save.segs mytext " + '"phonemes"' + ")'"
 
     # Execute bash command.
     subprocess.call(bashcommand,shell=True)
