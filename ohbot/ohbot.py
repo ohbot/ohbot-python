@@ -8,6 +8,7 @@ import os
 import sys
 import wave
 import subprocess
+import re
 from lxml import etree
 
 #define constants for motors
@@ -25,7 +26,7 @@ sensors = [0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0]
 #define a module level variable for the serial port
 port=""
 #define library version
-version ="2.4"
+version ="2.5"
 
 ser = None
 
