@@ -30,7 +30,7 @@ To install libraries execute the corresponding terminal commands in your Raspber
 | os    | Send commands to festival       | Included in Python 3  |- |
 | time    | Run timers                    | Included in Python 3  |- |
 
-You only need to install ohbot and festival, the other libraries should be installed automatically. 
+You only need to install ```ohbot```, ```lxml``` and ```festival```, ```serial``` should be installed automatically during the install of ohbot. 
 
 Ohbot is tested with Python 3 running on a Raspberry Pi 3 Model B. 
 
