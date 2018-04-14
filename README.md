@@ -59,7 +59,7 @@ Required:
 * Raspberry Pi
 * Ohbot
 * USB Y Cable
-* 5 volt 1 amp USB power supply (for Ohbot)
+* A 5 volt 1 amp USB power supply (for Ohbot)
 * Speakers/headphones with 3.5mm headphone jack
 
 
