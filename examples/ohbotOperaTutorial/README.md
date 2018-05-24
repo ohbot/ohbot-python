@@ -6,6 +6,10 @@ This project shows one out of many potential ways to make the Ohbot Pi lip sync 
 https://www.youtube.com/watch?v=cJJtYiWifbY<br/>
 https://www.youtube.com/watch?v=LoCSa6Hx0VE
 
+## Author
+
+Emmanuel Ferragne  
+http://w3.univ-paris-diderot.fr/EtudesAnglophones/pg.php?bc=CHVEENG&page=FICHECHERC&g=sm&uid=eferragn
 
 ## Prerequisites
 This presupposes that you already know how to run simple Python scripts for the Ohbot. 
@@ -35,6 +39,4 @@ The vowels you identified in your manual segmentation of the soundtrack with Pra
 * Make sure the Ohbot is connect and ready, connect speakers to the Pi's output jack, open the .py file in your Python IDE, and run it. 
 
 
-## Author
 
-Emmanuel Ferragne
