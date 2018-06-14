@@ -25,9 +25,6 @@ ohbot.setVoice("-ven-wm+m1 -s150")
 #module level variable for breaking out of the blinking thread
 blinking = False
 
-#module level variable to stop it going off twice
-lastm = ""
-
 #this is called on a separate thread to blink the eyes while running
 def blinkLids():
     while (blinking):
