@@ -28,7 +28,7 @@ sensors = [0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0]
 # define a module level variable for the serial port
 port=""
 # define library version
-version ="2.6"
+version ="2.7"
 global writing, voice, synthesizer
 # flag to stop writing when writing for threading
 writing = False
