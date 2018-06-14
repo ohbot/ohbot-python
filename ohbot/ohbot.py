@@ -291,7 +291,7 @@ def say(text, untilDone = True, lipSync=True, hdmiAudio = False, soundDelay = 0)
             while time.time()-startTime < totalTime:
                 continue
         
-    if ("espeak" in synthesizer.lower()):
+    if ("espeak" or "pico2wave" in synthesizer.lower()):
             
         if hdmiAudio:
             soundDelay = soundDelay - 1
