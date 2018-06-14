@@ -1,5 +1,7 @@
-from ohbot import ohbot
+# Install pico2wave using sudo apt-get install libttspico-utils
+# Ensure you are running the latest version of the library by running sudo pip3 install ohbot --upgrade
 
+from ohbot import ohbot
 
 ohbot.reset()
 
