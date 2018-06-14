@@ -35,6 +35,8 @@ To install libraries execute the corresponding terminal commands in your Raspber
 
 You only need to install ```ohbot```, ```lxml``` and ```festival```, ```serial``` should be installed automatically during the install of ohbot. 
 
+Additonal voices can be used by installing ```espeak``` and ```pico2wave```
+
 Ohbot is tested with Python 3 running on a Raspberry Pi 3 Model B. 
 
 To upgrade to the latest version of the library run the following in the console:
