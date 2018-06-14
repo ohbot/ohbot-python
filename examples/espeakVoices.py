@@ -1,4 +1,15 @@
 #espeakVoices - a sample program for using ohbot python library.  More information at ohbot.co.uk
+
+# Setting voice with ESPEAK
+# http://espeak.sourceforge.net/commands.html
+# -v followed by a letter code - look in program files\espeak\espeak-data\voices to see what's available
+# +m1 to +m7 for male voices
+# +f1 to +f4 for female voices
+# +croak or +whisper
+# -a for amplitude (0 to 200)
+# -s for speed 80 to 500
+# -p for pitech 0 to 99
+
 from ohbot import ohbot
 import threading
 from time import time, sleep, localtime, strftime
