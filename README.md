@@ -243,8 +243,6 @@ ohbot.close()
 ohbot.readSensor(sensorNumber)
 ----------
 
-Seconds - float or int required wait time. ohbot.wait(1.5)
-
 | Name| Range| Description  |
 | --- |------|-------------|
 | sensorNumber   | 0-6 (int) | the pin the sensor is connected to |
