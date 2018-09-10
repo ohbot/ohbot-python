@@ -28,7 +28,7 @@ sensors = [0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0]
 # define a module level variable for the serial port
 port=""
 # define library version
-version ="2.7"
+version ="2.8"
 global writing, voice, synthesizer
 # flag to stop writing when writing for threading
 writing = False
@@ -291,7 +291,7 @@ def say(text, untilDone = True, lipSync=True, hdmiAudio = False, soundDelay = 0)
             while time.time()-startTime < totalTime:
                 continue
         
-    if ("espeak" or "pico2wave" in synthesizer.lower()):
+    if ("espeak" in synthesizer.lower() or "pico2wave" in synthesizer.lower()):
             
         if hdmiAudio:
             soundDelay = soundDelay - 1
