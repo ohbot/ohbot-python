@@ -133,8 +133,8 @@ for child in root:
         rev = False
         motorRev[index] = rev
         
-# initialise with any port that has Arduino Micro in the name
-init("Arduino Micro")
+# initialise with any port that has Arduino in the name
+init("Arduino")
 
 # Function to move Ohbot's motors. Arguments | m (motor) → int (0-6) | pos (position) → int (0-10) | spd (speed) → int (0-10) **eg move(4,3,9) or move(0,9,3)**
 def move(m, pos, spd=3):
