@@ -54,6 +54,9 @@ Ohbot library files (these will be installed with the `sudo pip3 install ohbot` 
 | ---------- |------------|
 | ohbot.py   | Ohbot package |
 | MotorDefinionsv21.omd    | Motor settings file |
+| OhbotSpeech.csv    | Speech database file |
+| OhbotSettings.xml    | Settings file |
+| Sounds/    | Folder containing Picoh preset sound files |
 
 _Note: The text to speech module will generate an audio file, ‘ohbotspeech.wav’ and a text file ‘phonemes.txt’ inside your working folder._
 

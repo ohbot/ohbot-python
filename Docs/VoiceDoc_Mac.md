@@ -1,21 +1,21 @@
-picoh.setSynthesizer(synth)
+ohbot.setSynthesizer(synth)
 ----------
 
 Allows override of default OSX say command. 
 
 
-picoh.setVoice(voice)
+ohbot.setVoice(voice)
 ------
 
-Use picoh.setVoice() to set the voice:
+Use ohbot.setVoice() to set the voice:
 
 For Example:
 ```python
 
-picoh.setVoice("Oliver")
-picoh.say("Hello this is Oliver")
-picoh.setVoice("Kate")
-picoh.say("Hello this is Kate")
+ohbot.setVoice("Oliver")
+ohbot.say("Hello this is Oliver")
+ohbot.setVoice("Kate")
+ohbot.say("Hello this is Kate")
 ```
 Available voices can be found in System Preferences -> Accessibility -> Speech in the System Voice Menu. Click customize to view voices in other languages. 
 
@@ -27,10 +27,10 @@ A full list of voices can also be displayed by entering the following command in
 
 ```say -v ?```
 
-picoh.speechSpeed(params)
+ohbot.speechSpeed(params)
 ------
 
-Use picoh.speechSpeed() to set speech rate in words per minute:
+Use ohbot.speechSpeed() to set speech rate in words per minute:
 
 Range: (int) 90+
 
@@ -38,10 +38,10 @@ Range: (int) 90+
 For Example:
 ```python
 
-picoh.setVoice("Oliver")
-picoh.speechSpeed(90)
-picoh.say("Hello this is Oliver Slow")
-picoh.speechSpeed(400)
-picoh.say("Hello this is Oliver Fast")
+ohbot.setVoice("Oliver")
+ohbot.speechSpeed(90)
+ohbot.say("Hello this is Oliver Slow")
+ohbot.speechSpeed(400)
+ohbot.say("Hello this is Oliver Fast")
 ```
 

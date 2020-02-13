@@ -1,4 +1,4 @@
-picoh.setSynthesizer(synth)
+ohbot.setSynthesizer(synth)
 ----------
 
 | synth | Full Name |
@@ -10,16 +10,16 @@ picoh.setSynthesizer(synth)
 
 For Example:
 ```python
-picoh.setSynthesizer("espeak")
+ohbot.setSynthesizer("espeak")
 ```
 
 Note that the SAPI speech uses the voices available in Control Panel:Text to Speech.   It can’t use Cortana voices.
 
 
-picoh.setVoice(voice)
+ohbot.setVoice(voice)
 ------
 
-Use picoh.setVoice() to set the voice depending on the synthesizer:
+Use ohbot.setVoice() to set the voice depending on the synthesizer:
 
 <b>Using SAPI</b>
 
@@ -33,7 +33,7 @@ Use any of the following arguments:
 
 For Example:
 ```python
-picoh.setVoice("-a82 -r12 -vzira")
+ohbot.setVoice("-a82 -r12 -vzira")
 
 ```
 
@@ -56,11 +56,11 @@ Examples:<br>
 
 | Command | Result |
 | ------ | ------- |
-| ``picoh.setVoice("-ven+croak")`` | English croaky voice |
-| ``picoh.setVoice("-vzh+m2 -s26")`` | Chinese male voice, Fast |
-| ``picoh.setVoice("-vfr+f1 -p99 -s180")`` | French female whisper voice, medium speed and high pitched |
+| ``ohbot.setVoice("-ven+croak")`` | English croaky voice |
+| ``ohbot.setVoice("-vzh+m2 -s26")`` | Chinese male voice, Fast |
+| ``ohbot.setVoice("-vfr+f1 -p99 -s180")`` | French female whisper voice, medium speed and high pitched |
 
-More examples can be found in our [voices example program.](https://github.com/ohbot/picoh-python/blob/master/examples/Windows/changingVoices.py)
+More examples can be found in our [voices example program.](https://github.com/ohbot/ohbot-python/blob/master/examples/Windows/changingVoices.py)
 
 <b>Using ESPEAK-NG</b>
 
