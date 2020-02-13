@@ -3,11 +3,7 @@
     <Setting Name="DefaultSpeechSynth" Value="" /> 
     <Setting Name="DefaultVoice" Value="" /> 
     <Setting Name="DefaultLang" Value="en-gb" /> 
-    <Setting Name="SpeechDBFile" Value="picohData/OhbotSpeech.csv" /> 
-    <Setting Name="EyeShapeList" Value="picohData/ohbot.obe" /> 
-    <Setting Name="MotorDefFile" Value="picohData/MotorDefinitionsv21.omd" /> 
-
-    
-    
-   
+    <Setting Name="SpeechDBFile" Value="ohbotData/OhbotSpeech.csv" /> 
+    <Setting Name="EyeShapeList" Value="ohbotData/ohbot.obe" /> 
+    <Setting Name="MotorDefFile" Value="ohbotData/MotorDefinitionsv21.omd" />
 </SettingList>

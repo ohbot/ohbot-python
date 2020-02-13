@@ -1,10 +1,10 @@
 # Examples
 
-Hello, this directory contains some examples to help you get to grips with programming Picoh. 
+Hello, this directory contains some examples to help you get to grips with programming Ohbot. 
 
-***Don't forget if you are new to Python here is a short guide explaining some of the key concepts:*** [Programming Picoh in Python](https://docs.google.com/document/d/e/2PACX-1vTM9FmTBpGGJ4Ddvutpv3kxXkS0oyT4U9JPBV95UXdSJU10TD5JC1XWTf2cRGjHWApHOrTC6JLizD64/pub)
+***Don't forget if you are new to Python here is a short guide explaining some of the key concepts:*** [Programming Ohbot in Python](https://docs.google.com/document/d/e/2PACX-1vTM9FmTBpGGJ4Ddvutpv3kxXkS0oyT4U9JPBV95UXdSJU10TD5JC1XWTf2cRGjHWApHOrTC6JLizD64/pub)
 
-All the functions in the picoh library are also documented if you scroll down in the main [README](https://github.com/ohbot/picoh-python/blob/master/README.md).
+All the functions in the ohbot library are also documented if you scroll down in the main [README](https://github.com/ohbot/ohbot-python/blob/master/README.md).
 
 Run an example
 -
@@ -13,31 +13,31 @@ Run an example
 
 2) Open and run in IDLE or whatever Python editor/launcher you prefer. 
 
-[helloWorldPicoh.py](https://raw.githubusercontent.com/ohbot/picoh-python/master/examples/helloWorldPicoh.py)
+[helloWorldOhbot.py](https://raw.githubusercontent.com/ohbot/ohbot-python/master/examples/helloWorldOhbot.py)
 -
-A simple program that makes Picoh move and speak. 
+A simple program that makes Ohbot move and speak. 
 
- [threadingExample.py](https://raw.githubusercontent.com/ohbot/picoh-python/master/examples/threadingExample.py)
+ [threadingExample.py](https://raw.githubusercontent.com/ohbot/ohbot-python/master/examples/threadingExample.py)
 -
-A more slightly more complicated program that uses threads to make Picoh do more than one thing at a time. 
+A more slightly more complicated program that uses threads to make Ohbot do more than one thing at a time. 
 
-[movementExample](https://raw.githubusercontent.com/ohbot/picoh-python/master/examples/movementExample.py)
+[movementExample](https://raw.githubusercontent.com/ohbot/ohbot-python/master/examples/movementExample.py)
 -
-A step by step explanation of how to use the picoh.move() function. Read through the script before running to see how it works. 
+A step by step explanation of how to use the ohbot.move() function. Read through the script before running to see how it works. 
 
- [lightsAndSounds.py](https://raw.githubusercontent.com/ohbot/picoh-python/master/examples/lightsAndSounds.py)
+ [lightsAndSounds.py](https://raw.githubusercontent.com/ohbot/ohbot-python/master/examples/lightsAndSounds.py)
 -
-A program that demonstrates how to play sounds using picoh.playSound()
+A program that demonstrates how to play sounds using ohbot.playSound()
 
-[simpleMouseAndKeyboard.py](https://raw.githubusercontent.com/ohbot/picoh-python/master/examples/simpleMouseAndKeyboard.py)
+[simpleMouseAndKeyboard.py](https://raw.githubusercontent.com/ohbot/ohbot-python/master/examples/simpleMouseAndKeyboard.py)
 -
-Control Picoh's motor positions using the mouse and trigger actions using the a, b or c key on keyboard. 
+Control Ohbot's motor positions using the mouse and trigger actions using the a, b or c key on keyboard. 
 
- [ohClock.py](https://raw.githubusercontent.com/ohbot/picoh-python/master/examples/ohClock.py)
+ [ohClock.py](https://raw.githubusercontent.com/ohbot/ohbot-python/master/examples/ohClock.py)
 -
-This program makes Picoh wake up every quarter of an hour and say the time. It also uses a second thread to blink Picoh's eyes.  
+This program makes Ohbot wake up every quarter of an hour and say the time. It also uses a second thread to blink Ohbot's eyes.  
 
- [wolframAlphaPicoh](https://raw.githubusercontent.com/ohbot/picoh-python/master/examples/wolframAlphaPicoh.py)
+ [wolframAlphaOhbot](https://raw.githubusercontent.com/ohbot/ohbot-python/master/examples/wolframAlphaOhbot.py)
 -
 This program uses the wolfram alpha and wikipedia web services to get definitions of words users type in. It builds upon the movements from the threadingExample. 
 
@@ -59,7 +59,7 @@ Voice Examples
 -
 The examples demonstrating how to use different voices are platform specific so have been split into folders:
 
-* [Mac Voice Examples](https://github.com/ohbot/picoh-python/tree/master/examples/Mac)
-* [Windows Voice Examples](https://github.com/ohbot/picoh-python/tree/master/examples/Windows)
-* [Pi Voice Examples](https://github.com/ohbot/picoh-python/tree/master/examples/Pi)
+* [Mac Voice Examples](https://github.com/ohbot/ohbot-python/tree/master/examples/Mac)
+* [Windows Voice Examples](https://github.com/ohbot/ohbot-python/tree/master/examples/Windows)
+* [Pi Voice Examples](https://github.com/ohbot/ohbot-python/tree/master/examples/Pi)
 
