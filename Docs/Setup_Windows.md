@@ -13,7 +13,7 @@ Please contact [info@ohbot.co.uk.](info@ohbot.co.uk) if you have any problems in
 
 Setup
 --------
-Download a Python installer from [here.] (https://www.python.org/downloads/release/python-364/) On Windows the Ohbot library currently only works with Python versions up to 3.6.
+Download a Python installer from [here.](https://www.python.org/downloads/release/python-364/) On Windows the Ohbot library currently only works with Python versions up to 3.6.
 
 We chose version 3.6 Windows x86-64 executable installer.
 
