@@ -22,23 +22,23 @@ def xy(event):
     ohbot.move(ohbot.HEADNOD,ym)
     ohbot.move(ohbot.EYETURN,xm)
     ohbot.move(ohbot.EYETILT,ym)
-    ohbot.eyeColour(10-ym,ym,xm)
+    ohbot.setEyeColour(10-ym,ym,xm)
 
 # Function for when the 'a' key is pressed
 def aKey(event):
     ohbot.say("Hello I am Ohbot",untilDone = False)
-    ohbot.eyeColour(3,3,10)
+    ohbot.setEyeColour(3,3,10)
 
 # Function for when the 'b' key is pressed
 def bKey(event):
     ohbot.playSound('spring',untilDone = False)
     ohbot.say("What's going on ?",untilDone = False)
-    ohbot.eyeColour(10,3,3)
+    ohbot.setEyeColour(10,3,3)
 
 # Function for when the 'c' key is pressed
 def cKey(event):
     ohbot.say("Hello humans",untilDone = False)
-    ohbot.eyeColour(3,10,3)
+    ohbot.setEyeColour(3,10,3)
 
 # Function called when window is closed. 
 def on_closing():

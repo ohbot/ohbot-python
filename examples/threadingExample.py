@@ -72,7 +72,7 @@ def randomNod():
 def eyeCol():
     while True:
         # Set the base to a random rgb values between 0 and 10. 
-        ohbot.eyeColour(random() * 10, random() * 10, random() * 10)
+        ohbot.setEyeColour(random() * 10, random() * 10, random() * 10)
         # Wait between 10 and 20 seconds before changing again. 
         ohbot.wait(randint(10, 20))
 

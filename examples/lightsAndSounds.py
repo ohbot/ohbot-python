@@ -21,14 +21,14 @@ ohbot.wait(4)
 ohbot.playSound('ohbot',untilDone = False)
 
 for x in range(0,40):
-    ohbot.eyeColour(random.randrange(0,10),random.randrange(0,10),random.randrange(0,10))
+    ohbot.setEyeColour(random.randrange(0,10),random.randrange(0,10),random.randrange(0,10))
     ohbot.wait(0.05)
     
-ohbot.eyeColour(0,0,0)
+ohbot.setEyeColour(0,0,0)
 ohbot.wait(0.5)
 
 ohbot.playSound('smash',untilDone = False)
-ohbot.eyeColour(10,0,0)
+ohbot.setEyeColour(10,0,0)
 
 for x in range(0,14):
     ohbot.move(ohbot.EYETILT,3)
@@ -44,7 +44,7 @@ for x in range(0,14):
     ohbot.wait(x/100)
     ohbot.move(ohbot.EYETURN,7)
     ohbot.wait(x/100)
-    ohbot.eyeColour(x,10-x,0)
+    ohbot.setEyeColour(x,10-x,0)
 
 ohbot.move(ohbot.EYETURN,5)
 
@@ -56,16 +56,16 @@ lengthOfBeat = 0.565
 for x in range(0,8):
 
     ohbot.move(ohbot.HEADNOD,6)
-    ohbot.eyeColour(x,10-x,0)
+    ohbot.setEyeColour(x,10-x,0)
 
     ohbot.wait(lengthOfBeat/2)
     
     ohbot.move(ohbot.HEADTURN,7)
     ohbot.move(ohbot.HEADNOD,4)
-    ohbot.eyeColour(0,x,10-x)
+    ohbot.setEyeColour(0,x,10-x)
 
     ohbot.wait(lengthOfBeat/2)
-    ohbot.eyeColour(10-x,x,0)
+    ohbot.setEyeColour(10-x,x,0)
 
     ohbot.move(ohbot.HEADNOD,6)
 
@@ -73,7 +73,7 @@ for x in range(0,8):
 
     ohbot.move(ohbot.HEADTURN,3)
     ohbot.move(ohbot.HEADNOD,4)
-    ohbot.eyeColour(0,10-x,x)
+    ohbot.setEyeColour(0,10-x,x)
 
     ohbot.wait(lengthOfBeat/2)
     
