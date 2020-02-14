@@ -39,9 +39,9 @@ For Example:
 ```python
 
 ohbot.setVoice("Oliver")
-ohbot.speechSpeed(90)
+ohbot.setSpeechSpeed(90)
 ohbot.say("Hello this is Oliver Slow")
-ohbot.speechSpeed(400)
+ohbot.setSpeechSpeed(400)
 ohbot.say("Hello this is Oliver Fast")
 ```
 

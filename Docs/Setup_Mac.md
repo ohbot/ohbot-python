@@ -47,7 +47,6 @@ To upgrade to the latest version of the library run the following in the console
 ```sudo pip3 install ohbot --upgrade```
 
 
-
 Ohbot library files (these will be installed with the `sudo pip3 install ohbot` command above):
 
 | File    | Use         |
@@ -58,7 +57,7 @@ Ohbot library files (these will be installed with the `sudo pip3 install ohbot` 
 | OhbotSettings.xml    | Settings file |
 | Sounds/    | Folder containing Ohbot preset sound files |
 
-_Note: The text to speech module will generate an audio file, ‘ohbotspeech.wav’ and a text file ‘phonemes.txt’ inside your working folder._
+_Note: The text to speech module will generate an audio file, ‘ohbotspeech.wav’._
 
 ---
 

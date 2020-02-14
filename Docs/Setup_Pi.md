@@ -1,24 +1,34 @@
-# ohbot for python
+# Ohbot Python setup for Pi
 
 <a href="http://whoosh.co.uk/ohbothelp/images/eyes.gif" target="_blank"><img src="http://whoosh.co.uk/ohbothelp/images/eyes.gif" border="0" width = "30%"/></a>
 
 
-This package is a starting point for people wanting to use Python 3 to control Ohbot. 
+Background
+-----
 
-More information about Ohbot can be found on [ohbot.co.uk](http://www.ohbot.co.uk)
+These instructions allow you to program your Ohbot using Python on a Mac.
 
-Dependencies
+More information about Ohbot can be found on [ohbot.co.uk.](http://www.ohbot.co.uk)
+
+Please contact [info@ohbot.co.uk.](info@ohbot.co.uk) if you have any problems installing or running Ohbot.
+
+
+Install Python
+--------
+
+Install the latest version of Python from [here.](https://www.python.org/downloads/)
+
+
+Install library and dependencies
 ----------
 
-If you don't have pip3 (the python 3 package manager) installed, open terminal and execute the following:
+Open the Terminal app and enter the following commands pressing return after each line:
 
-```
-sudo apt-get install python3-pip
-```
+``sudo pip3 install ohbot`` <br>
+``sudo apt-get install festival`` <br>
+``sudo apt-get install python3-lxml`` <br>
 
-Ohbot requires the some libraries to be installed. 
-
-To install libraries execute the corresponding terminal commands in your Raspberry Pi terminal:
+Here is a full list of libraries used by the Ohbot module:
 
 | Library    | Use         | Terminal command to install  |Link |
 | ---------- |-------------| -----------------------------|-----|
@@ -43,13 +53,15 @@ To upgrade to the latest version of the library run the following in the console
 ```sudo pip3 install ohbot --upgrade```
 
 
-
 Ohbot library files (these will be installed with the `pip3 install ohbot` command above):
 
 | File    | Use         |
 | ---------- |------------|
 | ohbot.py   | Ohbot package |
 | MotorDefinionsv21.omd    | Motor settings file |
+| OhbotSpeech.csv    | Speech database file |
+| OhbotSettings.xml    | Settings file |
+| Sounds/    | Folder containing Ohbot preset sound files |
 
 _Note: The text to speech module Festival will generate an audio file, ‘ohbotspeech.wav’ and a text file ‘phonemes.txt’ inside your working folder._
 
@@ -60,7 +72,6 @@ Hardware
 
 Required:
 
-
 * Raspberry Pi
 * Ohbot
 * USB Y Cable
@@ -70,25 +81,21 @@ Required:
 
 Setup:
 
-
-
 Plug the middle of USB Y cable into Raspberry Pi and the other large USB plug into the power adaptor. Then plug the mini USB into Ohbot. Finally plug your speakers into your Raspberry Pi. 
 
 ---
 
-Writing Programs
+Starting Python Programs
 --------
 
-1. Open Python 3 (IDLE)
-2. Click File → New File
-3. Save your file as a python script (.py) in a new folder called Ohbot somewhere on your Pi.
+Open <b>IDLE</b> from <b>Applications</b>.
 
-Import
--------
+Select <b>New</b> from the <b>File menu.</b>
 
-Make sure you import ohbot at the start of your program. 
-```python
-from ohbot import ohbot
-```
+Go to the [hellworldohbot](https://github.com/ohbot/ohbot-python/blob/master/examples/helloworldohbot.py) example on Github, copy the code and paste it into the new Python window.
 
----
+Select <b>Run Module</b> from the <b>Run</b> menu.
+
+Ohbot should speak and move.
+
+More example programs can be found [here.](https://github.com/ohbot/ohbot-python/tree/master/examples)

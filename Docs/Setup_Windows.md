@@ -13,7 +13,7 @@ Please contact [info@ohbot.co.uk.](info@ohbot.co.uk) if you have any problems in
 
 Setup
 --------
-Download a Python installer from [here.] (https://www.python.org/downloads/release/python-364/) On Windows the Ohbot library currently only works with Python versions up to 3.6.
+Download a Python installer from [here.](https://www.python.org/downloads/release/python-364/) On Windows the Ohbot library currently only works with Python versions up to 3.6.
 
 We chose version 3.6 Windows x86-64 executable installer.
 
@@ -85,8 +85,6 @@ The ``pip install ohbot`` command will install the following libraries:
 To upgrade to the latest version of the library run the following in the console:
 ```pip install ohbot -- upgrade```
 
-
-
 Ohbot library files (these will be installed with the `pip install ohbot` command above):
 
 | File    | Use         |
@@ -97,7 +95,7 @@ Ohbot library files (these will be installed with the `pip install ohbot` comman
 | OhbotSettings.xml    | Settings file |
 | Sounds/    | Folder containing Picoh preset sound files |
 
-_Note: The text to speech module will generate an audio file, ‘ohbotspeech.wav’ and a text file ‘phonemes.txt’ inside your working folder._
+_Note: The text to speech module will generate an audio file, ‘ohbotspeech.wav’._
 
 ---
 
@@ -132,7 +130,7 @@ Go to the Windows Menu and run IDLE from the Python folder:
 
 Select <b>New</b> from the <b>File menu.</b>
 
-Go to the [hellworldohbot](https://github.com/ohbot/ohbot-python/blob/master/examples/helloworldohbot.py) example on Github, copy the code and paste it into the new Python window.
+Go to the [hellworldohbot](https://github.com/ohbot/ohbot-python/blob/master/examples/helloworldohbot.py) example on Github, copy the code and paste it into the new file in IDLE.
 
 Select <b>Run Module</b> from the <b>Run</b> menu.
 
