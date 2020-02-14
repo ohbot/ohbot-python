@@ -54,8 +54,6 @@ Alternatively you can have seperate ohbotData folders by saving your programs in
 ohbotProgramsFolder
 └───folderOne
 │   │   ohbotTest1.py
-│   │   Calibrate.py 
-│   │   EyeShapeDesigner.py
 |   |   SpeechDatabase.py
 |   |   
 │   └───ohbotData (Created Automatically)
@@ -65,8 +63,6 @@ ohbotProgramsFolder
 |
 └───folderTwo
     │   ohbotTest2.py
-    │   Calibrate.py 
-    │   EyeShapeDesigner.py
     |   SpeechDatabase.py
     |   
     └───ohbotData (Created Automatically)
