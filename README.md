@@ -33,16 +33,14 @@ The data files include:
 
 If you delete a file in ohbotData (or the whole folder) the default files will be copied back over from the ohbot library folder.  
 
-You can share the ohbotData between multiple programs by saving them in the same folder. 
+You can share the ohbotData folder between multiple programs by saving them in the same folder. 
 
 For example:
 ```
 ohbotProgramsFolder
 │   ohbotTest1.py
 |   ohbotTest2.py
-│   EyeShapeDesigner.py 
 |   SpeechDatabse.py 
-│   Calibrate.py   
 |
 └───ohbotData (Created Automatically)
     |   MotorDefinitionsv21.omd
@@ -54,8 +52,6 @@ Alternatively you can have seperate ohbotData folders by saving your programs in
 ohbotProgramsFolder
 └───folderOne
 │   │   ohbotTest1.py
-│   │   Calibrate.py 
-│   │   EyeShapeDesigner.py
 |   |   SpeechDatabase.py
 |   |   
 │   └───ohbotData (Created Automatically)
@@ -65,8 +61,6 @@ ohbotProgramsFolder
 |
 └───folderTwo
     │   ohbotTest2.py
-    │   Calibrate.py 
-    │   EyeShapeDesigner.py
     |   SpeechDatabase.py
     |   
     └───ohbotData (Created Automatically)
