@@ -47,7 +47,6 @@ To upgrade to the latest version of the library run the following in the console
 ```sudo pip3 install ohbot --upgrade```
 
 
-
 Ohbot library files (these will be installed with the `sudo pip3 install ohbot` command above):
 
 | File    | Use         |
