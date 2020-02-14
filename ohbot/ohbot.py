@@ -972,10 +972,13 @@ def _phonememapTop(val):
 def _phonememapBottom(val):
     return 5 + (_limit(val) * 3 / 10)
 
-
-# Legacy function to support Ohbot programs with eyeColour. Passes onto baseColour.
+# Function to support Ohbot programs with eyeColour. Passes onto baseColour.
 def eyeColour(r, g, b, swapRandG=False):
     baseColour(r, g, b, swapRandG)
+    
+# Function to support Ohbot programs with eyeColour, mirrors eyeColour().
+def setEyeColour(r, g, b, swapRandG=False):
+    eyeColour(r, g, b, swapRandG)
 
 # Clone of base colour to keep consitency with set eyeShape etc.
 def setBaseColour(r, g, b, swapRandG=False):
