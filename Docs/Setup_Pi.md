@@ -1,4 +1,4 @@
-# Ohbot Python setup for Mac
+# Ohbot Python setup for Pi
 
 <a href="http://whoosh.co.uk/ohbothelp/images/eyes.gif" target="_blank"><img src="http://whoosh.co.uk/ohbothelp/images/eyes.gif" border="0" width = "30%"/></a>
 
@@ -24,7 +24,7 @@ Install library and dependencies
 
 Open the Terminal app and enter the following commands pressing return after each line:
 
-``pip3 install ohbot`` <br>
+``sudo pip3 install ohbot`` <br>
 ``sudo apt-get install festival`` <br>
 ``sudo apt-get install python3-lxml`` <br>
 
