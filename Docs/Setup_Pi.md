@@ -1,24 +1,37 @@
-# Ohbot Python setup for Pi
+# Ohbot Python setup for Mac
 
 <a href="http://whoosh.co.uk/ohbothelp/images/eyes.gif" target="_blank"><img src="http://whoosh.co.uk/ohbothelp/images/eyes.gif" border="0" width = "30%"/></a>
 
 
-This package is a starting point for people wanting to use Python 3 to control Ohbot. 
+Background
+-----
 
-More information about Ohbot can be found on [ohbot.co.uk](http://www.ohbot.co.uk)
+These instructions allow you to program your Ohbot using Python on a Mac.
 
-Dependencies
+More information about Ohbot can be found on [ohbot.co.uk.](http://www.ohbot.co.uk)
+
+Please contact [info@ohbot.co.uk.](info@ohbot.co.uk) if you have any problems installing or running Ohbot.
+
+
+Setup
+--------
+
+Install the latest version of Python from [here.](https://www.python.org/downloads/)
+
+Open the Terminal app and type the folloing:
+
+``sudo pip3 install ohbot``
+
+Install library and dependencies
 ----------
 
-If you don't have pip3 (the python 3 package manager) installed, open terminal and execute the following:
+Enter the following commands in Terminal pressing return after each line:
 
-```
-sudo apt-get install python3-pip
-```
+``pip3 install ohbot``
+``sudo apt-get install festival``
+``sudo apt-get install python3-lxml``
 
-Ohbot requires the some libraries to be installed. 
-
-To install libraries execute the corresponding terminal commands in your Raspberry Pi terminal:
+Here is a full list of libraries used by the Ohbot module:
 
 | Library    | Use         | Terminal command to install  |Link |
 | ---------- |-------------| -----------------------------|-----|
@@ -43,7 +56,6 @@ To upgrade to the latest version of the library run the following in the console
 ```sudo pip3 install ohbot --upgrade```
 
 
-
 Ohbot library files (these will be installed with the `pip3 install ohbot` command above):
 
 | File    | Use         |
@@ -63,7 +75,6 @@ Hardware
 
 Required:
 
-
 * Raspberry Pi
 * Ohbot
 * USB Y Cable
@@ -72,8 +83,6 @@ Required:
 
 
 Setup:
-
-
 
 Plug the middle of USB Y cable into Raspberry Pi and the other large USB plug into the power adaptor. Then plug the mini USB into Ohbot. Finally plug your speakers into your Raspberry Pi. 
 
