@@ -2,37 +2,38 @@
 
 <a href="http://whoosh.co.uk/ohbothelp/images/eyes.gif" target="_blank"><img src="http://whoosh.co.uk/ohbothelp/images/eyes.gif" border="0" width = "30%"/></a>
 
+This package is a starting point for people wanting to use Python 3 on a Raspberry Pi to control Ohbot. 
 
-Background
------
+More information about Ohbot can be found on [ohbot.co.uk](http://www.ohbot.co.uk) Please contact [info@ohbot.co.uk.](info@ohbot.co.uk) if you have any problems installing or running Ohbot. 
 
-These instructions allow you to program your Ohbot using Python on a Mac.
-
-More information about Ohbot can be found on [ohbot.co.uk.](http://www.ohbot.co.uk)
-
-Please contact [info@ohbot.co.uk.](info@ohbot.co.uk) if you have any problems installing or running Ohbot.
-
-
-Install Python
---------
-
-Install the latest version of Python from [here.](https://www.python.org/downloads/)
-
-
-Install library and dependencies
+Dependencies
 ----------
 
-Open the Terminal app and enter the following commands pressing return after each line:
+If you don't have Python or pip3 (the Python package manager) installed, open terminal and execute the following, one line at a time:
 
-``sudo pip3 install ohbot`` <br>
-``sudo apt-get install festival`` <br>
-``sudo apt-get install python3-lxml`` <br>
+```
+sudo apt-get install python3
+sudo apt-get install python3-pip
+```
 
-Here is a full list of libraries used by the Ohbot module:
+Ohbot requires some libraries to be installed execute the following to install lxml, festival and finally the ohbot package. 
 
+```
+sudo apt-get install python3-lxml
+sudo apt-get install festival
+sudo pip3 install ohbot
+```
+
+Additonal voices can be used by installing ```espeak``` and ```pico2wave```
+
+ ```
+ sudo apt-get install espeak
+ sudo apt-get install libttspico-utils
+ ```
+ 
 | Library    | Use         | Terminal command to install  |Link |
 | ---------- |-------------| -----------------------------|-----|
-| ohbot   | Interface with Ohbot          | ```sudo pip3 install ohbot``` |[ohbot](https://github.com/ohbot/ohbot/) |
+| picoh   | Interface with Picoh          | ```sudo pip3 install ohbot``` |[ohbot](https://github.com/ohbot/ohbot-python/) |
 | festival    | Generate text to speech  | ```sudo apt-get install festival```  |- |
 | espeak (optional)    | Generate text to speech  | ```sudo apt-get install espeak```  |[espeak](http://espeak.sourceforge.net/) |
 | pico2wave (optional)    | Generate text to speech  | ```sudo apt-get install libttspico-utils```  |-|
@@ -42,10 +43,6 @@ Here is a full list of libraries used by the Ohbot module:
 | os    | Send commands to festival       | Included in Python 3  |- |
 | time    | Run timers                    | Included in Python 3  |- |
 
-
-You only need to install ```ohbot```, ```lxml``` and ```festival```, ```serial``` should be installed automatically during the install of ohbot. 
-
-Additonal voices can be used by installing ```espeak``` and ```pico2wave```
 
 Ohbot is tested with Python 3 running on a Raspberry Pi 3 Model B. 
 
