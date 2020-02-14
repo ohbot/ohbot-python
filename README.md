@@ -40,9 +40,7 @@ For example:
 ohbotProgramsFolder
 │   ohbotTest1.py
 |   ohbotTest2.py
-│   EyeShapeDesigner.py 
 |   SpeechDatabse.py 
-│   Calibrate.py   
 |
 └───ohbotData (Created Automatically)
     |   MotorDefinitionsv21.omd
