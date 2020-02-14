@@ -8,19 +8,13 @@ ohbot.wait(0.2)
 ohbot.say("Commencing hardware tests")
 
 ohbot.say("Eyes to red")
-ohbot.setEyeColour(10,0,0)
+ohbot.setEyeColour(10,0,0,True)
 
 ohbot.say("Eyes to green")
-ohbot.setEyeColour(0,10,0)
+ohbot.setEyeColour(0,10,0,True)
 
 ohbot.say("Eyes to blue")
-ohbot.setEyeColour(0,0,10)
-
-ohbot.say("Eyes to angry")
-ohbot.setEyeShape("Angry")
-
-ohbot.say("Reset Eyes")
-ohbot.setEyeShape("Eyeball")
+ohbot.setEyeColour(0,0,10,True)
 
 ohbot.say("HeadTurn motor 0 to 10")
 
@@ -64,5 +58,6 @@ ohbot.say(ohbot.getPhrase())
 
 ohbot.reset()
 ohbot.say("Goodbye")
+ohbot.wait(1)
 ohbot.close()
 
