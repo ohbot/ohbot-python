@@ -79,19 +79,17 @@ Plug the middle of USB Y cable into Raspberry Pi and the other large USB plug in
 
 ---
 
-Writing Programs
+Starting Python Programs
 --------
 
-1. Open Python 3 (IDLE)
-2. Click File → New File
-3. Save your file as a python script (.py) in a new folder called Ohbot somewhere on your Pi.
+Open <b>IDLE</b> from <b>Applications</b>.
 
-Import
--------
+Select <b>New</b> from the <b>File menu.</b>
 
-Make sure you import ohbot at the start of your program. 
-```python
-from ohbot import ohbot
-```
+Go to the [hellworldohbot](https://github.com/ohbot/ohbot-python/blob/master/examples/helloworldohbot.py) example on Github, copy the code and paste it into the new Python window.
 
----
+Select <b>Run Module</b> from the <b>Run</b> menu.
+
+Ohbot should speak and move.
+
+More example programs can be found [here.](https://github.com/ohbot/ohbot-python/tree/master/examples)
