@@ -33,7 +33,7 @@ The data files include:
 
 If you delete a file in ohbotData (or the whole folder) the default files will be copied back over from the ohbot library folder.  
 
-You can share the ohbotData between multiple programs by saving them in the same folder. 
+You can share the ohbotData folder between multiple programs by saving them in the same folder. 
 
 For example:
 ```
