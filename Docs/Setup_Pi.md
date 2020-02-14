@@ -1,4 +1,4 @@
-# ohbot for python
+# Ohbot Python setup for Pi
 
 <a href="http://whoosh.co.uk/ohbothelp/images/eyes.gif" target="_blank"><img src="http://whoosh.co.uk/ohbothelp/images/eyes.gif" border="0" width = "30%"/></a>
 
