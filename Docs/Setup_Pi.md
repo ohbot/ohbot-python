@@ -27,9 +27,9 @@ Install library and dependencies
 
 Enter the following commands in Terminal pressing return after each line:
 
-``pip3 install ohbot``
-``sudo apt-get install festival``
-``sudo apt-get install python3-lxml``
+``pip3 install ohbot`` <br>
+``sudo apt-get install festival`` <br>
+``sudo apt-get install python3-lxml`` <br>
 
 Here is a full list of libraries used by the Ohbot module:
 
