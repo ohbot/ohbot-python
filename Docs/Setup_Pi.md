@@ -13,19 +13,16 @@ More information about Ohbot can be found on [ohbot.co.uk.](http://www.ohbot.co.
 Please contact [info@ohbot.co.uk.](info@ohbot.co.uk) if you have any problems installing or running Ohbot.
 
 
-Setup
+Install Python
 --------
 
 Install the latest version of Python from [here.](https://www.python.org/downloads/)
 
-Open the Terminal app and type the folloing:
-
-``sudo pip3 install ohbot``
 
 Install library and dependencies
 ----------
 
-Enter the following commands in Terminal pressing return after each line:
+Open the Terminal app and enter the following commands pressing return after each line:
 
 ``pip3 install ohbot`` <br>
 ``sudo apt-get install festival`` <br>
