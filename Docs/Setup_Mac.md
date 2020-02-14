@@ -58,7 +58,7 @@ Ohbot library files (these will be installed with the `sudo pip3 install ohbot` 
 | OhbotSettings.xml    | Settings file |
 | Sounds/    | Folder containing Ohbot preset sound files |
 
-_Note: The text to speech module will generate an audio file, ‘ohbotspeech.wav’
+_Note: The text to speech module will generate an audio file, ‘ohbotspeech.wav’_
 
 ---
 
