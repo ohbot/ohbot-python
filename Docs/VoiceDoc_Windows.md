@@ -1,4 +1,4 @@
-# Ohbot text to speech on a Windows
+# Ohbot text to speech on Windows
 
 ohbot.setSynthesizer(synth)
 ----------
