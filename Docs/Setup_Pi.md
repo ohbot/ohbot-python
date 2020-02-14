@@ -33,7 +33,7 @@ Additonal voices can be used by installing ```espeak``` and ```pico2wave```
  
 | Library    | Use         | Terminal command to install  |Link |
 | ---------- |-------------| -----------------------------|-----|
-| picoh   | Interface with Picoh          | ```sudo pip3 install ohbot``` |[ohbot](https://github.com/ohbot/ohbot-python/) |
+| ohbot   | Interface with Ohbot          | ```sudo pip3 install ohbot``` |[ohbot](https://github.com/ohbot/ohbot-python/) |
 | festival    | Generate text to speech  | ```sudo apt-get install festival```  |- |
 | espeak (optional)    | Generate text to speech  | ```sudo apt-get install espeak```  |[espeak](http://espeak.sourceforge.net/) |
 | pico2wave (optional)    | Generate text to speech  | ```sudo apt-get install libttspico-utils```  |-|
