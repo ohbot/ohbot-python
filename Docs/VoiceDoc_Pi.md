@@ -23,15 +23,15 @@ Online :
  sudo apt-get install libav-tools libavcodec-extra
  ```
  
- gTTS library is included as part of sudo pip3 install picoh.
+ gTTS library is included as part of sudo pip3 install ohbot.
  
- Ensure you you are running the latest version of the picoh library by running:
+ Ensure you you are running the latest version of the ohbot library by running:
  
  ```
-sudo pip3 install picoh --upgrade
+sudo pip3 install ohbot --upgrade
  ```
  
-picoh.setSynthesizer(synth)
+ohbot.setSynthesizer(synth)
 ----------
 
 | synth | Full Name |
@@ -44,25 +44,25 @@ picoh.setSynthesizer(synth)
 
 For Example:
 ```python
-picoh.setSynthesizer("espeak")
+ohbot.setSynthesizer("espeak")
 ```
 
 or 
 
 ```python
-picoh.setSynthesizer("pico2wave")
+ohbot.setSynthesizer("pico2wave")
 ```
 
 or 
 
 ```python
-picoh.setSynthesizer("gTTS")
+ohbot.setSynthesizer("gTTS")
 ```
 
-picoh.setVoice(voice)
+ohbot.setVoice(voice)
 ------
 
-Use picoh.setVoice() to set the voice synthesizer:
+Use ohbot.setVoice() to set the voice synthesizer:
 
 <b>Using ESPEAK</b>
 
@@ -83,11 +83,11 @@ Examples:<br>
 
 | Command | Result |
 | ------ | ------- |
-| ``picoh.setVoice("-ven+croak")`` | English croaky voice |
-| ``picoh.setVoice("-vzh+m2 -s26")`` | Chinese male voice, Fast |
-| ``picoh.setVoice("-vfr+f1 -p99 -s180")`` | French female whisper voice, medium speed and high pitched |
+| ``ohbot.setVoice("-ven+croak")`` | English croaky voice |
+| ``ohbot.setVoice("-vzh+m2 -s26")`` | Chinese male voice, Fast |
+| ``ohbot.setVoice("-vfr+f1 -p99 -s180")`` | French female whisper voice, medium speed and high pitched |
 
-More examples can be found in our [espeakVoices example program](https://github.com/ohbot/picoh-python/raw/master/examples/Pi/espeakVoices.py)  and  [pico2wave example program.](https://github.com/ohbot/picoh-python/raw/master/examples/Pi/pico2waveSpeech.py)
+More examples can be found in our [espeakVoices example program](https://github.com/ohbot/ohbot-python/raw/master/examples/Pi/espeakVoices.py)  and  [pico2wave example program.](https://github.com/ohbot/ohbot-python/raw/master/examples/Pi/pico2waveSpeech.py)
 
 
 # Web Speech
