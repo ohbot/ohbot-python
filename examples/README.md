@@ -13,7 +13,7 @@ Run an example
 
 2) Open and run in IDLE or whatever Python editor/launcher you prefer. 
 
-[helloWorldOhbot.py](https://raw.githubusercontent.com/ohbot/ohbot-python/master/examples/helloWorldOhbot.py)
+[helloworldohbot.py](https://raw.githubusercontent.com/ohbot/ohbot-python/master/examples/helloworldohbot.py)
 -
 A simple program that makes Ohbot move and speak. 
 
