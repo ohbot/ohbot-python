@@ -93,7 +93,7 @@ Ohbot library files (these will be installed with the `pip install ohbot` comman
 | MotorDefinionsv21.omd    | Motor settings file |
 | OhbotSpeech.csv    | Speech database file |
 | OhbotSettings.xml    | Settings file |
-| Sounds/    | Folder containing Picoh preset sound files |
+| Sounds/    | Folder containing Ohbot preset sound files |
 
 _Note: The text to speech module will generate an audio file, ‘ohbotspeech.wav’._
 
