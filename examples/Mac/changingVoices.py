@@ -12,15 +12,15 @@ ohbot.wait(2)
 
 ohbot.setVoice("Karen")
 
-ohbot.speechSpeed(150)
+ohbot.setSpeechSpeed(150)
 
 ohbot.move(ohbot.HEADTURN,random.randint(3,6))
 
 ohbot.say("hello i am Karen")
 
-ohbot.setVoice(name = "Alex")
+ohbot.setVoice("Alex")
 
-ohbot.speechSpeed(90)
+ohbot.setSpeechSpeed(90)
 
 ohbot.move(ohbot.HEADTURN,random.randint(2,6))
 
@@ -30,17 +30,17 @@ ohbot.setVoice("Oliver")
 
 ohbot.move(ohbot.HEADTURN,random.randint(1,6))
 
-ohbot.speechSpeed(200)
+ohbot.setSpeechSpeed(200)
 
 ohbot.say("hello i am Oliver fast")
 
 ohbot.setVoice("Kate")
 
-ohbot.speechSpeed(90)
+ohbot.setSpeechSpeed(90)
 
 ohbot.say("Hey I am Kate slow")
 
-ohbot.speechSpeed(500)
+ohbot.setSpeechSpeed(500)
 
 ohbot.say("Hey I am Kate fast")
 
