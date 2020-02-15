@@ -2,7 +2,7 @@
 
 Hello, this directory contains some examples to help you get to grips with programming Ohbot. 
 
-***Don't forget if you are new to Python here is a short guide explaining some of the key concepts:*** [Programming Ohbot in Python](https://docs.google.com/document/d/e/2PACX-1vTM9FmTBpGGJ4Ddvutpv3kxXkS0oyT4U9JPBV95UXdSJU10TD5JC1XWTf2cRGjHWApHOrTC6JLizD64/pub)
+***Don't forget if you are new to Python here is a short guide explaining some of the key concepts:*** [Programming Ohbot in Python](https://docs.google.com/document/d/e/2PACX-1vRoe6kxmSYFnR3upGNZuBgTO31c5xkpoxtLbrVmalGlT7IYsCmaV4DJ4QhnCDMo-kMslbZNtnSbDWfj/pub)
 
 All the functions in the ohbot library are also documented if you scroll down in the main [README](https://github.com/ohbot/ohbot-python/blob/master/README.md).
 
