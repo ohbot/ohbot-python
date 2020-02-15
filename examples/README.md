@@ -33,7 +33,7 @@ A program that demonstrates how to play sounds using ohbot.playSound()
 -
 Control Ohbot's motor positions using the mouse and trigger actions using the a, b or c key on keyboard. 
 
- [ohClock.py](https://raw.githubusercontent.com/ohbot/ohbot-python/master/examples/ohClock.py)
+ [OhClock.py](https://raw.githubusercontent.com/ohbot/ohbot-python/master/examples/OhClock.py)
 -
 This program makes Ohbot wake up every quarter of an hour and say the time. It also uses a second thread to blink Ohbot's eyes.  
 
