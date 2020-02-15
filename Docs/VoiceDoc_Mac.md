@@ -30,10 +30,10 @@ A full list of voices can also be displayed by entering the following command in
 
 ```say -v ?```
 
-ohbot.speechSpeed(params)
+ohbot.setSpeechSpeed(params)
 ------
 
-Use ohbot.speechSpeed() to set speech rate in words per minute:
+Use ohbot.setSpeechSpeed() to set speech rate in words per minute:
 
 Range: (int) 90+
 
