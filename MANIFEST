@@ -10,10 +10,12 @@ ohbot/ohbot.obe
 ohbot/ohbot.py
 ohbot/Images/calibrate400.gif
 ohbot/Images/logoPT.gif
+ohbot/Images/logoPTOH.gif
 ohbot/Images/movedown.gif
 ohbot/Images/moveright.gif
 ohbot/Images/off.gif
 ohbot/Images/offsmaller.gif
+ohbot/Images/ohbotlogoSmall.gif
 ohbot/Images/on.gif
 ohbot/Images/onsmaller.gif
 ohbot/Images/picohlogo.gif
