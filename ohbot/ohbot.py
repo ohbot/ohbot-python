@@ -663,8 +663,12 @@ def setSynthesizer(params=synthesizer):
     global synthesizer
     synthesizer = params
 
-
 # Set the speed of the speech in words per min.
+def speechSpeed(params=speechRate):
+    global speechRate
+    speechRate = params
+    
+# Set the speed of the speech in words per min mirrors speechSpeed for consistency.
 def setSpeechSpeed(params=speechRate):
     global speechRate
     speechRate = params
