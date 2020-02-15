@@ -22,7 +22,7 @@ def handleInput():
 
         text = input("Question:\n")
         ohbot.say(text)
-        ohbot.eyeColour(10,5,0,True)
+        ohbot.setEyeColour(10,5,0,True)
         randIndex = randrange(0,len(connectingPhrases))
         
         choice = connectingPhrases[randIndex]
@@ -37,13 +37,13 @@ def handleInput():
             ans = next(res.results).text
             ans = ans.replace("|",".")
             ohbot.say(ans)
-            ohbot.eyeColour(0,10,0,True)
+            ohbot.setEyeColour(0,10,0,True)
 
         except:
 
             print('Answer not available')
             ohbot.say("Answer not available")
-            ohbot.eyeColour(10,0,0,True)                
+            ohbot.setEyeColour(10,0,0,True)                
                 
         ohbot.move(ohbot.HEADTURN,5)
 
@@ -52,7 +52,7 @@ def handleInputWiki():
 
         text = input("Define:\n")
         ohbot.say(text)
-        ohbot.eyeColour(10,5,0,True)
+        ohbot.setEyeColour(10,5,0,True)
         randIndex = randrange(0,len(connectingPhrases))
         
         choice = connectingPhrases[randIndex]
@@ -67,13 +67,13 @@ def handleInputWiki():
         try:
             res = wikipedia.summary(text)
             ohbot.say(res)
-            ohbot.eyeColour(0,10,0,True)
+            ohbot.setEyeColour(0,10,0,True)
 
         except:
 
             print('Answer not available')
             ohbot.say("Answer not available")
-            ohbot.eyeColour(10,0,0,True)
+            ohbot.setEyeColour(10,0,0,True)
             ohbot.move(ohbot.HEADTURN,5)
         
 

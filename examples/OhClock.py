@@ -21,9 +21,9 @@ def blinkLids():
 
 #start up sequence resets to mid position, sets the eyes to blue then goes to sleep
 ohbot.reset()
-ohbot.eyeColour (0, 0, 10)
+ohbot.setEyeColour (0, 0, 10)
 sleep(1.0)
-ohbot.eyeColour (0, 0, 0)
+ohbot.setEyeColour (0, 0, 0)
 ohbot.move (ohbot.HEADNOD, 0)
 ohbot.move (ohbot.LIDBLINK, 0)
 sleep(2.0)
@@ -63,7 +63,7 @@ while (True):
             say = say + " and " + m + " minutes"
             
         #set the eyes to pink, open eyes, lift head
-        ohbot.eyeColour (10, 2, 2)
+        ohbot.setEyeColour (10, 2, 2)
         ohbot.move (ohbot.LIDBLINK, 10)
         ohbot.move (ohbot.HEADNOD, 5)
         
@@ -99,7 +99,7 @@ while (True):
         #wait a second for the thread to stop
         sleep (1)
         ohbot.move (ohbot.LIDBLINK, 0)
-        ohbot.eyeColour (0, 0, 0)
+        ohbot.setEyeColour (0, 0, 0)
         sleep(1)
         ohbot.move (ohbot.HEADNOD, 0)
         sleep(1)

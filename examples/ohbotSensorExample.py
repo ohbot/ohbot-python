@@ -11,7 +11,7 @@ while True:
     
     val2 = ohbot.readSensor(3)
     
-    ohbot.eyeColour(val2,10-val2,0,True)
+    ohbot.setEyeColour(val2,10-val2,0,True)
     ohbot.move(ohbot.HEADTURN, val2)
     print(val2)
     if val1 > 2:
