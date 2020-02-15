@@ -186,14 +186,14 @@ speechRate = 170
 
 print("Speech Synthesizer: " + synthesizer)
 
-#try:
-#    # Display logo on Pi-Top[4]
-#    from ptoled import PTOLEDDisplay
-#    oled_screen = PTOLEDDisplay()
-#    logoImagePath = os.path.join(directory, 'Images/logoPT.gif')
-#    oled_screen.draw_image_file(logoImagePath)
-#except:
-#    pass
+try:
+    # Display logo on Pi-Top[4]
+    from ptoled import PTOLEDDisplay
+    oled_screen = PTOLEDDisplay()
+    logoImagePath = os.path.join(directory, 'Images/logoPTOH.gif')
+    oled_screen.draw_image_file(logoImagePath)
+except:
+    pass
 
 if debug:
     print("Ohbot Library Directory " + directory)
