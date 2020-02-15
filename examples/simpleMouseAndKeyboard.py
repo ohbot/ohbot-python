@@ -31,7 +31,7 @@ def aKey(event):
 
 # Function for when the 'b' key is pressed
 def bKey(event):
-    ohbot.playSound('spring',untilDone = False)
+    ohbot.playSound('spring',untilDone = True)
     ohbot.say("What's going on ?",untilDone = False)
     ohbot.setEyeColour(10,3,3)
 
