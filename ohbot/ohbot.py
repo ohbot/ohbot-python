@@ -81,7 +81,7 @@ phraseList = []
 port = ""
 
 # define library version
-version = "1.249"
+version = "4.0"
 
 # flag to stop writing when writing for threading
 writing = False
@@ -676,9 +676,9 @@ def setSpeechSpeed(params=speechRate):
 def say(text, untilDone=True, lipSync=True, hdmiAudio=False, soundDelay=0):
     global topLipFree
 
-    if topLipFree:
-        move(BOTTOMLIP, 4)
-        wait(0.25)
+    #if topLipFree:
+     #   move(BOTTOMLIP, 4)
+      #  wait(0.25)
     
     if text.isspace() or text == '':
         return
