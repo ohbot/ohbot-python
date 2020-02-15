@@ -19,7 +19,7 @@
 # supports some of the ESPEAK but some is missing
 
 # import the ohbot module
-from ohbotWin import ohbot
+from ohbot import ohbot
 
 # Reset Ohbot
 ohbot.reset()

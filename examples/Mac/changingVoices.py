@@ -1,4 +1,4 @@
-from ohbotMac import ohbot
+from ohbot import ohbot
 
 import random
 
