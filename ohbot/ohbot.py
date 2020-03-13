@@ -86,7 +86,7 @@ phraseList = []
 port = ""
 
 # define library version
-version = "4.0.5"
+version = "4.0.6"
 
 # flag to stop writing when writing for threading
 writing = False
@@ -739,7 +739,7 @@ def say(text, untilDone=True, lipSync=True, hdmiAudio=False, soundDelay=0):
 
         # How many samples per second for mouth position
         if platform.system() == "Windows":
-            VISEMESPERSEC = 10
+            VISEMESPERSEC = 20
         if platform.system() == "Darwin":
             VISEMESPERSEC = 10
         if platform.system() == "Linux":
