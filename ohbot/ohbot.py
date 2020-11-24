@@ -25,9 +25,7 @@ if platform.system() == "Windows":
     import winsound
     # For SAPI speech
     from comtypes.client import CreateObject
-    sapivoice = CreateObject("SAPI.SpVoice")
-    sapistream = CreateObject("SAPI.SpFileStream")
-    from comtypes.gen import SpeechLib
+
 if platform.system() == "Darwin":
     from playsound import playsound
 if platform.system() == "Linux":
@@ -353,45 +351,38 @@ def _generateSpeechFile(text):
     file = speechAudioFile
     if platform.system() == "Windows":
         if ("sapi" in synthesizer.lower()):
-            #from comtypes.gen import SpeechLib
+            from comtypes.gen import SpeechLib
             global sapivoice, sapistream
+            #sapivoice = CreateObject("SAPI.SpVoice")
+            #sapistream = CreateObject("SAPI.SpFileStream")
+            try:
+                sapistream.Open(file, SpeechLib.SSFMCreateForWrite)
+                sapivoice.AudioOutputStream = sapistream
 
-            sapistream.Open(file, SpeechLib.SSFMCreateForWrite)
-            sapivoice.AudioOutputStream = sapistream
+                # set any parameters
+                sa = _parseSAPIVoice("a");
+                if _is_digit(sa):
+                    sapivoice.Volume = int(sa)
+                else:
+                    sapivoice.Volume = 100
+                sr = _parseSAPIVoice("r")
+                if _is_digit(sr):
+                    sapivoice.Rate = int(sr)
+                else:
+                    sapivoice.Rate = 0
+                sv = _parseSAPIVoice("v");
+                # Default voice is always first in the list
+                if (sv == ''):
+                    sapivoice.voice = sapivoice.GetVoices()[0]
+                else:
+                    for v in sapivoice.GetVoices():
+                        if (sv.lower() in v.GetDescription().lower()):
+                            sapivoice.voice = v
 
-            # set any parameters
-            sa = _parseSAPIVoice("a");
-            if _is_digit(sa):
-                sapivoice.Volume = int(sa)
-            else:
-                sapivoice.Volume = 100
-            sr = _parseSAPIVoice("r")
-            if _is_digit(sr):
-                sapivoice.Rate = int(sr)
-            else:
-                sapivoice.Rate = 0
-            sv = _parseSAPIVoice("v");
-            # Default voice is always first in the list
-            if (sv == ''):
-                sapivoice.voice = sapivoice.GetVoices()[0]
-            else:
-                for v in sapivoice.GetVoices():
-                    if (sv.lower() in v.GetDescription().lower()):
-                        sapivoice.voice = v
-
-            sapivoice.Speak(text)
-            sapistream.Close()
-        else:
-            # Remove any characters that are unsafe for a subprocess call
-            safetext = re.sub(r'[^ .a-zA-Z0-9?\']+', '', text)
-
-            bashcommand = synthesizer + ' -w ' + file + ' ' + voice + ' "' + safetext + '"'
-            # Execute bash command.
-            subprocess.call(bashcommand, shell=True)
-            if debug:
-                print("Speech Bash Command")
-                print(bashcommand)
-
+                sapivoice.Speak(text)
+                sapistream.Close()
+            except:
+                print("Speech being generated too quickly")
     if platform.system() == "Darwin":
         # Remove any characters that are unsafe for a subprocess call
         safetext = re.sub(r'[^ .a-zA-Z0-9?\']+', '', text)
@@ -450,11 +441,13 @@ def init(portName):
     _loadMotorDefs()
 
     silenceFile = os.path.join(directory, 'Silence1.wav')
-
     # get the sapi objects ready on Windows
     if platform.system() == "Windows":
-        winsound.PlaySound(silenceFile, winsound.SND_FILENAME)
 
+        sapivoice = CreateObject("SAPI.SpVoice")
+        sapistream = CreateObject("SAPI.SpFileStream") 
+
+        winsound.PlaySound(silenceFile, winsound.SND_FILENAME)
     # get the audio system warmed up on Mac
     if platform.system() == "Darwin":
         playsound(silenceFile)
