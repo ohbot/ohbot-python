@@ -84,7 +84,7 @@ phraseList = []
 port = ""
 
 # define library version
-version = "4.0.7"
+version = "4.0.8"
 
 # flag to stop writing when writing for threading
 writing = False
@@ -444,7 +444,30 @@ def _generateSpeechFile(text):
                 print("Speech Bash Command:")
                 print(bashcommand)
 
-def init(portName):
+def checkPort(p):
+    try:
+        ser = serial.Serial(p[0], 19200)
+
+        ser.timeout = 0.5
+        ser.write_timeout = 0.5
+        ser.flushInput()
+
+        msg = "v" + "\n"
+        ser.write(msg.encode('latin-1'))
+
+        line = ser.readline()
+        ser.close()
+
+        subString = "v1".encode('latin-1')
+
+        if line.find(subString) != -1:
+            return True
+        else:
+            return False
+    except:
+        return False
+
+def init(portName = None):
     # pickup global instances of port, ser and sapi variables
     global port, ser, sapivoice, sapistream, connected, directory
 
@@ -471,35 +494,41 @@ def init(portName):
 
     # Search for the Ohbot serial port
     ports = list(serial.tools.list_ports.comports())
-    for p in ports:
+    
 
-        # If port has Ohbot connected save the location
-        if portName in p[1]:
-            port = p[0]
-            print("Ohbot found on port:" + port)
-            connected = True
-        elif portName in p[0]:
-            port = p[0]
-            print("Ohbot found on port:" + port)
-            connected = True
-
-    # If not found then try the first port
-    if port == "":
+    if portName == None:
         for p in ports:
-            port = p[0]
-            print("Ohbot not found")
+            if (not platform.system() == "Darwin") or "usb" in p[0]:
+                if(checkPort(p)):
+                    port = p[0]
+                    print("Ohbot found on port:" + port)
+                    connected = True
+                    break
+                else:
+                    print("Checked " + p[0] + " Ohbot not connected")
+                
+    else:
+ 
+        if checkPort(portName):
+            connected = True
+            print("Ohbot found on port:" + port)
+            port = portName
+        else:
             connected = False
-            break
+            print("Checked " + portName + " Ohbot not connected")
 
     if port == "":
-        print("Ohbot port " + portName + " not found")
+        print("Ohbot not found")
         return False
 
     # Open the serial port
     if connected:
-        ser = serial.Serial(port, 19200)
-        ser.timeout = None
-        ser.write_timeout = None
+        try:
+            ser = serial.Serial(port, 19200)
+            ser.timeout = None
+            ser.write_timeout = None
+        except:
+            print("Could not connect to" + port)
 
     # Set read timeout and write timeouts to blocking
 
@@ -512,19 +541,19 @@ def init(portName):
     if synthesizer.lower() != "festival":
         _generateSpeechFile(text)
         
-
     _loadSpeechDatabase()
 
     return True
 
+
 # initialise with any port that has USB Serial Device in the name
 
 if platform.system() == "Windows":
-    init("USB Serial Device")
+    init()
 if platform.system() == "Darwin":
-    init("usbmodem")
+    init()
 if platform.system() == "Linux":
-    init("Arduino")
+    init()
 
 def getDirectory():
     global directory
