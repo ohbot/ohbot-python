@@ -458,7 +458,7 @@ def checkPort(p):
         line = ser.readline()
         ser.close()
 
-        subString = "v1".encode('latin-1')
+        subString = "v".encode('latin-1')
 
         if line.find(subString) != -1:
             return True
