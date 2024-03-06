@@ -63,6 +63,7 @@ LIDBLINK = 3
 TOPLIP = 4
 BOTTOMLIP = 5
 EYETILT = 6
+HEADROLL = 7
 
 # array to hold sensor values.
 sensors = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
