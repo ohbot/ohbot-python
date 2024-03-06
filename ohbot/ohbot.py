@@ -462,6 +462,11 @@ def checkPort(p):
 
         if line.find(subString) != -1:
             return True
+
+        subString = "v2".encode('latin-1')
+
+        if line.find(subString) != -1:
+            return True
         else:
             return False
     except:
