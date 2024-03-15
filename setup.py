@@ -1,18 +1,17 @@
 from setuptools import setup
-import platform
 
-# Define your includes per platform
-
-print("This is a " + platform.system() + " system")
-
-if platform.system() == "Darwin":
-    includes =['pyserial','lxml','playsound','numpy','comtypes','requests']
-
-if platform.system() == "Windows":
-    includes =['pyserial','lxml','playsound','numpy','comtypes','requests']
-
-if platform.system() == "Linux":
-    includes =['pyserial','playsound','gTTS','pydub','requests']
+# Specify platform-dependent requirements directly in install_requires using environment markers
+install_requires=[
+    'pyserial',
+    'playsound',
+    'requests',
+    'pyobjc; platform_system=="Darwin"',
+    'lxml; platform_system!="Linux"',
+    'numpy; platform_system!="Linux"',
+    'comtypes; platform_system!="Linux"',
+    'gTTS; platform_system=="Linux"',
+    'pydub; platform_system=="Linux"',
+]
 
 setup(
     name='ohbot',
@@ -27,13 +26,13 @@ setup(
              'Sounds/fanfare.wav', 'Sounds/loop.wav', 'Sounds/ohbot.wav', 'Sounds/smash.wav', 'Sounds/spring.wav']
     },
     include_package_data=True,
-    version='4.0.12',
+    version='4.0.13',
     description='Python library for controlling an Ohbot Robot',
     author='ohbot',
     author_email='info@ohbot.co.uk',
     url='https://github.com/ohbot/ohbot-python',
-    download_url='https://github.com/ohbot/ohbot-python/archive/4.0.12.tar.gz',
+    download_url='https://github.com/ohbot/ohbot-python/archive/4.0.13.tar.gz',
     keywords=['ohbot', 'robot', 'picoh'],
     classifiers=[],
-    install_requires=includes,
+    install_requires=install_requires,
 )
