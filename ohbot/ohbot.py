@@ -16,6 +16,10 @@ from lxml import etree
 import random
 import re
 import csv
+import requests
+
+AccessUri = "https://westeurope.api.cognitive.microsoft.com/sts/v1.0/issueToken"
+SynthesizeUri = "https://westeurope.tts.speech.microsoft.com/cognitiveservices/v1"
 
 sapivoice = ''
 sapistream = ''
@@ -34,9 +38,10 @@ if platform.system() == "Linux":
     from pydub import AudioSegment
 
 # Variables to hold name of settings
-
 speechDatabaseFile = ''
 defaultEyeShape = ''
+eyeShapeLeft = ''
+eyeShapeRight = ''
 eyeShapeFile = ''
 speechAudioFile = 'ohbotData/ohbotspeech.wav'
 ohbotMotorDefFile = 'ohbotData/MotorDefinitionsv21.omd'
@@ -45,6 +50,9 @@ synthesizer = ''
 voice = ''
 language = 'en-GB' # Language/Accent for GTTS web text to speech.
 settingsFile = 'ohbotData/OhbotSettings.xml' # String to hold location of settings file
+speechGender = "Female"
+# This is passed in to setsynthesizer
+cogServicesID = ''
 
 # Variable to hold the location of the ohbot library folder.
 directory = os.path.dirname(os.path.abspath(__file__))
@@ -77,6 +85,8 @@ sensors = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
 motorPos = [11, 11, 11, 11, 11, 11, 11, 11]
 motorMins = [0, 0, 0, 0, 0, 0, 0, 0]
 motorMaxs = [0, 0, 0, 0, 0, 0, 0, 0]
+motorSpeeds = [0, 0, 0, 0, 0, 0, 0, 0]
+motorAccels = [0, 0, 0, 0, 0, 0, 0, 0]
 motorRev = [False, False, False, False, False, False, False, False]
 restPos = [0, 0, 0, 0, 0, 0, 0, 0]
 isAttached = [False, False, False, False, False, False, False, False]
@@ -92,7 +102,7 @@ phraseList = []
 port = ""
 
 # define library version
-version = "4.0.13"
+version = "4.0.14"
 
 # flag to stop writing when writing for threading
 writing = False
@@ -118,7 +128,7 @@ if not path.exists('ohbotData/OhbotSettings.xml'):
 
 # Load settings from XML file.
 def _loadSettings():
-    global eyeShapeFile,defaultEyeShape,synthesizer,voice,speechDatabaseFile,eyeShapeFile,ohbotMotorDefFile
+    global eyeShapeFile,defaultEyeShape,synthesizer,voice,speechDatabaseFile,eyeShapeFile,ohbotMotorDefFile,eyeShapeLeft,eyeShapeRight
     
     tree = etree.parse(settingsFile)
 
@@ -132,6 +142,8 @@ def _loadSettings():
 
         if name == "DefaultEyeShape":
             defaultEyeShape = val
+            eyeShapeLeft = val
+            eyeShapeRight = val
             
         if name == "DefaultSpeechSynth":
             synthesizer = val
@@ -211,9 +223,18 @@ if debug:
 
 
 # Cache of pupil positions
-global lastfex, lastfey
-lastfex = 5
-lastfey = 5
+
+lastfexl = 5
+lastfexr = 5
+lastfeyl = 5
+lastfeyr = 5
+
+blinkl = 10
+blinkr = 10
+
+baseR = 0
+baseG = 0
+baseB = 0
 
 ser = None
 
@@ -239,7 +260,7 @@ class Phrase(object):
             
 # Used during calibration.
 def _revertMotorDefsFile():
-    shutil.copyfile(os.path.join(directory, 'MotorDefinitionsOhbot.omd'), os.path.join('ohbotData',ohbotMotorDefFile))
+    shutil.copyfile(os.path.join(directory, 'MotorDefinitionsOhbot.omd'), ohbotMotorDefFile)
     _loadMotorDefs()
 
 # Read motor definitions file.
@@ -255,6 +276,8 @@ def _loadMotorDefs():
         motorPos[index] = int(child.get("RestPosition"))
         restPos[index] = int(child.get("RestPosition"))
         motorType[index] = child.get("MotorType")
+        motorSpeeds[index] = child.get("Speed")
+        motorAccels[index] = child.get("Acceleration")
 
         if child.get("Reverse") == "True":
             rev = True
@@ -352,11 +375,17 @@ def _parseSAPIVoice(flag):
             val = val[:pos]
     return val
 
-# generate speech file depending on platform and sythensizer.
+# generate speech file depending on platform and synthesizer.
 def _generateSpeechFile(text):
     # Pick up the global variable that defines the language. This is only used in GTTS speech.
     global language
     file = speechAudioFile
+
+    if synthesizer.lower() == 'azure':
+
+        _generateSpeechFromAzure(text)
+        return
+    
     if platform.system() == "Windows":
         if ("sapi" in synthesizer.lower()):
             from comtypes.gen import SpeechLib
@@ -451,6 +480,52 @@ def _generateSpeechFile(text):
             if debug:
                 print("Speech Bash Command:")
                 print(bashcommand)
+
+def _generateSpeechFromAzure(words):
+    headers = {'Ocp-Apim-Subscription-Key': cogServicesID}
+    try:
+        r = requests.post(AccessUri, data='', headers=headers)
+    except Exception as e:
+        print("While trying to access cognitive speech: Internet connection failed")
+        print(e)
+        return
+        
+    if r.status_code != 200:
+        print("Authentication Failed with code:")
+        print(r.status_code)
+        return
+    
+    token = r.content.decode("utf-8")
+    postStringData = GenerateSsml(words, language, speechGender, voice)
+
+    # use riff-16khz-16bit-mono-pcm in output format to get playable file with header. raw-16khz-16bit-mono-pcm is used to get file without header (useful in a stream etc)
+
+    headers = {"Content-Type": "application/ssml+xml",
+               "X-Microsoft-OutputFormat": "riff-16khz-16bit-mono-pcm",
+               "Authorization": "Bearer " + token
+               }         
+    
+    r = requests.post(SynthesizeUri, data=postStringData, headers=headers)
+    if r.status_code != 200:
+        print("Synthesis Failed with code:")
+        print(r.status_code)
+        return
+
+    with open(speechAudioFile, mode='wb') as f:
+        f.write(r.content)
+
+def GenerateSsml(textToSpeak, locale, gender, voiceName):
+
+    #// Using XDocument from the example formats it wrongly.  Maybe because of " instead of '
+    
+    ssmlDoc = "<speak version='1.0' xml:lang='" + locale + "'>";
+
+    ssmlDoc += "<voice xml:lang='" + locale + "' xml:gender='" + gender + "' name='" + locale + "-" + voiceName + "'>";
+    ssmlDoc += textToSpeak;
+    ssmlDoc += "</voice>";
+    ssmlDoc += "</speak>";
+
+    return ssmlDoc
 
 def checkPort(p):
     try:
@@ -575,7 +650,7 @@ def getDirectory():
 # Function to move Ohbot's motors. Arguments | m (motor) → int (0-6) | pos (position) → int (0-10) | spd (speed) →
 # int (0-10) **eg move(4,3,9) or move(0,9,3)**
 def move(m, pos, spd=5, eye=0):
-    global lastfex, lastfey, topLipFree
+    global lastfexl, lastfeyl,lastfexr, lastfeyr, topLipFree
 
     # Limit values to keep then within range
     pos = _limit(pos)
@@ -602,22 +677,53 @@ def move(m, pos, spd=5, eye=0):
     # Eyeturn
     if (motorType[m] == "Matrix X"):
         pos = (pos - 5) * 0.4 + 5  # Bodge to reduce the scale
-        msg = "FE," + str(eye) + "," + "{:0.0f}".format(pos * 255 / 10) + "," + "{:0.0f}".format(lastfey * 255 / 10) + "\n"
+   
+        if eye == 1 or eye == 0:
+            msg = "FE,2," + "{:0.0f}".format(pos * 255 / 10) + "," + "{:0.0f}".format(lastfeyl * 255 / 10) + "\n"
+            # Write message to serial port
+            _serwrite(msg)
+            lastfexl = pos
 
-        # print ("fex:" + msg)
-        # Write message to serial port
-        _serwrite(msg)
-        lastfex = pos
+        if eye == 2 or eye == 0:
+            msg = "FE,1," + "{:0.0f}".format(pos * 255 / 10) + "," + "{:0.0f}".format(lastfeyr * 255 / 10) + "\n"
+            # Write message to serial port
+            _serwrite(msg)
+            lastfexr = pos
+
+        if eye == 0:
+            msg = "FE,0," + "{:0.0f}".format(pos * 255 / 10) + "," + "{:0.0f}".format(lastfeyl * 255 / 10) + "\n"
+            # Write message to serial port
+            _serwrite(msg)
+            lastfexl = pos
+            lastfexr = pos
+
+        motorPos[m] = pos  
         return
 
     # Eyetilt
     if (motorType[m] == "Matrix Y"):
         pos = (pos - 5) * 0.4 + 5  # Bodge to reduce the scale
-        msg = "FE," + str(eye) + "," + "{:0.0f}".format(lastfex * 255 / 10) + "," + "{:0.0f}".format(pos * 255 / 10) + "\n"
-        # print ("fey:" + msg)
-        # Write message to serial port
-        _serwrite(msg)
-        lastfey = pos
+
+        if eye == 1:
+            msg = "FE,2," + "{:0.0f}".format(lastfexl * 255 / 10) + "," + "{:0.0f}".format(pos * 255 / 10) + "\n"
+            # Write message to serial port
+            _serwrite(msg)
+            lastfeyl = pos
+
+        if eye == 2:
+            msg = "FE,1," + "{:0.0f}".format(lastfexr * 255 / 10) + "," + "{:0.0f}".format(pos * 255 / 10) + "\n"
+            # Write message to serial port
+            _serwrite(msg)
+            lastfeyr = pos
+
+        if  eye == 0:
+            msg = "FE,0," + "{:0.0f}".format(lastfexl * 255 / 10) + "," + "{:0.0f}".format(pos * 255 / 10) + "\n"
+            # Write message to serial port
+            _serwrite(msg)
+            lastfeyl = pos
+            lastfeyr = pos
+
+        motorPos[m] = pos
         return
 
     # Blink
@@ -626,8 +732,16 @@ def move(m, pos, spd=5, eye=0):
         # print ("fl:" + msg)
         # Write message to serial port
         _serwrite(msg)
-        return
 
+        if eye == 0:
+            blinkl = pos
+            blinkr = pos
+        if eye == 1:
+            blinkl = pos
+        if eye == 2:
+            blinkr = pos
+        return
+    
     # Attach motor
     attach(m)
 
@@ -665,9 +779,7 @@ def _serwrite(s):
         ser.write(s.encode('latin-1'))
         writing = False
 
-    # Function to attach Ohbot's motors. Argument | m (motor) int (0-6)
-
-
+# Function to attach Ohbot's motors. Argument | m (motor) int (0-6)
 def attach(m):
     if isAttached[m] == False:
         # Construct message
@@ -711,16 +823,21 @@ def setLanguage(params=language):
 # name - run 'say -v ?' in terminal to find available names.
 # speed - speech rate in words per min.
 # This override will stay in use until it's next called
-def setVoice(params=voice):
-    global voice
+def setVoice(params=voice,language = "en-GB", gender = 'Female'):
+    global voice, speechGender
     voice = params
-
+    speechGender = gender
+    setLanguage(language)
 
 # Function to set a different speech synthesizer - defaults to sapi
-def setSynthesizer(params=synthesizer):
-    global synthesizer
+def setSynthesizer(params=synthesizer,ID = "",region ='westeurope'):
+    global synthesizer, voice, cogServicesID
     synthesizer = params
-
+    voice = ""
+    cogServicesID = ID
+    if params.lower() == 'azure':
+        setVoice("LibbyNeural")
+        
 # Set the speed of the speech in words per min.
 def speechSpeed(params=speechRate):
     global speechRate
@@ -919,9 +1036,12 @@ def _moveSpeech(phonemes, times, doMove):
         # wait to prevent blocking of other threads
         wait(WAITLONG)
                 
-    move(TOPLIP, 5)
-    move(BOTTOMLIP, 5)
-    
+    if (doMove):
+        move(TOPLIP, 5)
+        move(BOTTOMLIP, 5)
+
+    lipTopPos = 5
+    lipBottomPos = 5
 
 # Function to limit values so they are between 0 - 10    
 def _limit(val):
@@ -1031,10 +1151,9 @@ def _phonememapTop(val):
     return 5 + (_limit(val) / 2)
 
 
-# Function mapping phonemes to top lip positions.
-# Bottom lip never goes over 9
+# Function mapping phonemes to bottom lip positions.
 def _phonememapBottom(val):
-    return 5 + (_limit(val) * 3 / 10)
+    return 5 + (_limit(val) / 2)
 
 # Function to support Ohbot programs with eyeColour. Passes onto baseColour.
 def eyeColour(r, g, b, swapRandG=False):
@@ -1055,10 +1174,14 @@ def setBaseColor(r, g, b, swapRandG=False):
 # Function to set the color of the LEDs in Ohbot's base. Arguments | r (red) → int (0-10) | g (green) → int (0-10) | b (blue) → int (0-10)
 # swapRandG is used to swap the red and green values as this is required for some LEDs
 def baseColour(r, g, b, swapRandG=False):
+    global baseR,baseB,baseG
     # Limit the values to keep them within range.
     r = _limit(r)
     g = _limit(g)
     b = _limit(b)
+    baseR = r
+    baseG = g
+    baseB = b
 
     # Scale the values so they are between 0 - 255.
     r = int((255 / 10) * r)
@@ -1078,6 +1201,32 @@ def baseColour(r, g, b, swapRandG=False):
     # Write message to serial port.
     _serwrite(msg1)
     _serwrite(msg2)
+
+def setLEDByName(name):
+    if (name == "off"):
+        return baseColour(0,0,0)       
+    if (name == "red"):
+        return baseColour(10,0,0)        
+    if (name == "green"):
+        return baseColour(0,10,0)       
+    if (name == "blue"):
+        return baseColour(0,0,10)      
+    if (name == "yellow"):
+        return baseColour(10,10,0)       
+    if (name == "orange"):
+        return baseColour(10,6.47,0)        
+    if (name == "purple"):
+        return baseColour(5,0,5)       
+    if (name == "white"):
+        return baseColour(10,10,10)
+
+def setLEDRGB(col,val):
+    if(col == "red"):
+        baseColour(val,baseG,baseB)     
+    if(col == "green"):
+        baseColour(baseR,val,baseB)
+    if(col == "blue"):
+        baseColour(baseR,baseG,val)    
 
 # Wait for a number of seconds. 
 def wait(seconds):
@@ -1209,26 +1358,28 @@ def _reverseBits(str):
 
 
 def setEyeShape(shapeNameRight, shapeNameLeft=''):
-    global shapeList
+    global shapeList,eyeShapeLeft,eyeShapeRight
+
+    leftHex =''
 
     if shapeNameLeft == '':
         shapeNameLeft = shapeNameRight
-
-    leftHex = ''
-
+    
     for index, shape in enumerate(shapeList):
         if shape.name.upper() == shapeNameRight.upper():
             rightHex = shape.hexString
+            eyeShapeRight = shape.name
 
     for index, shape in enumerate(shapeList):
         if shape.name.upper() == shapeNameLeft.upper():
             leftHex = shape.hexString
+            eyeShapeLeft = shape.name
             if shape.autoMirror:
                 autoMirrorVar = True
             else:
                 autoMirrorVar = False
 
-    # Send hex to Ohbot.
+    # Send hex to Picoh.
 
     if leftHex == '':
         print(str(shapeNameLeft) + " Eyeshape Not Found")
@@ -1236,8 +1387,11 @@ def setEyeShape(shapeNameRight, shapeNameLeft=''):
     if connected:
         _setEyes(rightHex, leftHex, autoMirrorVar)
         wait(WAITMEDIUM)
-        move(EYETILT, motorPos[EYETILT])
-        move(EYETURN, motorPos[EYETURN])
+        move(EYETILT, lastfeyl,1)
+        move(EYETILT, lastfeyr,2)
+
+        move(EYETURN, lastfexl,1)
+        move(EYETURN, lastfexr,2)
 
 
 def getPhrase(set='None', variable='None'):
@@ -1291,3 +1445,6 @@ def _playSoundThread(name=""):
     # play the sound on Linux
     if platform.system() == "Linux":
         os.system('aplay ' + soundFile)
+
+def SetSoundLevel(val):
+    return
