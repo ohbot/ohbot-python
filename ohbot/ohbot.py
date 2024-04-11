@@ -1,5 +1,5 @@
 # This is a script to help control a Ohbot Robot. www.ohbot.co.uk
-
+# Also contains code to keep compatibility with a Picoh Robot
 import platform
 import serial
 import serial.tools.list_ports
@@ -55,6 +55,11 @@ dirName = 'ohbotData'
 # Global variable to turn on and off printing debug info.
 debug = False
 
+# define constants for waits in seconds
+WAITSHORT = 0.01
+WAITMEDIUM = 0.05
+WAITLONG = 0.1
+
 # define constants for motors
 HEADNOD = 0
 HEADTURN = 1
@@ -76,6 +81,8 @@ motorRev = [False, False, False, False, False, False, False, False]
 restPos = [0, 0, 0, 0, 0, 0, 0, 0]
 isAttached = [False, False, False, False, False, False, False, False]
 motorType = ["", "", "", "", "", "", "", ""]
+lipTopPos = 5
+lipBottomPos = 5
 
 # empty lists to hold eye shapes and phrases from speech databa se.
 shapeList = []
@@ -85,7 +92,7 @@ phraseList = []
 port = ""
 
 # define library version
-version = "4.0.9"
+version = "4.0.13"
 
 # flag to stop writing when writing for threading
 writing = False
@@ -648,9 +655,9 @@ def _serwrite(s):
         print("Serial command sent to Ohbot:")
         print(s)
     if platform.system() == "Windows" or platform.system() == "Linux":
-        # wait until previous write is finished
+        # wait until previous write is finished without blocking other threads
         while (writing):
-            pass
+            wait(WAITSHORT)
         # print ('waiting on write')
 
     if connected:
@@ -686,6 +693,13 @@ def _getPos(m, pos):
     scaledPos = (mRange / 10) * pos
     return scaledPos + motorMins[m]
 
+# Function to return the current lip position for speech
+def getTopLip ():
+    return lipTopPos
+
+# Function to return the bottom lip position for speech
+def getBottomLip ():
+    return lipBottomPos
 
 # Function to set the language used by gTTS web speech synthesizer
 # name - run 'say -v ?' in terminal to find available names.
@@ -833,23 +847,17 @@ def say(text, untilDone=True, lipSync=True, hdmiAudio=False, soundDelay=0):
             phonemes[i] = phonemes[i] * 10 / max
             # print ('visnorm', i, ":", times[i], ':', phonemes[i])
     
-    # Use the bottom lip to push the top lip above the centre point if it is below
-       
-    if lipSync:
-        if soundDelay > 0:
-            # Set up a thread for the speech sound synthesis, delay start by soundDelay
-            t = threading.Timer(soundDelay, _playSpeech, args=(hdmiAudio,), kwargs=None)
-            # Set up a thread for the speech movement
-            t2 = threading.Thread(target=_moveSpeech, args=(phonemes, times))
-        else:
-            # Set up a thread for the speech sound synthesis
-            t = threading.Thread(target=_playSpeech, args=(hdmiAudio,))
-            # Set up a thread for the speech movement, delay start by - soundDelay
-            t2 = threading.Timer(-soundDelay, _moveSpeech, args=(phonemes, times), kwargs=None)
-        t2.start()
+    if soundDelay > 0:
+        # Set up a thread for the speech sound synthesis, delay start by soundDelay
+        t = threading.Timer(soundDelay, _playSpeech, args=(hdmiAudio,), kwargs=None)
+        # Set up a thread for the speech movement
+        t2 = threading.Thread(target=_moveSpeech, args=(phonemes, times, lipSync))
     else:
         # Set up a thread for the speech sound synthesis
         t = threading.Thread(target=_playSpeech, args=(hdmiAudio,))
+        # Set up a thread for the speech movement, delay start by - soundDelay
+        t2 = threading.Timer(-soundDelay, _moveSpeech, args=(phonemes, times, lipSync), kwargs=None)
+    t2.start()
     t.start()
 
     # if untilDone, keep running until speech has finished
@@ -857,7 +865,8 @@ def say(text, untilDone=True, lipSync=True, hdmiAudio=False, soundDelay=0):
         totalTime = times[len(times) - 1]
         startTime = time.time()
         while time.time() - startTime < totalTime:
-            continue
+            # wait to prevent blocking of other threads
+            wait (WAITLONG)
                 
 # Function to play back the speech wav file, if hmdi audio is being used play silence before speech sound
 def _playSpeech(addSilence):
@@ -884,8 +893,11 @@ def _playSpeech(addSilence):
             os.system('aplay -D plug:default ohbotData/ohbotspeech.wav')
 
 
-# Function to move Ohbot's lips in time with speech. Arguments | phonemes → list of phonemes[] | waits → list of waits[]
-def _moveSpeech(phonemes, times):
+# Function to set lipTopPos and lipBottomPos global variables to lip positions
+# Optionally moves Ohbot's lips to these positions
+# Arguments | phonemes → list of phonemes[] | waits → list of waits[] | flag to do the physical move
+def _moveSpeech(phonemes, times, doMove):
+    global lipTopPos, lipBottomPos
     startTime = time.time()
     timeNow = 0
     totalTime = times[len(times) - 1]
@@ -895,14 +907,18 @@ def _moveSpeech(phonemes, times):
         for x in range(0, len(times)):
             if timeNow > times[x] and x > currentX:
                 if synthesizer.upper() == "FESTIVAL":
-                    posTop = _phonememapTopFest(phonemes[x])
-                    posBottom = _phonememapBottomFest(phonemes[x])
+                    lipTopPos = _phonememapTopFest(phonemes[x])
+                    lipBottomPos = _phonememapBottomFest(phonemes[x])
                 else:
-                    posTop = _phonememapTop(phonemes[x])
-                    posBottom = _phonememapBottom(phonemes[x])
-                move(TOPLIP, posTop, 10)
-                move(BOTTOMLIP, posBottom, 10)
+                    lipTopPos = _phonememapTop(phonemes[x])
+                    lipBottomPos = _phonememapBottom(phonemes[x])
+                if (doMove):
+                    move(TOPLIP, lipTopPos, 10)
+                    move(BOTTOMLIP, lipBottomPos, 10)
                 currentX = x
+        # wait to prevent blocking of other threads
+        wait(WAITLONG)
+                
     move(TOPLIP, 5)
     move(BOTTOMLIP, 5)
     
@@ -1079,7 +1095,7 @@ def reset():
     setEyeShape(defaultEyeShape, defaultEyeShape)
     for x in range(len(restPos) - 1,-1,-1):
         move(x, restPos[x])
-        wait(0.1)
+        wait(WAITLONG)
     close()
 
 # Return the sensor value between 0-10 for a given sensor number. Values stored in sensors[] array.
@@ -1219,7 +1235,7 @@ def setEyeShape(shapeNameRight, shapeNameLeft=''):
         return
     if connected:
         _setEyes(rightHex, leftHex, autoMirrorVar)
-        wait(0.05)
+        wait(WAITMEDIUM)
         move(EYETILT, motorPos[EYETILT])
         move(EYETURN, motorPos[EYETURN])
 
