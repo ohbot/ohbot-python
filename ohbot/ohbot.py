@@ -31,9 +31,9 @@ if platform.system() == "Windows":
     from comtypes.client import CreateObject
 
 if platform.system() == "Darwin":
-    from playsound import playsound
+    from playsound3 import playsound
 if platform.system() == "Linux":
-    from playsound import playsound
+    from playsound3 import playsound
     from gtts import gTTS
     from pydub import AudioSegment
 
