@@ -76,7 +76,7 @@ The ``pip install ohbot`` command will install the following libraries:
 
 | Library    | Use         | Terminal command to install  |Link |
 | ---------- |-------------| -----------------------------|-----|
-| ohbot   | Interface with Ohbot          | ```pip install ohbotWin```  |[ohbot](https://github.com/ohbot/ohbot-python/) 
+| ohbot   | Interface with Ohbot          | ```pip install ohbot```  |[ohbot](https://github.com/ohbot/ohbot-python/) 
 | serial    | Communicate with serial port| ```pip install pyserial```  |[pyserial](https://github.com/pyserial/pyserial/) |
 | lxml    | Import settings file          | ```pip install lxml```  |[lxml](https://github.com/lxml/lxml) |
 | comtypes    | Required for serial communication      | ```pip install comtypes```  | [comtypes](https://github.com/enthought/comtypes) |
