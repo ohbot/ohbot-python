@@ -19,7 +19,6 @@ setup(
         'numpy',
         'lxml; platform_system == "Windows" or platform_system == "Darwin"',
         'playsound3; platform_system == "Darwin" or platform_system == "Linux"',
-        'playsound; platform_system == "Windows"',
         'comtypes; platform_system == "Windows" or platform_system == "Darwin"',
         'gTTS; platform_system == "Linux"',
         'pydub; platform_system == "Linux"',
