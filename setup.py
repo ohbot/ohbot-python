@@ -10,7 +10,7 @@ setup(
     author = 'ohbot',
     author_email = 'info@ohbot.co.uk',
     url = 'https://github.com/ohbot/ohbot-python',
-    download_url = 'https://github.com/ohbot/ohbot-python/archive/4.0.16.tar.gz',
+    download_url = 'https://github.com/ohbot/ohbot-python/archive/refs/tags/v4.0.16.tar.gz',
     keywords = ['ohbot', 'robot','picoh'],
     classifiers = [],
     install_requires=[
