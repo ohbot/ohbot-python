@@ -1235,7 +1235,7 @@ def wait(seconds):
 
 # Detach each of Ohbot's motors.
 def close():
-    for x in range(0, len(motorMins) - 1):
+    for x in range(0, len(motorMins)):
         detach(x)
 
     # Reset Ohbot back to start position
