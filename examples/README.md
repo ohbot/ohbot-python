@@ -47,11 +47,12 @@ This program makes Ohbot wake up every quarter of an hour and say the time. It a
 
  [AzureSpeech.py](https://raw.githubusercontent.com/ohbot/ohbot-python/master/examples/AzureSpeech.py)
 -
-A simple example for using Azure Speech. An Azure speech key is required to use this.  
+A simple example of using Azure Speech to give a broader range of spoken voices and languages. An Azure speech key is required to use this.  
 
  [facetrack.py](https://raw.githubusercontent.com/ohbot/ohbot-python/master/examples/facetrack.py)
 -
 This program uses a face detection library to move Ohbot's head and eyes to track a face.  A camera is required. 
+This program requires CV2 which is a python Computer Vision library. You will also need a [trained classifier XML file (haarcascade_frontalface_default.xml)](https://raw.githubusercontent.com/opencv/opencv/master/data/haarcascades/haarcascade_frontalface_default.xml) available from the [OpenCV Github Page.](https://github.com/opencv/opencv) For more details on detecting faces check out [this tutorial.](https://towardsdatascience.com/face-detection-in-2-minutes-using-opencv-python-90f89d7c0f81)
 
  [wolframAlphaOhbot](https://raw.githubusercontent.com/ohbot/ohbot-python/master/examples/wolframAlphaOhbot.py)
 -
