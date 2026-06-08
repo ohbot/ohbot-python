@@ -13,6 +13,14 @@ Run an example
 
 2) Open and run in IDLE or whatever Python editor/launcher you prefer. 
 
+[GPTSpeechDemo.py](https://raw.githubusercontent.com/ohbot/ohbot-python/master/examples/GPTSpeechDemo.py)
+-
+A program with random headturn and headnod movements, eyelid blink and lip synch. When the space key is pressed a subject is requested and GPT is used to generate a Haiku about this subject. 
+
+[MoveLipsToAudio.py](https://raw.githubusercontent.com/ohbot/ohbot-python/master/examples/MoveLipsToAudio.py)
+-
+A simple program that makes Ohbot's lips move in time to audio input so that Ohbot can lip-synch with a podcast etc.
+
 [helloworldohbot.py](https://raw.githubusercontent.com/ohbot/ohbot-python/master/examples/helloworldohbot.py)
 -
 A simple program that makes Ohbot move and speak. 
@@ -36,6 +44,14 @@ Control Ohbot's motor positions using the mouse and trigger actions using the a,
  [OhClock.py](https://raw.githubusercontent.com/ohbot/ohbot-python/master/examples/OhClock.py)
 -
 This program makes Ohbot wake up every quarter of an hour and say the time. It also uses a second thread to blink Ohbot's eyes.  
+
+ [AzureSpeech.py](https://raw.githubusercontent.com/ohbot/ohbot-python/master/examples/AzureSpeech.py)
+-
+A simple example for using Azure Speech. An Azure speech key is required to use this.  
+
+ [facetrack.py](https://raw.githubusercontent.com/ohbot/ohbot-python/master/examples/facetrack.py)
+-
+This program uses a face detection library to move Ohbot's head and eyes to track a face.  A camera is required. 
 
  [wolframAlphaOhbot](https://raw.githubusercontent.com/ohbot/ohbot-python/master/examples/wolframAlphaOhbot.py)
 -
