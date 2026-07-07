@@ -9,6 +9,11 @@ pico2wave <br>
 
 Online: <br>
 gTTS <br>
+Azure <br>
+
+You can set up a free Azure account here:
+
+<a href="https://azure.microsoft.com/en-gb/free/" target="_blank"></a>
 
 Additonal voices can be used by installing the ```espeak``` or ```pico2wave``` synthesizers.
 
@@ -33,7 +38,7 @@ Online :
 sudo pip3 install ohbot --upgrade
  ```
  
-ohbot.setSynthesizer(synth)
+ohbot.setSynthesizer(synth,ID = "",region ='westeurope')
 ----------
 
 | synth | Full Name |
@@ -42,6 +47,7 @@ ohbot.setSynthesizer(synth)
 | “espeak” | espeak speech |
 | “pico2wave” | pico2wave speech |
 | “gTTS” | Google web based text to speech |
+| “Azure” | Microsoft web based text to speech |
 
 
 For Example:
@@ -61,7 +67,16 @@ or
 ohbot.setSynthesizer("gTTS")
 ```
 
-ohbot.setVoice(voice)
+or 
+
+```python
+ohbot.setSynthesizer("Azure", "<key>", "<region>")
+where <key> and <region> come from your Azure acccount
+```
+
+ohbot.setVoice(voice,language = "en-GB", gender = 'Female')
+language is only supported by Azure voices and gTTS voices
+gender is only supported by Azure voices and is overridden by the voice
 ------
 
 Use ohbot.setVoice() to set the voice synthesizer:

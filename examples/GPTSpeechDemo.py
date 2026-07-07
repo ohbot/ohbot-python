@@ -263,7 +263,7 @@ win.bind("<space>", WhenKeyPressedspace)
 win.bind("X", WhenKeyPressedX)
 
 # CODE FOR THE USER INTERFACE
-photoReset = PhotoImage(file = r"reset.gif") 
+photoReset = PhotoImage(file = r"reset.png") 
 Button(win, image=photoReset, command = resetBtn).place(x=2, y=2)
 
 photoGo = PhotoImage(file = r"go.gif") 
