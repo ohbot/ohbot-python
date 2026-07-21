@@ -18,11 +18,49 @@ import re
 import csv
 import requests
 
-AccessUri = "https://westeurope.api.cognitive.microsoft.com/sts/v1.0/issueToken"
-SynthesizeUri = "https://westeurope.tts.speech.microsoft.com/cognitiveservices/v1"
+AccessUri = "https://{region}.api.cognitive.microsoft.com/sts/v1.0/issueToken"
+SynthesizeUri = "https://{region}.tts.speech.microsoft.com/cognitiveservices/v1"
 
 sapivoice = ''
 sapistream = ''
+
+SAPI_LANGUAGE_MAP = {
+    "401": "ar-SA",
+    "404": "zh-TW",
+    "405": "cs-CZ",
+    "406": "da-DK",
+    "407": "de-DE",
+    "408": "el-GR",
+    "409": "en-US",
+    "809": "en-GB",
+    "c09": "en-AU",
+    "1009": "en-CA",
+    "1409": "en-NZ",
+    "1809": "en-IE",
+    "1c09": "en-ZA",
+
+    "40a": "es-ES",
+    "80a": "es-MX",
+    "c0a": "es-ES",
+
+    "40b": "fi-FI",
+    "40c": "fr-FR",
+    "80c": "fr-BE",
+    "c0c": "fr-CA",
+    "100c": "fr-CH",
+
+    "410": "it-IT",
+    "411": "ja-JP",
+    "412": "ko-KR",
+    "413": "nl-NL",
+    "414": "nb-NO",
+    "415": "pl-PL",
+    "416": "pt-BR",
+    "816": "pt-PT",
+    "41d": "sv-SE",
+    "439": "hi-IN",
+    "804": "zh-CN",
+}
 
 # Import the correct sound library depending on platform.
 if platform.system() == "Windows":
@@ -48,11 +86,12 @@ ohbotMotorDefFile = 'ohbotData/MotorDefinitionsv21.omd'
 soundFolder = 'ohbotData/Sounds'
 synthesizer = ''
 voice = ''
-language = 'en-GB' # Language/Accent for GTTS web text to speech.
+speechLanguage = '' # Language/Accent for text to speech.
 settingsFile = 'ohbotData/OhbotSettings.xml' # String to hold location of settings file
-speechGender = "Female"
+speechGender = ""
 # This is passed in to setsynthesizer
 cogServicesID = ''
+cogRegion = ''
 
 # Variable to hold the location of the ohbot library folder.
 directory = os.path.dirname(os.path.abspath(__file__))
@@ -102,7 +141,7 @@ phraseList = []
 port = ""
 
 # define library version
-version = "4.0.19"
+version = "4.0.20"
 
 # flag to stop writing when writing for threading
 writing = False
@@ -375,19 +414,55 @@ def _parseSAPIVoice(flag):
             val = val[:pos]
     return val
 
-async def _onecore_to_wav_async(text, file, sv="", rate=0, pitch=0, volume=100):
+async def _onecore_to_wav_async(text, file, language, gender, sv="", rate=0, pitch=0, volume=100):
     from winrt.windows.media.speechsynthesis import SpeechSynthesizer
+    from winrt.windows.media.speechsynthesis import VoiceGender
     from winrt.windows.storage.streams import DataReader
 
     synth = SpeechSynthesizer()
 
     # Voice
+    # print (text, file, language, gender, sv, rate, pitch, volume)
     voices = list(SpeechSynthesizer.all_voices)
     # for v in voices:
-        # print ("Voice: " + v.display_name   + " Language: " + v.language);
+    #     print ("Voice: " + v.display_name   + " Language: " + v.language + " Gender: " + str(v.gender));
 
+    # If a voice is not defined and language and/or gender are defined, then try to find a voice that matches the language and/or gender
     if sv == "":
-        synth.voice = voices[0]
+        selectedVoice = None
+        # If nothing is defined, then default to en-GB female
+        if (language == "" and gender == ""):
+            language = "en-GB"
+            gender = "female"
+
+        if (language != "" and gender != ""):
+            for v in voices:
+                if language.lower() in v.language.lower() and ((gender.lower() == "male" and v.gender == VoiceGender.MALE) or (gender.lower() == "female" and v.gender == VoiceGender.FEMALE)):
+                    # print ("selected by language and gender" + " " + v.display_name)
+                    selectedVoice = v
+                    break
+
+        if (selectedVoice == None and language != ""):
+            for v in voices:
+                if language.lower() in v.language.lower():
+                    # print ("selected by language" + " " + v.display_name)
+                    selectedVoice = v
+                    break
+
+        if (selectedVoice == None and gender != ""):
+            for v in voices:
+                if (gender.lower() == "male" and v.gender == VoiceGender.MALE) or (gender.lower() == "female" and v.gender == VoiceGender.FEMALE):
+                    # print ("selected by gender" + " " + v.display_name)
+                    selectedVoice = v
+                    break
+        
+        # Nothing matched so just use the first available voice
+        if (len(voices) > 0):
+            if (selectedVoice is None):
+                synth.voice = voices[0]
+            else:
+                # print ("setting voice to" + " " + selectedVoice.display_name)
+                synth.voice = selectedVoice
     else:
         for v in voices:
             if sv.lower() in v.display_name.lower():
@@ -427,7 +502,7 @@ async def _onecore_to_wav_async(text, file, sv="", rate=0, pitch=0, volume=100):
     stream.close()
 
 
-def _onecore_to_wav(text, file):
+def _onecore_to_wav(text, file, language, gender):
     import asyncio
 
     sv = _parseSAPIVoice("v")
@@ -441,13 +516,23 @@ def _onecore_to_wav(text, file):
     pi = _parseSAPIVoice("p")
     pitch = int(pi) if _is_digit(pi) else 0
 
-    asyncio.run(_onecore_to_wav_async(text, file, sv, rate, pitch, volume))
+    asyncio.run(_onecore_to_wav_async(text, file, language, gender, sv, rate, pitch, volume))
+
+def _getLanguage(voice):
+    language = voice.GetAttribute("Language").lower()
+
+    # Take the first LCID if multiple are present
+    lcid = language.split(";")[0].strip()
+
+    # Map SAPI4 codes to BCP-47 language tags using the SAPI_LANGUAGE_MAP dictionary
+    return SAPI_LANGUAGE_MAP.get(lcid, lcid).lower()
+def _getGender(voice):
+    return voice.GetAttribute("Gender").lower()
 
 # generate speech file depending on platform and synthesizer.
 def _generateSpeechFile(text):
     # Pick up the global variable that defines the language. This is only used in GTTS speech.
-    global language
-    file = speechAudioFile
+    global speechLanguage, speechGender
 
     if synthesizer.lower() == 'azure':
 
@@ -457,7 +542,7 @@ def _generateSpeechFile(text):
     if platform.system() == "Windows":
         if ("sapi5" in synthesizer.lower()):
             try:
-                _onecore_to_wav(text, file)
+                _onecore_to_wav(text, speechAudioFile, speechLanguage, speechGender)
             except:
                 print("Speech being generated too quickly")
         elif ("sapi" in synthesizer.lower()):
@@ -466,7 +551,7 @@ def _generateSpeechFile(text):
             #sapivoice = CreateObject("SAPI.SpVoice")
             #sapistream = CreateObject("SAPI.SpFileStream")
             try:
-                sapistream.Open(file, SpeechLib.SSFMCreateForWrite)
+                sapistream.Open(speechAudioFile, SpeechLib.SSFMCreateForWrite)
                 sapivoice.AudioOutputStream = sapistream
 
                 # set any parameters
@@ -483,7 +568,48 @@ def _generateSpeechFile(text):
                 sv = _parseSAPIVoice("v");
                 # Default voice is always first in the list
                 if (sv == ''):
-                    sapivoice.voice = sapivoice.GetVoices()[0]
+                    # print ("looking for voice that matches", speechLanguage, str(speechGender))
+
+                    # for v in sapivoice.GetVoices():
+                    #     print ("Voice: " + v.GetDescription() + " Language: " + _getLanguage(v) + " Gender: " + _getGender(v))
+
+                    selectedVoice = None
+
+                    # If nothing is defined, then default to en-GB female
+                    if (speechLanguage == "" and speechGender == ""):
+                        speechLanguage = "en-GB"
+                        speechGender = "female"
+
+                    if (speechLanguage != "" and speechGender != ""):
+                        for v in sapivoice.GetVoices():
+                            if speechLanguage.lower() in _getLanguage(v) and speechGender.lower() == _getGender(v):
+                                # print ("selected by language and gender" + " " + v.GetDescription())
+                                selectedVoice = v
+                                break
+
+                    if (selectedVoice == None and speechLanguage != ""):
+                        for v in sapivoice.GetVoices():
+                            # print (v.getDescription() + " " + _getLanguage(v) + " " + _getGender(v))
+                            if speechLanguage.lower() in _getLanguage(v):
+                                # print ("selected by language" + " " + v.GetDescription())   
+                                selectedVoice = v
+                                break
+                    
+                    if (selectedVoice == None and speechGender != ""):
+                        for v in sapivoice.GetVoices():
+                            # print (v.getDescription() + " " + _getLanguage(v) + " " + _getGender(v))
+                            if speechGender.lower() == _getGender(v):
+                                # print ("selected by gender" + " " + v.GetDescription())
+                                selectedVoice = v
+                                break
+                    
+                    if (len(sapivoice.GetVoices()) > 0):
+                        if (selectedVoice == None):
+                            # Nothing matched so just use the first available voice
+                            sapivoice.voice = sapivoice.GetVoices()[0]
+                        else:
+                            sapivoice.voice = selectedVoice
+                            
                 else:
                     for v in sapivoice.GetVoices():
                         if (sv.lower() in v.GetDescription().lower()):
@@ -497,7 +623,7 @@ def _generateSpeechFile(text):
             # Remove any characters that are unsafe for a subprocess call
             safetext = re.sub(r'[^ .a-zA-Z0-9?\']+', '', text)
 
-            bashcommand = synthesizer + ' -w ' + file + ' ' + voice + ' "' + safetext + '"'
+            bashcommand = synthesizer + ' -w ' + speechAudioFile + ' ' + voice + ' "' + safetext + '"'
             # Execute bash command.
             subprocess.call(bashcommand, shell=True)
             if debug:
@@ -508,13 +634,11 @@ def _generateSpeechFile(text):
         # Remove any characters that are unsafe for a subprocess call
         safetext = re.sub(r'[^ .a-zA-Z0-9?\']+', '', text)
 
-        file = speechAudioFile
-
         if voice:
-            bashcommand = synthesizer + file + ' --file-format=RF64 --data-format=LEI16@22050 -r' + str(
+            bashcommand = synthesizer + speechAudioFile + ' --file-format=RF64 --data-format=LEI16@22050 -r' + str(
                 speechRate) + ' -v ' + voice + ' "' + safetext + '"'
         else:
-            bashcommand = synthesizer + file + ' --file-format=RF64 --data-format=LEI16@22050 -r' + str(
+            bashcommand = synthesizer + speechAudioFile + ' --file-format=RF64 --data-format=LEI16@22050 -r' + str(
                 speechRate) + ' "' + safetext + '"'
 
         if debug:
@@ -532,12 +656,57 @@ def _generateSpeechFile(text):
         #if we are using gTTS web speech.
         if synthesizer.upper() == "GTTS":
             # Passing the text and language to the engine
-            tts = gTTS(text=text, lang=language, slow=False)
+            tts = gTTS(text=text, lang=speechLanguage, slow=False)
 
             # Saving the converted audio in a wav file named sample
             tts.save('ohbotData/ohbotspeech.mp3')
             sound = AudioSegment.from_mp3('ohbotData/ohbotspeech.mp3')
             sound.export('ohbotData/ohbotspeech.wav', format="wav")
+        # piper
+        elif synthesizer.upper() == "PIPER":
+            piper_exe = shutil.which("piper") or shutil.which("piper-tts")
+
+            if piper_exe is None:
+                print("Piper executable not found.")
+                return
+
+            # 'voice' should contain the Piper model name or .onnx path,
+            # for example:
+            # voice = "en_GB-alan-medium"
+            # or:
+            # voice = "/usr/share/piper-voices/en_GB-alan-medium.onnx"
+
+            piper_command = [
+                piper_exe,
+                "--model", voice,
+                "--output_file", speechAudioFile
+            ]
+
+            try:
+                result = subprocess.run(
+                    piper_command,
+                    input=text,
+                    text=True,
+                    capture_output=True,
+                    check=True
+                )
+
+                if debug:
+                    print("Piper command:")
+                    print(" ".join(piper_command))
+
+                    if result.stderr:
+                        print(result.stderr)
+
+            except FileNotFoundError:
+                print(
+                    "Piper could not be found. "
+                    "Install it with: pip install piper-tts"
+                )
+
+            except subprocess.CalledProcessError as error:
+                print("Piper speech synthesis failed:")
+                print(error.stderr)            
         else:
             # Remove any characters that are unsafe for a subprocess call
             safetext = re.sub(r'[^ .a-zA-Z0-9?\']+', '', text)
@@ -555,9 +724,14 @@ def _generateSpeechFile(text):
                 print(bashcommand)
 
 def _generateSpeechFromAzure(words):
+    global cogRegion, speechLanguage
     headers = {'Ocp-Apim-Subscription-Key': cogServicesID}
+    
+    if not cogRegion:
+        cogRegion = "westeurope"
+
     try:
-        r = requests.post(AccessUri, data='', headers=headers)
+        r = requests.post(AccessUri.format(region=cogRegion), data='', headers=headers)
     except Exception as e:
         print("While trying to access cognitive speech: Internet connection failed")
         print(e)
@@ -569,7 +743,7 @@ def _generateSpeechFromAzure(words):
         return
     
     token = r.content.decode("utf-8")
-    postStringData = GenerateSsml(words, language, speechGender, voice)
+    postStringData = GenerateSsml(words, speechLanguage, speechGender, voice)
 
     # use riff-16khz-16bit-mono-pcm in output format to get playable file with header. raw-16khz-16bit-mono-pcm is used to get file without header (useful in a stream etc)
 
@@ -578,7 +752,7 @@ def _generateSpeechFromAzure(words):
                "Authorization": "Bearer " + token
                }         
     
-    r = requests.post(SynthesizeUri, data=postStringData, headers=headers)
+    r = requests.post(SynthesizeUri.format(region=cogRegion), data=postStringData, headers=headers)
     if r.status_code != 200:
         print("Synthesis Failed with code:")
         print(r.status_code)
@@ -587,13 +761,13 @@ def _generateSpeechFromAzure(words):
     with open(speechAudioFile, mode='wb') as f:
         f.write(r.content)
 
-def GenerateSsml(textToSpeak, locale, gender, voiceName):
+def GenerateSsml(textToSpeak, language, gender, voiceName):
 
     #// Using XDocument from the example formats it wrongly.  Maybe because of " instead of '
     
-    ssmlDoc = "<speak version='1.0' xml:lang='" + locale + "'>";
+    ssmlDoc = "<speak version='1.0' xml:lang='" + language + "'>";
 
-    ssmlDoc += "<voice xml:lang='" + locale + "' xml:gender='" + gender + "' name='" + locale + "-" + voiceName + "'>";
+    ssmlDoc += "<voice xml:lang='" + language + "' xml:gender='" + gender + "' name='" + language + "-" + voiceName + "'>";
     ssmlDoc += textToSpeak;
     ssmlDoc += "</voice>";
     ssmlDoc += "</speak>";
@@ -886,30 +1060,23 @@ def getTopLip ():
 def getBottomLip ():
     return lipBottomPos
 
-# Function to set the language used by gTTS web speech synthesizer
-# name - run 'say -v ?' in terminal to find available names.
-def setLanguage(params=language):
-    global language
-    language = params
-
 # Function to set the voice used by the synthesiser
 # name - run 'say -v ?' in terminal to find available names.
 # speed - speech rate in words per min.
 # This override will stay in use until it's next called
-def setVoice(params=voice,language = "en-GB", gender = 'Female'):
-    global voice, speechGender
+def setVoice(params=voice, language = "", gender = ""):
+    global voice, speechLanguage, speechGender
     voice = params
+    speechLanguage = language
     speechGender = gender
-    setLanguage(language)
 
 # Function to set a different speech synthesizer - defaults to sapi
 def setSynthesizer(params=synthesizer,ID = "",region ='westeurope'):
-    global synthesizer, voice, cogServicesID
+    global synthesizer, voice, cogServicesID, cogRegion
     synthesizer = params
     voice = ""
     cogServicesID = ID
-    if params.lower() == 'azure':
-        setVoice("LibbyNeural")
+    cogRegion = region
         
 # Set the speed of the speech in words per min.
 def speechSpeed(params=speechRate):

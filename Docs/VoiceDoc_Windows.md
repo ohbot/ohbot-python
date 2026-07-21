@@ -43,20 +43,25 @@ To use SAPI5 you need to install some extra libraries.  In command shell run thi
 
 py -3.13 -m pip install winrt-Windows.Foundation winrt-Windows.Foundation.Collections winrt-Windows.Media.SpeechSynthesis winrt-Windows.Storage.Streams
 
-ohbot.setVoice(voice, language = "en-GB", gender = 'Female')
-language and gender are only supported by Azure voices.  Gender is overridden by the selected voice
-------
-
 Use ohbot.setVoice() to set the voice depending on the synthesizer:
+
+<b>Using Azure voices</b>
+
+ohbot.setVoice(voice, language = "en-GB", gender = 'Female')
+
+language and gender are only supported by Azure, SAPI and SAPI5 voices.  
+Gender is overridden by any selected voice.  
+If you leave voice blank and define language and gender then the first voice in this language with this gender will be used
 
 <b>Using SAPI or SAPI5</b>
 
-Use any of the following arguments:
+The voice can contain any of the following arguments:
 
 | Name| Description|
 | --- |------|
 | -a0 to -a100   | amplitude |
 | -r-10 to r10   | rate |
+| -p-10 to p10   | pitch (SAPI5 only) |
 | -v any part of the name of a SAPI voice (eg. -vHazel or -vZira) | voice |
 
 For Example:

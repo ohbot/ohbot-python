@@ -46,6 +46,7 @@ ohbot.setSynthesizer(synth,ID = "",region ='westeurope')
 | “festival” | festival speech |
 | “espeak” | espeak speech |
 | “pico2wave” | pico2wave speech |
+| “piper” | piper speech |
 | “gTTS” | Google web based text to speech |
 | “Azure” | Microsoft web based text to speech |
 
@@ -76,7 +77,7 @@ where <key> and <region> come from your Azure acccount
 
 ohbot.setVoice(voice,language = "en-GB", gender = 'Female')
 language is only supported by Azure voices and gTTS voices
-gender is only supported by Azure voices and is overridden by the voice
+gender is only supported by Azure voices and is overridden by the voice if the voice is defined
 ------
 
 Use ohbot.setVoice() to set the voice synthesizer:
@@ -111,19 +112,19 @@ More examples can be found in our [espeakVoices example program](https://github.
 
 Ohbot supports Google Web speech using [gTTS](https://github.com/pndurette/gTTS). This provides a more realistic voice and support for multiple languages on the Raspberry Pi. Please note that using this speech means the text Ohbot says is processed online on Google's servers. 
 
-The language can be changed by calling ohbot.setLanguage and passing a string containing a [google language code](https://cloud.google.com/speech-to-text/docs/languages).
+The language can be changed by calling ohbot.setVoice and passing a string containing a [google language code](https://cloud.google.com/speech-to-text/docs/languages).
 
 For example:
 
 ```python
-ohbot.setLanguage("da-DK")
+ohbot.setVoice(language="da-DK")
 ```
 or
 ```python
-ohbot.setLanguage("en-GB")
+ohbot.setVoice(language="en-GB")
 ```
 or
 ```python
-ohbot.setLanguage("en-US")
+ohbot.setVoice(language="en-US")
 ```
 
