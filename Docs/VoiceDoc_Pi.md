@@ -11,9 +11,11 @@ Online: <br>
 gTTS <br>
 Azure <br>
 
-You can set up a free Azure account here:
+You can set up a free Azure account:
 
-<a href="https://azure.microsoft.com/en-gb/free/" target="_blank"></a>
+<p>
+<a href="https://azure.microsoft.com/en-gb/free/" target="_blank">here</a>
+</p>
 
 Additonal voices can be used by installing the ```espeak``` or ```pico2wave``` synthesizers.
 
@@ -105,6 +107,19 @@ Examples:<br>
 | ``ohbot.setVoice("-vfr+f1 -p99 -s180")`` | French female whisper voice, medium speed and high pitched |
 
 More examples can be found in our [espeakVoices example program](https://github.com/ohbot/ohbot-python/raw/master/examples/Pi/espeakVoices.py)  and  [pico2wave example program.](https://github.com/ohbot/ohbot-python/raw/master/examples/Pi/pico2waveSpeech.py)
+
+For Azure speech you can get a list of voices here:
+<p>
+<a href="https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/language-support#text-to-speech" target="_blank">Azure voices</a>
+</p>
+Put the name without the locale on the front and the locale into separate parameters.  For example use 
+<p>
+ohbot.setVoice("EthanNeural", "en-GB")
+</p>
+or 
+<p>
+ohbot.setVoice("LaiaNeural", "es-ES")
+</p>
 
 
 # Web Speech
