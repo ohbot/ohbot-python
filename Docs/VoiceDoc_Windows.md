@@ -13,8 +13,8 @@ ohbot.setSynthesizer(synth,ID = "",region ='westeurope')
 
 If you have an Azure account you can use:
 
-use ohbot.setSynthesizer("Azure", "<key>", "<region>") 
-where <key> and <region> come from your Azure acccount
+use ohbot.setSynthesizer("Azure", "id", "region") 
+where "id" is the key of your Azure account and "region" is the region of your Azure account
 
 You can set up a free Azure account here:
 
@@ -94,5 +94,10 @@ More examples can be found in our [voices example program.](https://github.com/o
 
 Supports some of the ESPEAK parameters but some are missing.
 
+<b>Using Azure</b>
+For Azure speech you can get a list of voices here:
+<p>
+<a href="https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/language-support#text-to-speech" target="_blank">Azure voices</a>
+</p>
 
 

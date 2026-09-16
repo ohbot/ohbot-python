@@ -8,18 +8,14 @@ Allows override of default OSX synthesizer.
 
 If you have an Azure account you can use:
 
-use ohbot.setSynthesizer("Azure", "<key>", "<region>") 
-where "<key>" and "<region>" come from your Azure acccount
+use ohbot.setSynthesizer("Azure", "id", "region") 
+where "id" is the key of your Azure account and "region" is the region of your Azure account
 
 You can set up a free Azure account here:
 
 <a href="https://azure.microsoft.com/en-gb/free/" target="_blank"></a>
 
-ohbot.setVoice(voice,language = "en-GB", gender = 'Female')
-language and gender are only supported by Azure voices.  Gender is overridden by the selected voice
-------
-
-Use ohbot.setVoice() to set the voice:
+Use ohbot.setVoice(voice,language = "en-GB", gender = 'Female') to set the voice.  language and gender are only supported by Azure voices.  Gender is overridden by the selected voice
 
 For Example:
 ```python
@@ -42,9 +38,9 @@ A full list of voices can also be displayed by entering the following command in
 ```say -v ?```
 
 For Azure speech you can get a list of voices here:
-
-"<a href="https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/language-support#text-to-speech" target="_blank"></a>"
-
+<p>
+<a href="https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/language-support#text-to-speech" target="_blank">Azure voices</a>
+</p>
 
 ohbot.setSpeechSpeed(params)
 ------
