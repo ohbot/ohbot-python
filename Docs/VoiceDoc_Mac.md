@@ -9,7 +9,7 @@ Allows override of default OSX synthesizer.
 If you have an Azure account you can use:
 
 use ohbot.setSynthesizer("Azure", "<key>", "<region>") 
-where <key> and <region> come from your Azure acccount
+where "<key>" and "<region>" come from your Azure acccount
 
 You can set up a free Azure account here:
 
@@ -43,7 +43,7 @@ A full list of voices can also be displayed by entering the following command in
 
 For Azure speech you can get a list of voices here:
 
-<a href="https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/language-support#text-to-speech" target="_blank"></a>
+"<a href="https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/language-support#text-to-speech" target="_blank"></a>"
 
 
 ohbot.setSpeechSpeed(params)
