@@ -11,9 +11,10 @@ If you have an Azure account you can use:
 use ohbot.setSynthesizer("Azure", "id", "region") 
 where "id" is the key of your Azure account and "region" is the region of your Azure account
 
-You can set up a free Azure account here:
-
-<a href="https://azure.microsoft.com/en-gb/free/" target="_blank"></a>
+You can set up a free Azure account:
+<p>
+<a href="https://azure.microsoft.com/en-gb/free/" target="_blank">here</a>
+</p>
 
 Use ohbot.setVoice(voice,language = "en-GB", gender = 'Female') to set the voice.  language and gender are only supported by Azure voices.  Gender is overridden by the selected voice
 
@@ -40,6 +41,14 @@ A full list of voices can also be displayed by entering the following command in
 For Azure speech you can get a list of voices here:
 <p>
 <a href="https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/language-support#text-to-speech" target="_blank">Azure voices</a>
+</p>
+Put the name without the locale on the front and the locale into separate parameters.  For example use 
+<p>
+ohbot.setVoice("EthanNeural", "en-GB")
+</p>
+or 
+<p>
+ohbot.setVoice("LaiaNeural", "es-ES")
 </p>
 
 ohbot.setSpeechSpeed(params)

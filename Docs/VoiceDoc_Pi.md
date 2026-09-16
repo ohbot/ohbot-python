@@ -70,8 +70,8 @@ ohbot.setSynthesizer("gTTS")
 or 
 
 ```python
-ohbot.setSynthesizer("Azure", "<key>", "<region>")
-where <key> and <region> come from your Azure acccount
+ohbot.setSynthesizer("Azure", "id", "region")
+where "id" is the key of your Azure account and "region" is the region of your Azure account
 ```
 
 ohbot.setVoice(voice,language = "en-GB", gender = 'Female')
