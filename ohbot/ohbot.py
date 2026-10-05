@@ -39,10 +39,6 @@ if platform.system() == "Linux":
 
 # Variables to hold name of settings
 speechDatabaseFile = ''
-defaultEyeShape = ''
-eyeShapeLeft = ''
-eyeShapeRight = ''
-eyeShapeFile = ''
 speechAudioFile = 'ohbotData/ohbotspeech.wav'
 ohbotMotorDefFile = 'ohbotData/MotorDefinitionsv21.omd'
 soundFolder = 'ohbotData/Sounds'
@@ -94,8 +90,7 @@ motorType = ["", "", "", "", "", "", "", ""]
 lipTopPos = 5
 lipBottomPos = 5
 
-# empty lists to hold eye shapes and phrases from speech databa se.
-shapeList = []
+# empty lists to hold phrases from speech databa se.
 phraseList = []
 
 # define a module level variable for the serial port
@@ -109,9 +104,6 @@ writing = False
 
 # flag to allow the library to run when not connected
 connected = False
-
-# flag to track if top lip is below centre.
-topLipFree = False
 
 # If the ohbotData folder does not exist, create it.
 try:
@@ -128,7 +120,7 @@ if not path.exists('ohbotData/OhbotSettings.xml'):
 
 # Load settings from XML file.
 def _loadSettings():
-    global eyeShapeFile,defaultEyeShape,synthesizer,voice,speechDatabaseFile,eyeShapeFile,ohbotMotorDefFile,eyeShapeLeft,eyeShapeRight
+    global synthesizer,voice,speechDatabaseFile,ohbotMotorDefFile
     
     tree = etree.parse(settingsFile)
 
@@ -140,11 +132,6 @@ def _loadSettings():
         name = element.get("Name")
         val = element.get("Value")
 
-        if name == "DefaultEyeShape":
-            defaultEyeShape = val
-            eyeShapeLeft = val
-            eyeShapeRight = val
-            
         if name == "DefaultSpeechSynth":
             synthesizer = val
 
@@ -157,9 +144,6 @@ def _loadSettings():
         if name == "SpeechDBFile":
             speechDatabaseFile = val
 
-        if name == "EyeShapeList":
-            eyeShapeFile = val
-
         if name == "MotorDefFile":
             ohbotMotorDefFile = val
 
@@ -170,11 +154,6 @@ if not path.exists(speechDatabaseFile):
     shutil.copyfile(os.path.join(directory, 'OhbotSpeech.csv'),speechDatabaseFile)
     if debug:
         print("Copied OhbotSpeech.csv from :" + directory + " to ohbotData/")
-
-if not path.exists(eyeShapeFile):
-    shutil.copyfile(os.path.join(directory, 'ohbot.obe'), eyeShapeFile)
-    if debug:
-        print("Copied ohbot.obe from :" + directory + " to ohbotData/")
 
 if not path.exists(ohbotMotorDefFile):
     shutil.copyfile(os.path.join(directory, 'MotorDefinitionsv21.omd'), ohbotMotorDefFile)
@@ -238,17 +217,6 @@ baseB = 0
 
 ser = None
 
-# A class that defines eye shape objects.
-
-class EyeShape(object):
-
-    def __init__(self, name_value, hexString_value, autoMirror_value, pupilRangeX_value, pupilRangeY_value):
-        self.name = name_value
-        self.hexString = hexString_value
-        self.autoMirror = autoMirror_value
-        self.pupilRangeX = pupilRangeX_value
-        self.pupilRangeY = pupilRangeY_value
-
 # A class that defines speech phrase objects.
 
 class Phrase(object):
@@ -285,41 +253,7 @@ def _loadMotorDefs():
         else:
             rev = False
             motorRev[index] = rev
-
-            
-# Read eyeshape file into eyeshape list.
-def _loadEyeShapes():
-    global shapeList
-
-    # Clear the shapeList
-    shapeList = []
-    tree = etree.parse(eyeShapeFile)
-    index = 0
-
-    for element in tree.iter():
-
-        if element.tag == "Name":
-            shapeList.append(EyeShape(str(element.text), "", False, 5, 5))
-
-        if element.tag == "PupilRangeX":
-            shapeList[index].pupilRangeX = int(element.text)
-
-        if element.tag == "PupilRangeY":
-            shapeList[index].pupilRangeY = int(element.text)
-
-        if element.tag == "Hex":
-            shapeList[index].hexString = element.text
-
-        if element.tag == "AutoMirror":
-            if element.text == "true":
-                shapeList[index].autoMirror = True
-
-            else:
-                shapeList[index].autoMirror = False
-
-            index = index + 1
-
-            
+           
 # Read speech database file into phraseList.
 def _loadSpeechDatabase():
     global phraseList
@@ -632,7 +566,6 @@ def init(portName = None):
     # pickup global instances of port, ser and sapi variables
     global port, ser, sapivoice, sapistream, connected, directory
 
-    _loadEyeShapes()
     _loadMotorDefs()
 
     silenceFile = os.path.join(directory, 'Silence1.wav')
@@ -723,22 +656,11 @@ def getDirectory():
 # Function to move Ohbot's motors. Arguments | m (motor) → int (0-6) | pos (position) → int (0-10) | spd (speed) →
 # int (0-10) **eg move(4,3,9) or move(0,9,3)**
 def move(m, pos, spd=5, eye=0):
-    global lastfexl, lastfeyl,lastfexr, lastfeyr, topLipFree
+    global lastfexl, lastfeyl,lastfexr, lastfeyr
 
     # Limit values to keep then within range
     pos = _limit(pos)
     spd = _limit(spd)
-
-    # Keeping track of whether the top lip is pushed below the centre stop.
-
-    if pos > 9 and m == BOTTOMLIP:
-        topLipFree = True
-
-    if pos <= 5 and m == BOTTOMLIP:
-        topLipFree = False
-
-    if pos < 5 and m == BOTTOMLIP:
-        pos = 5 - ((5 - pos) / 2)
 
     # Reverse the motor if necessary
     if motorRev[m]:
@@ -926,16 +848,9 @@ def setSpeechSpeed(params=speechRate):
 # untilDone - wait in function until speech is complete, lipSync - move lips in time with speech, hdmiAudio - adds a delay to give hdmi channel time to activate.
 # soundDelay - positive if lip movement is lagging behind sound, negative if sound is lagging behind lip movement.
 def say(text, untilDone=True, lipSync=True, hdmiAudio=False, soundDelay=0):
-    global topLipFree
-
-    #if topLipFree:
-     #   move(BOTTOMLIP, 4)
-      #  wait(0.25)
     
     if text.isspace() or text == '':
         return
-    text = text.replace("picoh", "peek oh")
-    text = text.replace("Picoh", "peek oh")
     
     if hdmiAudio:
         soundDelay = soundDelay - 1
@@ -1221,7 +1136,8 @@ def _phonememapBottomFest(val):
 
 # Function mapping phonemes to top lip positions.
 def _phonememapTop(val):
-    return 5 + (_limit(val) / 2)
+    # Top lip is 2/3 the movement of bottom lip
+    return 5 + (_limit(val) / 3)
 
 
 # Function mapping phonemes to bottom lip positions.
@@ -1236,7 +1152,7 @@ def eyeColour(r, g, b, swapRandG=False):
 def setEyeColour(r, g, b, swapRandG=False):
     eyeColour(r, g, b, swapRandG)
 
-# Clone of base colour to keep consitency with set eyeShape etc.
+# Clone of base colour to keep consistency with Picoh library
 def setBaseColour(r, g, b, swapRandG=False):
     baseColour(r, g, b, swapRandG)
 
@@ -1314,7 +1230,6 @@ def close():
     # Reset Ohbot back to start position
 def reset():
     baseColour(0, 0, 0)
-    setEyeShape(defaultEyeShape, defaultEyeShape)
     for x in range(len(restPos) - 1,-1,-1):
         move(x, restPos[x])
         wait(WAITLONG)
@@ -1344,127 +1259,13 @@ def readSensor(index):
     return sensors[index]
 
 
-# set the brightness of the eyes.  Value is 0 (off) to 10 (full brightness)
+# Not supported by Ohbot but kept for compatibility with Picoh library.
 def setEyeBrightness(val):
-    val = val / 10
-    val = val * val
-    msg = "{:0.0f}".format(val * 255)
+    return
 
-    # print ("brightness:" + msg)
-
-    _serwrite("FI," + msg + "\n")
-
-
-# set the eye shape according to the passed in eyeshapedefinition
-# eysshape definition is 6 sets of 9 hex pairs which set the bits of half of the screen
-# the other half of the screen is a mirror copy
-# the first 5 sets of pairs set the normal eye and 4 blink positions
-# the last set of pairs set the pupil
-# set the eye shape according to the passed in eyeshapedefinition
-# eyeshape definition is 6 sets of 9 hex pairs which set the bits of half of the screen
-# the other half of the screen is a mirror copy
-# the first 5 sets of pairs set the normal eye and 4 blink positions
-# the last set of pairs set the pupil
-def _setEyes(leftDefinition, rightDefinition="", autoMirror=True):
-    # TODO needs some work here to use both definitions for independent eye shapes
-    # and to define the pupil range and offset
-    definition = leftDefinition
-
-    if rightDefinition == "":
-        rightDefinition = definition
-
-    _serwrite("FB,0," + _EyeShapeBytes(definition, rightDefinition, 0, autoMirror) + "\n")
-    _serwrite("FB,1," + _EyeShapeBytes(definition, rightDefinition, 1, autoMirror) + "\n")
-    _serwrite("FB,2," + _EyeShapeBytes(definition, rightDefinition, 2, autoMirror) + "\n")
-    _serwrite("FB,3," + _EyeShapeBytes(definition, rightDefinition, 3, autoMirror) + "\n")
-    _serwrite("FB,4," + _EyeShapeBytes(definition, rightDefinition, 4, autoMirror) + "\n")
-    # Pupil is held in set 6 and has been implemented in the Arduino driver as FB 8
-    _serwrite("FB,8," + _EyeShapeBytes(definition, rightDefinition, 5, autoMirror) + "\n")
-
-
-# function for getting a string that defines the 16 x 9 matrix for a particular 8 x 9 eyeshapedefinition
-# setNo is 0 for the normal eyeshape, 1 to 4 for blink shapes or 5 for the pupil
-def _EyeShapeBytes(definitionR, definition, setNo, autoMirror):
-    strRet = ""
-    for x in range(0, 9):
-        if (len(strRet) > 0):
-            strRet += ","
-        offset = setNo * 18 + x * 2
-
-        if autoMirror:
-            strRet += (definition[offset: offset + 2])
-        else:
-            strRet += _reverseBits(definition[offset: offset + 2])
-
-        strRet += _reverseBits(definitionR[offset: offset + 2])
-    if debug:
-        print ("eyeshape set:" + str(set) + ": " + strRet)
-
-    return strRet
-
-
-# reverse the bits of a two byte hex number
-def _reverseBits(str):
-    # print ("str: " + str)
-    x = int(str, 16)
-    r = 0
-
-    if (x & 0x80):
-        r += 0x01
-    if (x & 0x40):
-        r += 0x02
-    if (x & 0x20):
-        r += 0x04
-    if (x & 0x10):
-        r += 0x08
-    if (x & 0x08):
-        r += 0x10
-    if (x & 0x04):
-        r += 0x20
-    if (x & 0x02):
-        r += 0x40
-    if (x & 0x01):
-        r += 0x80
-
-    # https://stackoverflow.com/questions/2269827/how-to-convert-an-int-to-a-hex-string
-    return "%0.2X" % r
-
-
+# Not supported by Ohbot but kept for compatibility with Picoh library.
 def setEyeShape(shapeNameRight, shapeNameLeft=''):
-    global shapeList,eyeShapeLeft,eyeShapeRight
-
-    leftHex =''
-
-    if shapeNameLeft == '':
-        shapeNameLeft = shapeNameRight
-    
-    for index, shape in enumerate(shapeList):
-        if shape.name.upper() == shapeNameRight.upper():
-            rightHex = shape.hexString
-            eyeShapeRight = shape.name
-
-    for index, shape in enumerate(shapeList):
-        if shape.name.upper() == shapeNameLeft.upper():
-            leftHex = shape.hexString
-            eyeShapeLeft = shape.name
-            if shape.autoMirror:
-                autoMirrorVar = True
-            else:
-                autoMirrorVar = False
-
-    # Send hex to Picoh.
-
-    if leftHex == '':
-        print(str(shapeNameLeft) + " Eyeshape Not Found")
-        return
-    if connected:
-        _setEyes(rightHex, leftHex, autoMirrorVar)
-        wait(WAITMEDIUM)
-        move(EYETILT, lastfeyl,1)
-        move(EYETILT, lastfeyr,2)
-
-        move(EYETURN, lastfexl,1)
-        move(EYETURN, lastfexr,2)
+    return
 
 
 def getPhrase(set='None', variable='None'):
